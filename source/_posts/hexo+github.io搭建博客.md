@@ -140,5 +140,21 @@ $ npm install hexo-deployer-git --save
 ```
 $ hexo clean && hexo g && hexo deploy && hexo clean
 ```
+`hexo clean`清除目前已经生成的静态文件.
+`hexo g`是`hexo generate`的缩写,根据md渲染生成静态网页
+`hexo deploy`发布到github.
+```
 
+Branch master set up to track remote branch master from git@github.com:Trim21/trim21.github.io.git.
+To git@github.com:Trim21/trim21.github.io.git
+   fbe8fdf..0efa36b  HEAD -> master
+INFO  Deploy done: git
+
+```
+
+输出说明deploy已经成功了,此事访问`username.github.io`就可以看到你的博客了.
+
+当然,前面会输出一大堆的`LF`和`CRLF`替换之类的.不用管他们.只要访问网址没问题不就好了嘛=.=
+
+xml格式文件有个坑,在`:`之后一定要有一个空格,才能被正确识别.
 
