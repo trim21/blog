@@ -29,7 +29,6 @@ tags:
 直到后来知道了node.js。并且真正的用了一下，发现原来写个服务器是这么简单。。。
 
 
-
 ```javascript
 var http=require('http')
 http.createServer(function (req, res) {
