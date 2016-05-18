@@ -9,7 +9,7 @@ tags:
 ---
 
 # hack了一下学校的选课系统
-并没写过科技文档，最近为了做选课系统所以研究了一下学校的选课系统用的各种方法,没用到session,只是简单的cookies,我也不需要区分session
+并没写过科技文档，最近为了做选课系统所以研究了一下学校的选课系统用的各种方法，没用到session，只是简单的cookies，我也不需要区分session
 <!-- more -->
 
 ## 学校选课系统登陆状态的保存
@@ -31,7 +31,7 @@ tags:
 ```
 <script language="JavaScript1.2" src="nocache.js"></script>
 ```
-吐槽一下,现在已经不需要加`language="JavaScript1.2"`这个属性了,JavaScript现在是html5默认的脚本语言.
+吐槽一下，现在已经不需要加`language="JavaScript1.2"`这个属性了，JavaScript现在是html5默认的脚本语言。
 
 [nocache.js](http://jwxt.sdu.edu.cn:7890/zhxt_bks/nocache.js)
 （我chrome打开是乱码状态，在本地用文本编辑器以gbk编码打开即可）
@@ -43,4 +43,4 @@ tags:
 
 ## <del>写了个轮子</del>
 
-获取课表已经整合到系统里了,所以单独的轮子就删掉了.
+获取课表已经整合到系统里了，所以单独的轮子就删掉了。
