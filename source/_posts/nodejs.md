@@ -46,5 +46,83 @@ http.createServer(function (req, res) {
 腾讯云给的1块钱的服务器，加上一个免费域名，正好所有条件都有了，所以就开始做吧。直接开始干吧。
 
 其实一开始写了不少东西，后来又发现了express这个东西，路由功能和各种parser个能也都很好用，省掉了好多地方，其实自己也不怎么会写。所以用这个正好。
-本来想写写sql的东西，有点懒，等着再说~
+
+express真是个好东西,直接用generator生成的话各个中间件都已经预置好了.如果是用generator生成的话可以直接安心写路由了.不需要管接受的数据是是buffer还是stream.有body-parser和cookie-parser来处理.
+
+
+中间件的概念我不知道出处是什么了.在express里中间件就是对一次http请求进行处理的一个函数.可以传递给下一个函数急需处理,也可以在这个函数就终止.
+
+比如说,在express的app.js文件中就可以看到
+
+
+```
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users);
+
+```
+代码分成了三部分
+
+```
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+```
+第一部分如注释所说,使用了`jade`做为模板引擎
+
+```
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+```
+
+然后引入了一系列的中间件,对http请求进行预处理.
+
+最后是路由部分.
+
+```
+app.use('/', routes);
+app.use('/users', users);
+```
+
+如果访问`domain/`就会交给`routes`函数进行处理.如果访问的时`domain/users`就会交给`users`函数进行处理.
+
+一个路由对象也很好写
+
+```
+var express = require('express');
+var router = express.Router();
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
+module.exports = router;
+```
+这是自动生成的`users`,`router`是express提供的对象.他的方法名就是要进行处理的http的请求的方法.比如处理get请求就用`router.get`,处理post请求就用`router.post`
+
+第一个参数是要处理的路径.是累加在之前那个路径上的.也就是说,我们在app.js中已经设定了是`/users`路径了,如果这里写的是`router.get(/example,function(req,res,next){});`那么只有url是`domain/users/example`的请求才能被这个函数所捕获.
+
+
+还有一个url静态化的方法,我不知道了=.=没用过,只看了一眼.似乎是引入一个什么什么东西,然后在url中用`:vars`来匹配参数.
+
+如果是post方法,req对象有一个body属性.其中储存了post所附带的对象.如果是get对象,则是`req.query`.中间件已经替我们处理好了这部分东西,不需要我们再处理了.
+
+
 
