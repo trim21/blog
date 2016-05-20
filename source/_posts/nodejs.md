@@ -1,6 +1,6 @@
-title: 选课系统真难用
-date: 2016-04-15 19:07:25
-categories:
+javascript
+da
+c
 - 编程
 tags:
 - node
@@ -26,6 +26,8 @@ tags:
 
 所以有了现在做的这个东西。其实一开始纠结用什么做费尽了半天。一开始对现在编程的环境没什么了解，想直接用很地政的语言画个GUI，然后把数据直接存到比如说数组里来着，然后连个简单的GUI都画不出来。一直卡在画GUI上，然后就把这个想法放下了。
 
+## 开始
+
 直到后来知道了node.js。并且真正的用了一下，发现原来写个服务器是这么简单。。。
 
 
@@ -44,6 +46,8 @@ http.createServer(function (req, res) {
 然后我就决定又开始做这个了，html就是现成的图形界面，而且在浏览器里直接就跨平台了，无比省劲。
 
 腾讯云给的1块钱的服务器，加上一个免费域名，正好所有条件都有了，所以就开始做吧。直接开始干吧。
+
+## Express介绍
 
 其实一开始写了不少东西，后来又发现了express这个东西，路由功能和各种parser个能也都很好用，省掉了好多地方，其实自己也不怎么会写。所以用这个正好。
 
@@ -124,5 +128,88 @@ module.exports = router;
 
 如果是post方法,req对象有一个body属性.其中储存了post所附带的对象.如果是get对象,则是`req.query`.中间件已经替我们处理好了这部分东西,不需要我们再处理了.
 
+毕竟是说不要重复造轮子嘛=-=已有的现成的东西自己重写一遍也没有什么意义.
 
+## sqlite3
+
+### nodeJS中slite3安装
+
+sqlite3的数据库是储存在一个文件中的,不像MySql一样需要开一个服务.所以安装部署比MySql简单多了.
+
+(我当时部署mysql部署了好几天也没成功.用sqlite3就添加了个环境变量就成功了..)
+
+本身需要储存的数据也不多,就一个学校的课表,在加上储存一个用户的课表.本身用的人也不会很多.所以对性能也不是很敏感.
+
+sqlite3的基本结构跟一个excel表格其实是一样的...一个xls文件里面会有许多个sheet,对应一个db文件中有多个tables,一个sheet有许多个单元格,对应的一个tables里有许多单元格.
+
+nodejs中操作sqlite3也很简单,
+
+```
+$ npm install sqlite3 --save
+```
+
+编译sqlite3的时候用到了`node-pre-gyp`,win下面好像是自带的.但是linux的话需要先全局安装,不然会报错.
+
+```
+$ npm install node-pre-gyp -g
+```
+`node-pre-gyp`需要python版本`>2.5 <30`,一般来说现在的linux发行版都已经预装了python2.7了,所以只需要全局安装一下`node-pre-gyp`就可以了.
+
+
+### 使用
+
+```javascript
+var sqlite3 = require('sqlite3');
+
+var db = new sqlite3.Database('path of datebash file');
+```
+db对象有几个方法,查询用到的是`db.get`和`db.all`,第一个方法会返回查询到的第一个条件`all`会返回所有符合条件查询结果.
+
+```javascript
+db.all('SELECT * FROM tablename ;' ,
+function(er,res){
+if(!err) cosole.log(res);
+});
+```
+
+这里处理返回值的方法不像其他的语言一样是用函数返回值来进行的,而是用异步的方式,传递一个函数进去处理.
+
+## 异步
+
+node中绝大部分的函数都是异步的,以文件操作来局里,
+```javascript
+var fs = require('fs');
+
+fs.readFile('file', function (err, res) {
+  console.log(res);
+});
+```
+
+此处是用异步方法读取文件.所以是传递一个函数进去.做为回调函数.
+
+node是单线程的,如果等着读取文件就会卡在这里停止继续运行了.为了解决这个问题,函数是被事件触发来运行的.比如说这里,文件读取的操作是运行时来进行的.在读取操作结束后才会调用回调函数.
+
+在读取的这段时间里会继续运行.
+
+```javascript
+var fs = require('fs');
+
+fs.readFile('file', function (err, res) {
+  console.log('world');
+});
+console.log('hello')
+```
+以这段代码为例,控制台会输出的是
+```
+hello
+world
+```
+而不是按照代码顺序的
+```
+world
+hello
+```
+就是因为运行`fs.readFile`需要耗费一定的时间,在这个时候是运行时进行I/O操作,而代码则继续运行,先运行到了`console.log('hello')`
+
+所以个人感觉,node是树一样的状态.每写一个回调就相当于分了一个岔,运行时在其中一条阻塞的时候就跳到另外一条树干上执行.直到这条树干运行到头为之.
 
