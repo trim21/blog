@@ -168,7 +168,7 @@ db对象有几个方法,查询用到的是`db.get`和`db.all`,第一个方法会
 ```javascript
 db.all('SELECT * FROM tablename ;' ,
 function(er,res){
-if(!err) cosole.log(res);
+  if(!err) cosole.log(res);
 });
 ```
 
