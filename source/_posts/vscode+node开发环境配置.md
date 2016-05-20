@@ -4,7 +4,6 @@ categories:
 - 编程
 tags:
 - Visual Studio Code
-- npm
 - Node
 - JavaScript
 ---
