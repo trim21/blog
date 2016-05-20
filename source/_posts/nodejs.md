@@ -55,7 +55,7 @@ express真是个好东西,直接用generator生成的话各个中间件都已经
 比如说,在express的app.js文件中就可以看到
 
 
-```
+```javascript
 var app = express();
 
 // view engine setup
@@ -76,14 +76,14 @@ app.use('/users', users);
 ```
 代码分成了三部分
 
-```
+```javascript
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 ```
 第一部分如注释所说,使用了`jade`做为模板引擎
 
-```
+```javascript
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -95,7 +95,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 最后是路由部分.
 
-```
+```javascript
 app.use('/', routes);
 app.use('/users', users);
 ```
@@ -104,7 +104,7 @@ app.use('/users', users);
 
 一个路由对象也很好写
 
-```
+```javascript
 var express = require('express');
 var router = express.Router();
 
