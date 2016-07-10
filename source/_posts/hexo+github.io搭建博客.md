@@ -16,7 +16,7 @@ tags:
 
 <!-- more -->
 
-需要安装`node`和`npm`，(安装`node`的时候很少会有人不安装`npm`)..
+需要安装`node`和`npm`，(安装`node`的时候会有人不安装`npm`吗？)..
 
 下载地址[https://nodejs.org/](https://nodejs.org/)
 

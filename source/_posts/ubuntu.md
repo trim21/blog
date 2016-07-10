@@ -19,7 +19,7 @@ ubuntu 16.04LTS node v6.3.0 npm v3.10.3
 ## 现在遇到的主要问题
 1. 无法生成静态文件
 现在生成会报
-```bash
+```bashub
 INFO  Start processing
 INFO  Files loaded in 293 ms
 WARN  No layout: categories/index.html
@@ -52,4 +52,8 @@ WARN  No layout: tags/Linux/index.html
 
 所以可以看出，hexo的跨平台性还是挺好的，只要ssh密钥需要重新绑定，整个blog文件夹都不需要动。
 
-打算把这套东西部署到vps上面去，到时候只需要维护本地的source文件夹，其他的东西都交给vps来办。
+打算把这套东西部署到vps上面去，到时候只需要维护本地的source文件夹，其他的东西都交给vps来办，毕竟没有放在本地的必要。
+
+目前的想法，在本地维护一个git repo，然后使用github的webhook给虚拟机虚拟机发信号，虚拟机只需要运行提前写好的shell脚本就可以了。
+
+本地git repo -> GitHub --webhook--> VPS --hexo d--> GitHub pages
