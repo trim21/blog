@@ -8,7 +8,7 @@ subtitle: 编程 瞎折腾
 description: 自己学习编程过程中的一点经历..
 author: Trim21
 language: default
-email: niuziru21@Gmail.com
+email: trim21me@Gmail.com
 timezone: Asia/Hong_Kong
 
 # URL
@@ -69,8 +69,20 @@ Plugins:
   hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
-theme: NexT
+# theme: NexT
+# theme: Anisina
+theme: landscape-plus
 
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+# - recent_posts
+- links
+
+links:
+  GitHub: https://github.com/trim21
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
