@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Niu's Blog
-subtitle: 编程 瞎折腾
-description: 自己学习编程过程中的一点经历..
+title: Trim21's Blog
+subtitle: 的确是一点微小的工作
+# description: 的确是一点微小的工作
 author: Trim21
 language: default
 email: trim21me@Gmail.com
@@ -13,7 +13,7 @@ timezone: Asia/Hong_Kong
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://se.trim21.cn
+url: http://blog.trim21.cn
 root: /
 permalink: :year/:month/:title/
 # permalink_defaults:
@@ -28,7 +28,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 favicon: favicon.ico
-disqus_shortname: trim21blog
+# disqus_shortname: trim21blog
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -65,8 +65,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-#Plugins:
-#  hexo-generator-cname
+Plugins:
+ hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
 # theme: NexT
