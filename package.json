@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "update": "git submodule update --init",
+    "update": "git submodule foreach git pull origin master",
     "deploy":"./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d"
   },
   "hexo": {
