@@ -66,7 +66,20 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 Plugins:
-  hexo-generator-cname
+  - hexo-generator-cname
+  - hexo-math
+
+# math:
+#   engine: 'mathjax' # or 'katex'
+#   mathjax:
+#     src: custom_mathjax_source
+#     config:
+#       # MathJax config
+#   katex:
+#     css: custom_css_source
+#     js: custom_js_source # not used
+#     config:
+#       # KaTeX config
 
 ## Themes: https://hexo.io/themes/
 theme: NexT
