@@ -4,3 +4,6 @@
 [submodule "source/_posts"]
 	path = source/_posts
 	url = git@github.com:Trim21/blog-posts.git
+[submodule "themes/landscape-plus"]
+	path = themes/landscape-plus
+	url = git@github.com:Trim21/landscape-plus.git
