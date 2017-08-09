@@ -89,4 +89,3 @@ theme: landscape-plus
 deploy:
   type: git
   branch: master
-  # repository: git@github.com:Trim21/trim21.github.io.git
