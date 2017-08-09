@@ -88,5 +88,5 @@ theme: landscape-plus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:Trim21/trim21.github.io.git
   branch: master
+  # repository: git@github.com:Trim21/trim21.github.io.git
