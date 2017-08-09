@@ -8,12 +8,12 @@ subtitle: 编程 瞎折腾
 description: 自己学习编程过程中的一点经历..
 author: Trim21
 language: default
-email: niuziru21@Gmail.com
+email: trim21me@Gmail.com
 timezone: Asia/Hong_Kong
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.trim21.me
+url: https://blog.trim21.cn
 root: /
 permalink: :year/:month/:title/
 # permalink_defaults:
@@ -82,7 +82,7 @@ Plugins:
 #       # KaTeX config
 
 ## Themes: https://hexo.io/themes/
-theme: NexT
+theme: landscape-plus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
