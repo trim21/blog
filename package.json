@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "update": "git submodule foreach git pull origin master && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
-    "deploy":"./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
-    "gen":"./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
+    "deploy": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
+    "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
   "hexo": {
     "version": "3.3.5"
