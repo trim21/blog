@@ -1,0 +1,1 @@
+echo "  repository: https://${token}@github.com/Trim21/trim21.github.io" >> ./_config.yml
