@@ -2,8 +2,13 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "update": "git submodule foreach git pull origin master && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
+    "deploy": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
+    "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
+  },
   "hexo": {
-    "version": "3.2.2"
+    "version": "3.3.5"
   },
   "dependencies": {
     "hexo": "^3.2.0",

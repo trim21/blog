@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Niu's Blog
-subtitle: 编程 瞎折腾
-description: 自己学习编程过程中的一点经历..
+title: Trim21's Blog
+# subtitle: 的确是一点微小的工作
+# description: 的确是一点微小的工作
 author: Trim21
 language: default
-email: niuziru21@Gmail.com
+email: trim21me@Gmail.com
 timezone: Asia/Hong_Kong
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.trim21.me
+url: http://blog.trim21.cn
 root: /
 permalink: :year/:month/:title/
 # permalink_defaults:
@@ -28,7 +28,17 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 favicon: favicon.ico
-disqus_shortname: trim21blog
+# disqus_shortname: trim21blog
+
+# Gitment
+
+gitment:
+  owner: 'Trim21'
+  repo: 'blog'
+  client_id: '6285864ec38569eb5cc9'
+  client_secret: 'a118015f2dc4a5cede0e13897db720f00f335571'
+
+
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -48,8 +58,8 @@ highlight:
 
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+#category_map:
+#tag_map:
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -66,11 +76,23 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 Plugins:
-  hexo-generator-cname
+ hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
-theme: NexT
+# theme: NexT
+# theme: Anisina
+theme: landscape-plus
 
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+# - recent_posts
+- links
+
+links:
+  GitHub: https://github.com/trim21
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
