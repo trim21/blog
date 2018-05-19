@@ -13,7 +13,7 @@ timezone: Asia/Hong_Kong
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.trim21.cn
+url: https://blog.trim21.cn
 root: /
 permalink: :year/:month/:title/
 # permalink_defaults:
