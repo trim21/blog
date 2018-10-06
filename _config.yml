@@ -102,10 +102,11 @@ feed:
   content_limit_delim: ' '
   order_by: -date
 
+#image_minifier:
+#  enable: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   branch: master
-image_minifier:
-  enable: false
