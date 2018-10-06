@@ -6,4 +6,5 @@ find ./public/ -type f -name *.html -exec ./node_modules/.bin/html-beautify --co
 find ./public/ -type f -name *.js -exec ./node_modules/.bin/js-beautify --config beauty_config.json -w 120 {} -r \;
 ./node_modules/.bin/hexo d
 
+sleep 20
 node refreshCdn.js
