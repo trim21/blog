@@ -28,16 +28,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 favicon: /favicon.ico
-# disqus_shortname: trim21blog
-
-# Gitment
-
-gitment:
-  owner: 'Trim21'
-  repo: 'blog'
-  client_id: '6285864ec38569eb5cc9'
-  client_secret: 'a118015f2dc4a5cede0e13897db720f00f335571'
-
 
 
 # Writing
@@ -53,7 +43,7 @@ future: true
 highlight:
   enable: true
   line_number: false
-  auto_detect: false
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -79,22 +69,11 @@ pagination_dir: page
 #  hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
-# theme: NexT
-# theme: Anisina
 theme: landscape-plus
 
-widgets:
-- category
-- tag
-- tagcloud
-- archive
-- links
-- recent_posts
+sitemap:
+  path: sitemap.xml
 
-# markdown:
-  # gfm: false
-# hexo-renderer-marked
-# markdown:
 marked:
   gfm: false
   pedantic: false
@@ -106,8 +85,23 @@ marked:
   modifyAnchors: ''
   autolink: false
 
-links:
-  GitHub: https://github.com/trim21
+# minify output
+all_minifier: true
+
+# add no opener to a tag
+nofollow:
+  enable: true
+
+feed:
+  type: rss2
+  path: /feed.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
