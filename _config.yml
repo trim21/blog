@@ -107,3 +107,5 @@ feed:
 deploy:
   type: git
   branch: master
+image_minifier:
+  enable: false
