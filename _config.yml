@@ -75,8 +75,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-Plugins:
- hexo-generator-cname
+# Plugins:
+#  hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
 # theme: NexT
@@ -88,8 +88,8 @@ widgets:
 - tag
 - tagcloud
 - archive
-# - recent_posts
 - links
+- recent_posts
 
 # markdown:
   # gfm: false
