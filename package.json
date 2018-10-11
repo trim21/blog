@@ -6,6 +6,7 @@
     "update": "git submodule foreach git pull origin master && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
     "deploy": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
     "server": "hexo s --debug",
+    "test": "node new.js",
     "build": "hexo clean && hexo g",
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
