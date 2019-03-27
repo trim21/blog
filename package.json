@@ -12,7 +12,7 @@
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
   "hexo": {
-    "version": "3.7.1"
+    "version": "3.8.0"
   },
   "dependencies": {
     "hexo": "^3.8.0",
