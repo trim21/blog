@@ -88,8 +88,7 @@ marked:
   # modifyAnchors: ''
   autolink: true
 
-# minify output
-#all_minifier: true
+
 
 # add no opener to a tag
 nofollow:
@@ -105,5 +104,10 @@ feed:
   content: true
   order_by: -date
 
-#image_minifier:
-#  enable: false
+html_minifier:
+  removeComments: true
+  collapseWhitespace: true
+  collapseBooleanAttributes: true
+  removeEmptyAttributes: true
+  removeScriptTypeAttributes: true
+  removeStyleLinkTypeAttributes: true
