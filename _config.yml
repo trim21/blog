@@ -69,7 +69,9 @@ pagination_dir: page
 #  hexo-generator-cname
 
 ## Themes: https://hexo.io/themes/
+#theme: hacker
 theme: landscape-plus
+
 
 sitemap:
   path: sitemap.xml
@@ -82,8 +84,8 @@ marked:
   breaks: false
   smartLists: true
   smartypants: true
-  modifyAnchors: ''
-  autolink: false
+  # modifyAnchors: ''
+  autolink: true
 
 # minify output
 all_minifier: true

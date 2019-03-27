@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "update": "git submodule foreach git pull origin master && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
-    "deploy": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g -d",
-    "server": "hexo s --debug",
-    "new": "node new.js",
-    "start":"npm run new",
+    "preinstall": "npm run getTheme && npm run getPosts",
+    "getTheme": "git clone https://github.com/Trim21/landscape-plus.git ./themes/landscape-plus",
+    "getPosts": "git clone https://github.com/Trim21/blog-posts.git source/_posts",
+    "server": "hexo s",
+    "start": "node new.js",
     "build": "hexo clean && hexo g",
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
