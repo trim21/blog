@@ -15,7 +15,11 @@
     "version": "3.7.1"
   },
   "dependencies": {
-    "hexo": "^3.7.1",
+    "hexo": "^3.8.0",
+    "lodash": "^4.17.11",
+    "cli": "^1.0.0",
+    "minimatch": "^3.0.2",
+    "uglify-js": ">=2.6.0",
     "hexo-autonofollow": "^1.0.1",
     "hexo-fs": "^0.2.3",
     "hexo-generator-archive": "^0.1.5",
