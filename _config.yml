@@ -15,14 +15,14 @@ timezone: Asia/Hong_Kong
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://blog.trim21.cn
 root: /
-permalink: :year/:month/:title/
+permalink: :year/:month/:title.html
 # permalink_defaults:
 google_analytics: UA-91727260-1
 
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
+tag_dir: tag
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
