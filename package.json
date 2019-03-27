@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "hexo": "^3.7.1",
-    "hexo-all-minifier": "^0.5.2",
     "hexo-autonofollow": "^1.0.1",
     "hexo-fs": "^0.2.3",
     "hexo-generator-archive": "^0.1.5",

@@ -89,13 +89,14 @@ marked:
   autolink: true
 
 # minify output
-all_minifier: true
+#all_minifier: true
 
 # add no opener to a tag
 nofollow:
   enable: true
-server:
-  compress: true # 开启压缩
+
+#server:
+#  compress: true # 开启压缩
 
 feed:
   type: atom
