@@ -28,7 +28,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 favicon: /favicon.ico
-
+skip_render:
+  - _redirects
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -105,9 +106,3 @@ feed:
 
 #image_minifier:
 #  enable: false
-
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  branch: master
