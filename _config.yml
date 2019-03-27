@@ -18,6 +18,7 @@ root: /
 permalink: :year/:month/:title.html
 # permalink_defaults:
 google_analytics: UA-91727260-1
+excerpt_link: Read More
 
 # Directory
 source_dir: source
@@ -28,8 +29,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 favicon: /favicon.ico
-skip_render:
-  - _redirects
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -64,12 +63,7 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-# Plugins:
-#  hexo-generator-cname
 
-## Themes: https://hexo.io/themes/
 #theme: hacker
 theme: landscape-plus
 
@@ -103,11 +97,3 @@ feed:
   limit: 30
   content: true
   order_by: -date
-
-html_minifier:
-  removeComments: true
-  collapseWhitespace: true
-  collapseBooleanAttributes: true
-  removeEmptyAttributes: true
-  removeScriptTypeAttributes: true
-  removeStyleLinkTypeAttributes: true
