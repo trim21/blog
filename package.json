@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "npm run getTheme && npm run getPosts",
+    "preinstall": "npm run getTheme && npm run getPosts && rm public -rf",
     "getTheme": "rm ./themes/landscape-plus -rf && git clone https://github.com/Trim21/landscape-plus.git ./themes/landscape-plus --depth=1",
     "getPosts": "rm ./source/_posts -rf && git clone https://github.com/Trim21/blog-posts.git ./source/_posts --depth=1",
     "server": "hexo s",
