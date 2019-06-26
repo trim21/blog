@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "npm run getTheme && npm run getPosts && rm public -rf",
+    "preinstall": "npm run getTheme && npm run getPosts",
     "getTheme": "rm ./themes/landscape-plus -rf && git clone https://github.com/Trim21/landscape-plus.git ./themes/landscape-plus --depth=1",
     "getPosts": "rm ./source/_posts -rf && git clone https://github.com/Trim21/blog-posts.git ./source/_posts --depth=1",
     "server": "hexo s",
     "start": "node new.js",
-    "build": "hexo clean && hexo g",
+    "build": "npm run preinstall && hexo clean && hexo g",
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
   "hexo": {
