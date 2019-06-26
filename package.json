@@ -12,13 +12,13 @@
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "dependencies": {
     "cli": "^1.0.0",
-    "hexo": "^3.8.0",
+    "hexo": "^3.9.0",
     "hexo-autonofollow": "^1.0.1",
-    "hexo-fs": "^0.2.3",
+    "hexo-fs": "^1.0.2",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",
     "hexo-generator-feed": "^1.2.2",
@@ -26,13 +26,12 @@
     "hexo-generator-sitemap": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-renderer-ejs": "^0.3.1",
-    "hexo-renderer-marked": "^0.3.2",
+    "hexo-renderer-marked": "^1.0.1",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
     "html-minifier": "^3.5.21",
     "lodash": "^4.17.11",
     "minimatch": "^3.0.2",
-    "qcloud-cdn-node-sdk": "^1.0.0",
-    "uglify-js": ">=2.6.0"
+    "uglify-js": "^3.6.0"
   }
 }
