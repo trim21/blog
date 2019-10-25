@@ -94,6 +94,9 @@ nofollow:
 asset_pipeline:
   revisioning:
     enable: true
+    keep: true
+    exclude: ['robots.txt', '*.json', 'feed.xml', 'favicon.ico', 'sitemap.xml']
+
 
 feed:
   type: atom

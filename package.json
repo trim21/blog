@@ -5,7 +5,7 @@
   "scripts": {
     "server": "hexo s",
     "start": "node new.js",
-    "build": "npm run preinstall && hexo clean && hexo g",
+    "build": "hexo clean && hexo g",
     "gen": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo g"
   },
   "hexo": {
