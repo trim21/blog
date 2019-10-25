@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "npm run getTheme && npm run getPosts",
-    "getTheme": "rm ./themes/landscape-plus -rf && git clone https://github.com/Trim21/landscape-plus.git ./themes/landscape-plus --depth=1",
-    "getPosts": "rm ./source/_posts -rf && git clone https://github.com/Trim21/blog-posts.git ./source/_posts --depth=1",
     "server": "hexo s",
     "start": "node new.js",
     "build": "npm run preinstall && hexo clean && hexo g",
@@ -17,6 +14,7 @@
   "dependencies": {
     "cli": "^1.0.0",
     "hexo": "^3.9.0",
+    "hexo-asset-pipeline": "^1.8.0",
     "hexo-autonofollow": "^1.0.1",
     "hexo-fs": "^2.0.0",
     "hexo-generator-archive": "^1.0.0",

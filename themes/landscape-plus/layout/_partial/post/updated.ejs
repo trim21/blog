@@ -1,0 +1,7 @@
+<% var updatedString = date(post.updated, 'YYYY-MM-DD')
+var dateString = date(post.date, 'YYYY-MM-DD')
+if (post.updated && updatedString !== dateString){ %>
+  <div class="article-updated">
+    last updated: <%= updatedString %>
+  </div>
+<% } %>

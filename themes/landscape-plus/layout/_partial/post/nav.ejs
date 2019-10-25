@@ -1,0 +1,18 @@
+<% if (post.prev || post.next){ %>
+  <nav id="article-nav">
+    <br>
+    <div class="archives-nav">
+      <% if (post.prev){ %>
+        <% if (post.prev.title){ %>
+          <%- partial('../archive-post', { post: post.prev, even: 1, nav: 1 }) %>
+        <% } %>
+      <% } %>
+
+      <% if (post.next){ %>
+        <% if (post.next.title){ %>
+          <%- partial('../archive-post', { post: post.next, nav: 1 }) %>
+        <% } %>
+      <% } %>
+    </div>
+  </nav>
+<% } %>

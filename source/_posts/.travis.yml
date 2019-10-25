@@ -1,0 +1,29 @@
+branches:
+  only:
+  - master
+
+language: node_js
+
+sudo: false
+
+node_js:
+  - '8.11'
+
+install:
+  - sudo apt search nasm
+  - sudo apt-get install nasm -y
+  - cd ..
+  - git clone --depth 1 https://github.com/Trim21/blog.git
+  - git config --global user.name $username
+  - git config --global user.email $email
+  - cd blog
+  - mv ../blog-posts ./source/_posts
+  - git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git
+  - npm install --ignore-scripts
+  - git clone https://github.com/Trim21/landscape-plus themes/landscape-plus
+  - ls -ahl
+  # - chmod +x myecho
+
+script:
+  - bash myecho
+

@@ -1,0 +1,38 @@
+<% for(let css of theme.css){ %>
+  <% if (css.position === 'afterBody'){ %>
+    <link rel="stylesheet" href="<%= css.info.href %>"
+    <% if (css.info.integrity){ %>
+          integrity="<%= css.info.integrity %>"
+      <% } %>
+          crossorigin="anonymous">
+  <% } %>
+<% } %>
+
+<% for(let js of theme.javascript){ %>
+  <% if (js.position === 'afterBody'){ %>
+    <script src="<%= js.info.src %>"
+    <% if (js.info.integrity){ %>
+            integrity="<%= js.info.integrity %>"
+      <% } %>
+            crossorigin="anonymous"></script>
+  <% } %>
+<% } %>
+
+<%- partial('./mathjax', null, { page: page }) %>
+<%- partial('totop') %>
+
+<%- js('js/script') %>
+
+<% if (page.comments){ %>
+  <script>
+    var disqus_config = function () {
+      this.page.identifier = "<%= page.slug %>" // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    }
+  </script>
+
+  <script src="https://trim21blog.disqus.com/embed.js" async></script>
+
+  <div style="display:none">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1261943022&web_id=1261943022"></script>
+  </div>
+<% } %>

@@ -1,0 +1,58 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
+  <% for(let css of theme.css){ %>
+    <% if (css.position === 'afterBody'){ %>
+      <link rel="preload" href="<%= css.info.href %>" as="style" crossorigin="anonymous">
+    <% } %>
+  <% } %>
+
+  <% for(let js of theme.javascript){ %>
+    <% if (js.position === 'afterBody'){ %>
+      <link rel="preload" href="<%= js.info.src %>" as="script" crossorigin="anonymous">
+    <% } %>
+  <% } %>
+
+  <%
+  var title = page.title;
+
+  if (is_archive()) {
+    title = 'Archives';
+
+    if (is_month()) {
+      title += ': ' + page.year + '/' + page.month;
+    } else if (is_year()) {
+      title += ': ' + page.year;
+    }
+  } else if (is_category()) {
+    title = 'Category: ' + page.category;
+  } else if (is_tag()) {
+    title = 'Tag: ' + page.tag;
+  }
+  %>
+  <title>
+    <% if (title){ %><%= title %> |
+    <% } %>
+    <%= config.title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <%- open_graph({
+    twitter_id: theme.twitter,
+    google_plus: theme.google_plus,
+    fb_admins: theme.fb_admins,
+    fb_app_id: theme.fb_app_id
+  }) %>
+
+  <% if (theme.rss){ %>
+    <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
+  <% } %>
+
+  <% if (theme.favicon){ %>
+    <link rel="icon" href="<%- theme.favicon %>">
+  <% } %>
+
+  <%- partial('google-analytics') %>
+  <%- css('css/style') %>
+
+
+</head>

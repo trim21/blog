@@ -91,6 +91,10 @@ nofollow:
 #server:
 #  compress: true # 开启压缩
 
+asset_pipeline:
+  revisioning:
+    enable: true
+
 feed:
   type: atom
   path: /feed.xml

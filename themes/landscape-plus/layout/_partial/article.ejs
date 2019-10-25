@@ -1,0 +1,41 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope
+         itemprop="blogPost">
+  <div class="article-meta">
+    <%- partial('post/date', { class_name: 'article-date', date_format: null }) %>
+    <%- partial('post/category') %>
+    <%- partial('post/updated') %>
+  </div>
+  <div class="article-inner">
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
+      <header class="article-header">
+        <%- partial('post/title', { class_name: 'article-title', nav: 0 }) %>
+      </header>
+    <% } %>
+    <div class="article-entry" itemprop="articleBody">
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (config.excerpt_lint || theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= config.excerpt_lint || theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
+    </div>
+    <footer class="article-footer">
+      <%- partial('post/tag') %>
+    </footer>
+  </div>
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
+</article>
+<% if (!index && post.comments){ %>
+  <div id="comments">
+    <div id="disqus_thread"></div>
+    <noscript>Please enable JavaScript to view the <a
+        href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+<% } %>
