@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "cli": "1.0.1",
-    "hexo": "3.9.0",
+    "hexo": "4.0.0",
     "hexo-asset-pipeline": "1.8.0",
     "hexo-autonofollow": "1.0.1",
     "hexo-fs": "2.0.0",
