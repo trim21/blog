@@ -10,6 +10,6 @@
     "grunt-contrib-copy": "1.0.0"
   },
   "dependencies": {
-    "hexo-renderer-marked": "0.3.2"
+    "hexo-renderer-marked": "2.0.0"
   }
 }
