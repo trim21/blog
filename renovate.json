@@ -1,5 +1,26 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    "schedule:monthly"
+  ],
+  "packageRules": [
+    {
+      "groupName": "deps-prod",
+      "depTypeList": [
+        "dependencies"
+      ],
+      "extends": [
+        "schedule:monthly"
+      ]
+    },
+    {
+      "groupName": "deps-dev",
+      "depTypeList": [
+        "devDependencies"
+      ],
+      "extends": [
+        "schedule:monthly"
+      ]
+    }
   ]
 }
