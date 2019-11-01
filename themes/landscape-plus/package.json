@@ -8,8 +8,5 @@
     "grunt-git": "1.0.14",
     "grunt-contrib-clean": "2.0.0",
     "grunt-contrib-copy": "1.0.0"
-  },
-  "dependencies": {
-    "hexo-renderer-marked": "0.3.2"
   }
 }
