@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-echo "  repository: https://${token}@github.com/Trim21/trim21.github.io" >> ./_config.yml
-
-./node_modules/.bin/hexo g -d
-sleep 20
-node refreshCdn.js
