@@ -3,6 +3,7 @@
     "config:base",
     "schedule:monthly"
   ],
+  "prHourlyLimit": 0,
   "packageRules": [
     {
       "groupName": "deps-prod",
