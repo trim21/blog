@@ -28,19 +28,22 @@
             <%- partial('post/tag') %>
         </footer>
     </div>
-    <% if (!index){ %>
-        <%- partial('post/nav') %>
+
+    <!--    <% if (!index){ %>-->
+    <!--        <%- partial('post/nav') %>-->
+    <!--    <% } %>-->
+
+    <% if (!index && post.comments){ %>
+        <div id="comments" class="archive-article-inner">
+            <script src="https://utteranc.es/client.js"
+                    repo="Trim21/blog"
+                    issue-term="<%= post.slug %>"
+                    label="comments"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
     <% } %>
 </article>
-<% if (!index && post.comments){ %>
-    <div id="comments" class="archive-article-inner">
-        <script src="https://utteranc.es/client.js"
-                repo="Trim21/blog"
-                issue-term="<%= post.slug %>"
-                label="comments"
-                theme="github-light"
-                crossorigin="anonymous"
-                async>
-        </script>
-    </div>
-<% } %>
+
