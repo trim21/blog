@@ -34,13 +34,16 @@
     <!--    <% } %>-->
 
     <% if (!index && post.comments){ %>
-        <div id="comments" class="archive-article-inner">
+        <div id="comments" class="archive-article-inner"
+             scroll="no" style="overflow: hidden"
+        >
             <script src="https://utteranc.es/client.js"
                     repo="Trim21/blog"
                     issue-term="<%= post.slug %>"
                     label="comments"
                     theme="github-light"
                     crossorigin="anonymous"
+                    scroll="no" style="overflow: hidden"
                     async>
             </script>
         </div>
