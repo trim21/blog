@@ -34,19 +34,31 @@
     <!--    <% } %>-->
 
     <% if (!index && post.comments){ %>
-        <div id="comments" class="archive-article-inner"
-             scroll="no" style="overflow: hidden"
-        >
+        <div id="comments" class="archive-article-inner">
             <script src="https://utteranc.es/client.js"
                     repo="Trim21/blog"
                     issue-term="<%= post.slug %>"
                     label="comments"
                     theme="github-light"
                     crossorigin="anonymous"
-                    scroll="no" style="overflow: hidden"
                     async>
             </script>
         </div>
+        <script>
+          window.addEventListener("message", function (event) {
+              // For Chrome, the origin property is in the event.originalEvent.
+              let origin = event.origin || event.originalEvent.origin;
+              if (origin !== "https://utteranc.es") {
+                return
+              }
+              if (event.data && event.data.type === 'resize' && event.data.height) {
+                setTimeout(function () {
+                  $('div.utterances')[0].style.height = `${event.data.height + 15}px`
+                }, 50)
+              }
+            }
+            , false);
+        </script>
     <% } %>
 </article>
 
