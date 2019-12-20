@@ -5,8 +5,10 @@ qcloudSDK.config({
   secretKey: process.env.COS_SECRET_KEY
 });
 
-qcloudSDK.request('RefreshCdnUrl', {
-  'urls.0': 'https://blog.trim21.cn/'
+
+qcloudSDK.request('RefreshCdnDir', {
+  'dirs.0': 'https://blog.trim21.cn/',
+  type: "1",
 }, res => {
   console.log(res);
   console.log('refresh cdn index')
