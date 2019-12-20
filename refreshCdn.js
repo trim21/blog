@@ -7,8 +7,7 @@ qcloudSDK.config({
 
 
 qcloudSDK.request('RefreshCdnDir', {
-  'dirs.0': 'https://blog.trim21.cn/',
-  type: "1",
+  'urls.0': 'https://blog.trim21.cn/'
 }, res => {
   console.log(res);
   console.log('refresh cdn index')
