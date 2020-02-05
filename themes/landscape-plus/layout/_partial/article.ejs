@@ -35,22 +35,15 @@
 
     <% if (!index && post.comments){ %>
         <div id="comments" class="archive-article-inner">
+            <script src="https://utteranc.es/client.js"
+                    repo="Trim21/blog"
+                    issue-term="<%= post.slug %>"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+            </script>
         </div>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.x/dist/gitalk.css">
-        <script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.x/dist/gitalk.min.js"></script>
-        <script>
-          var gitalk = new Gitalk({
-            clientID: '6285864ec38569eb5cc9',
-            clientSecret: 'a118015f2dc4a5cede0e13897db720f00f335571',
-            repo: 'Blog',
-            owner: 'Trim21',
-            admin: ['Trim21'],
-            accessToken: 'f166d6531eee6cc9f06fc86a52367f0552e695b9',   // IMPORTANT !!!
-            id: "<%= post.slug %>",      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
-          })
-          gitalk.render('comments')
-        </script>
+        <style></style>
     <% } %>
 </article>
 
