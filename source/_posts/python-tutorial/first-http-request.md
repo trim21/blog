@@ -29,7 +29,6 @@ tags:
 
 如果你点进了一个分区，你会发现这个网址变了，比如点进了动画区，网址就会变成`https://www.bilibili.com/v/douga/`然后这个网址甚至还有可能更复杂，比如`https://www.baidu.com/s?wd=123`。但是每个网址都对应一个不同的内容。
 
-
 这个链接就是在网络上，大家用来区分不同的东西所用的`统一资源定位系统`。
 
 - 统一，是说大家都这么干，B站这么干，微博这么干，百度也这么干。
@@ -171,10 +170,9 @@ python main.py
 }
 ```
 
-#### http报文
+### http报文
 
 http请求是基于文本的，我们可以包http报文直接写出来。
-
 
 ```http
 GET https://httpbin.org/headers
@@ -187,8 +185,8 @@ hello: world
 
 请求中的第一行是方法和网址，第二行开始是我们的请求头。
 
-
 响应:
+
 ```http
 HTTP/1.1 200 OK
 Date: Sun, 29 Mar 2020 04:09:04 GMT
@@ -211,7 +209,6 @@ Access-Control-Allow-Credentials: true
 }
 ```
 
-
 前面说过，一个http响应分为`状态码`，`头部`和`响应体`三部分。
 
 响应的第一行`HTTP/1.1 200 OK`中，`HTTP/1.1`是协议，`200 OK`则是状态码。由一个数字和和一个简单地文本说明来组成。
@@ -219,6 +216,5 @@ Access-Control-Allow-Credentials: true
 第二行开始则是响应的`头部`，跟我们的`请求头`一样，由一系列的键值对组成，用来提供响应的附加信息。比如`Date`表示响应的服务器时间，`Content-Type`表示`响应体`中数据的格式，`Content-Length`表示响应体作为文本的长度。
 
 而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里用到的是[json格式](https://www.json.org/json-zh.html)，看起来跟python的dict几乎相同。
-
 
 ### to be continued
