@@ -9,7 +9,7 @@ tags:
 - python
 ---
 
-这是python教程的第二篇（[第一篇](https://blog.trim21.cn/2019/10/install-python.html)）
+这是python教程的第二篇（第一篇见{% post_link python-tutorial/install-python %}）
 
 一般提到python，就会说用来写爬虫如何如何。
 
@@ -82,8 +82,9 @@ print(r.text)
 http请求是简单地一问一答的模式。用户问一句，服务器才答一句。用户发送的是`http请求`，服务器返回的是`http响应`
 
 而一个http请求可以简单分为四个部分: `方法` `网址` `请求头` `请求体`。
+一个http响应则分为`状态码`，`头部`和`响应体`三部分。
 
-方法除了我们已经用过的`GET`还有`POST`，`PATCH`，`PUT`，`DELETE`等方法。
+方法除了我们已经用过的`GET`，还有`POST`，`PATCH`，`PUT`，`DELETE`等方法。
 
 但我们常用的只有`GET`和`POST`两种，可以按照语意粗略的理解为`GET`用于从服务器获取数据，`POST`用于向服务器提交数据，下面也只会用到这两种方法。
 
@@ -113,7 +114,7 @@ print(headers["hello"])
 
 可以看到，程序最后输出了`world`，表示我们通过这个dict，把`"hello"`映射到了`"world"`
 
-我们通过这种方式，用来告诉程序我们这个http请求的headers，而`https://httpbin.org/headers`会把我们的请求体作为请求体返回给我们。
+我们通过这种方式，用来告诉程序我们这个http请求的headers，而`https://httpbin.org/headers`会把我们的`请求头`作为`请求体`的一部分返回给我们。
 
 所以我们会看到如下的程序运行结果
 
@@ -169,5 +170,55 @@ python main.py
   }
 }
 ```
+
+#### http报文
+
+http请求是基于文本的，我们可以包http报文直接写出来。
+
+
+```http
+GET https://httpbin.org/headers
+User-Agent: python-requests/2.23.0
+Accept-Encoding: gzip, deflate
+Accept: */*
+Connection: keep-alive
+hello: world
+```
+
+请求中的第一行是方法和网址，第二行开始是我们的请求头。
+
+
+响应:
+```http
+HTTP/1.1 200 OK
+Date: Sun, 29 Mar 2020 04:09:04 GMT
+Content-Type: application/json
+Content-Length: 352
+Connection: keep-alive
+Server: gunicorn/19.9.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+
+{
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate",
+    "Hello": "world",
+    "Host": "httpbin.org",
+    "User-Agent": "python-requests/2.23.0",
+    "X-Amzn-Trace-Id": "Root=1-5e801f60-6329e60e07d01478c4013e68"
+  }
+}
+```
+
+
+前面说过，一个http响应分为`状态码`，`头部`和`响应体`三部分。
+
+响应的第一行`HTTP/1.1 200 OK`中，`HTTP/1.1`是协议，`200 OK`则是状态码。由一个数字和和一个简单地文本说明来组成。
+
+第二行开始则是响应的`头部`，跟我们的`请求头`一样，由一系列的键值对组成，用来提供响应的附加信息。比如`Date`表示响应的服务器时间，`Content-Type`表示`响应体`中数据的格式，`Content-Length`表示响应体作为文本的长度。
+
+而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里用到的是[json格式](https://www.json.org/json-zh.html)，看起来跟python的dict几乎相同。
+
 
 ### to be continued
