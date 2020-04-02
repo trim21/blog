@@ -41,7 +41,7 @@ tags:
 
 - `https`是说我们访问网站所用到的协议，一般除了`https`还有`http`
 - `://`用来区分协议和网址的其他部分
-- `www.baidu.com`是域名，比如`www.bilibili.com`，用来区分不同的网站。
+- `www.baidu.com`是`域名`，比如`www.bilibili.com`，用来区分不同的网站。
 
 而整个网址剩下的部分，则是用来区分同一个网站不同的内容。
 
@@ -172,10 +172,12 @@ python main.py
 
 ### http报文
 
-http请求是基于文本的，我们可以包http报文直接写出来。
+http请求是基于文本的，我们可以把http报文直接写出来。
+
+请求:
 
 ```http
-GET https://httpbin.org/headers
+GET /headers
 User-Agent: python-requests/2.23.0
 Accept-Encoding: gzip, deflate
 Accept: */*
@@ -183,7 +185,8 @@ Connection: keep-alive
 hello: world
 ```
 
-请求中的第一行是方法和网址，第二行开始是我们的请求头。
+请求中的第一行是方法和域名右侧的部分，第二行开始是我们的请求头。
+（域名在什么地方起作用又是一个很长的故事了）
 
 响应:
 
@@ -215,6 +218,4 @@ Access-Control-Allow-Credentials: true
 
 第二行开始则是响应的`头部`，跟我们的`请求头`一样，由一系列的键值对组成，用来提供响应的附加信息。比如`Date`表示响应的服务器时间，`Content-Type`表示`响应体`中数据的格式，`Content-Length`表示响应体作为文本的长度。
 
-而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里用到的是[json格式](https://www.json.org/json-zh.html)，看起来跟python的dict几乎相同。
-
-### to be continued
+而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里`Content-Type`是`application/json`，用到的是[json格式](https://www.json.org/json-zh.html)，看起来跟python的dict几乎相同。
