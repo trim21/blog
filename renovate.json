@@ -4,6 +4,9 @@
     "schedule:monthly"
   ],
   "prHourlyLimit": 0,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "groupName": "deps-prod",
