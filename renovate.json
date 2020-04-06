@@ -1,6 +1,7 @@
 {
   "extends": [
     "config:base",
+    "github>Trim21/renovate-config",
     "schedule:monthly"
   ],
   "prHourlyLimit": 0,
