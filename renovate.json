@@ -1,5 +1,8 @@
 {
   "extends": [
-    "@trim21:js-app"
+    "@trim21:",
+    "@trim21:js",
+    "@trim21:app",
+    "@trim21:monthly"
   ]
 }
