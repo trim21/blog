@@ -1,31 +1,5 @@
 {
   "extends": [
-    "config:base",
-    "github>Trim21/renovate-config",
-    "schedule:monthly"
-  ],
-  "prHourlyLimit": 0,
-  "lockFileMaintenance": {
-    "enabled": true
-  },
-  "packageRules": [
-    {
-      "groupName": "deps-prod",
-      "depTypeList": [
-        "dependencies"
-      ],
-      "extends": [
-        "schedule:monthly"
-      ]
-    },
-    {
-      "groupName": "deps-dev",
-      "depTypeList": [
-        "devDependencies"
-      ],
-      "extends": [
-        "schedule:monthly"
-      ]
-    }
+    "github>Trim21/renovate-config:js-app"
   ]
 }
