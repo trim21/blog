@@ -1,5 +1,5 @@
 {
   "extends": [
-    "github>Trim21/renovate-config:js-app"
+    "@trim21:js-app"
   ]
 }
