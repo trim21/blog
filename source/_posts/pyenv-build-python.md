@@ -60,11 +60,16 @@ WARNING: The Python sqlite3 extension was not compiled. Missing the SQLite3 lib?
 sudo apt install libsqlite3-dev
 ```
 
-
 实际使用的时候可能会报错
 
 ModuleNotFoundError: No module named '_ctypes'
 
 ```bash
 sudo apt install libffi-dev
+```
+
+跟`pyinstaller`一起使用，需要添加一个编译选项:
+
+```bash
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 ```
