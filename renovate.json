@@ -1,8 +1,8 @@
 {
   "extends": [
-    "@trim21",
-    "@trim21:js",
-    "@trim21:app",
-    "@trim21:monthly"
+    "github>Trim21/renovate-config:src/default",
+    "github>Trim21/renovate-config:src/js",
+    "github>Trim21/renovate-config:src/app",
+    "github>Trim21/renovate-config:src/monthly"
   ]
 }
