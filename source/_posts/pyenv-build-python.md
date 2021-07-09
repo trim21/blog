@@ -2,10 +2,10 @@
 title: 用pyenv安装python
 date: 2019-12-23
 tags:
-- nas
+  - nas
 ---
 
-[pyenv](https://github.com/pyenv/pyenv)是用来安装多个版本的python
+[pyenv](https://github.com/pyenv/pyenv)是用来安装多个版本的 python
 
 <!-- more -->
 
@@ -15,15 +15,15 @@ tags:
 curl https://cdn.jsdelivr.net/gh/pyenv/pyenv-installer/bin/pyenv-installer | bash
 ```
 
-(用jsdeliver是因为raw.githubusercontent.com现在访问不通了)
+(用 jsdeliver 是因为 raw.githubusercontent.com 现在访问不通了)
 
-启用cache:
+启用 cache:
 
 ```bash
 mkdir -p .pyenv/cache
 ```
 
-使用ccache, 可以缓存构件中的对象
+使用 ccache, 可以缓存构件中的对象
 
 ```bash
 git clone https://github.com/yyuu/pyenv-ccache.git $(pyenv root)/plugins/pyenv-ccache
@@ -39,11 +39,13 @@ sudo apt install zlib1g-dev
 ```
 
 WARNING: The Python bz2 extension was not compiled. Missing the bzip2 lib?
+
 ```bash
-sudo apt insatll libbz2-dev
+sudo apt install libbz2-dev
 ```
 
 WARNING: The Python readline extension was not compiled. Missing the GNU readline lib?
+
 ```bash
 sudo apt-get install libreadline-dev
 ```
@@ -62,7 +64,7 @@ sudo apt install libsqlite3-dev
 
 实际使用的时候可能会报错
 
-ModuleNotFoundError: No module named '_ctypes'
+ModuleNotFoundError: No module named '\_ctypes'
 
 ```bash
 sudo apt install libffi-dev
@@ -72,4 +74,10 @@ sudo apt install libffi-dev
 
 ```bash
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+```
+
+`xxenv-latest` 用来直接选中最新的版本，比如使用 3.8 来选中最新的 3.8.9 版本。
+
+```bash
+git clone https://github.com/momo-lab/xxenv-latest.git "$(pyenv root)"/plugins/xxenv-latest
 ```

@@ -1,22 +1,21 @@
 ---
-updated: 2017-12-09 09:58:46
 title: bash和zsh的自动补全
 date: 2017-12-09 09:58:46
 categories:
-- 编程
+  - 编程
 tags:
-- shell
+  - shell
 ---
 
 最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
 
-[BGmi](https://github.com/BGmi/BGmi)起初只是个cli程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是cli的使用频率还是很高,cli没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
+[BGmi](https://github.com/BGmi/BGmi)起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
 
 <!-- more -->
 
 ## 分析一下需求
 
-BGmi的命令都是同样的结构,`bgmi action1 --opt1 arg1 --opt2 arg2`,那么我们需要补全的就是所有的action和每个action相应的选项了.在此之前,是直接`add_parser`和`add_argument`相应的action和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的`action`和相应的`opts`存在了一个变量中
+BGmi 的命令都是同样的结构,`bgmi action1 --opt1 arg1 --opt2 arg2`,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接`add_parser`和`add_argument`相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的`action`和相应的`opts`存在了一个变量中
 
 ```python
 actions_and_arguments = [
@@ -48,19 +47,19 @@ actions_and_arguments = [
 
 一个`list`中储存了多个`dict`,每个`dict`对应一个`action`,每个`action`的选项存在`arguments`字段中.这里的命名可能有些混乱,写的时候没太注意.
 
-无论是在bash还是zsh中,要让bgmi有自动补全的功能,都需要一个相应的函数来给bgmi命令提供自动补全功能,也就是说,我们是要把上面的一个`dict`转换成一个字符串. 这种事情,当然就该模板出马了.因为BGmi的api是由tornado提供的,所以就直接用`tornado.template`了.
+无论是在 bash 还是 zsh 中,要让 bgmi 有自动补全的功能,都需要一个相应的函数来给 bgmi 命令提供自动补全功能,也就是说,我们是要把上面的一个`dict`转换成一个字符串. 这种事情,当然就该模板出马了.因为 BGmi 的 api 是由 tornado 提供的,所以就直接用`tornado.template`了.
 
-## 先从Bash的自动补全开始
+## 先从 Bash 的自动补全开始
 
-参考的[跟我一起写shell补全脚本（Bash篇）](https://segmentfault.com/a/1190000002968878)
+参考的[跟我一起写 shell 补全脚本（Bash 篇）](https://segmentfault.com/a/1190000002968878)
 
-最终的模板[_bgmi_completion_bash.sh](https://github.com/BGmi/BGmi/blob/0b21db0148f1794219c96520151933904f2918cf/bgmi/others/_bgmi_completion_bash.sh)
+最终的模板[\_bgmi_completion_bash.sh](https://github.com/BGmi/BGmi/blob/0b21db0148f1794219c96520151933904f2918cf/bgmi/others/_bgmi_completion_bash.sh)
 
-### 先说下bash的语法
+### 先说下 bash 的语法
 
 基本上会用到的数据类型就是字符串和数字了,字符串两边需要加单引号的双引号,或者是反引号.而单引号和双引号还有一些不同.双引号允许转义,而单引号不允许
 
-shell的语法跟编程语言的语法有一些不同,感觉shell的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说
+shell 的语法跟编程语言的语法有一些不同,感觉 shell 的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说
 
 ```bash
 export var=1
@@ -74,7 +73,7 @@ echo "`ls`" # 输出ls命令的输出
 
 ### 然后是具体的代码
 
-bash用来提供自动补全的命令是`complete`
+bash 用来提供自动补全的命令是`complete`
 
 ```bash
 complete --help
@@ -104,11 +103,11 @@ complete: complete [-abcdefgjksuv] [-pr] [-DE] [-o option] [-A action]
     Returns success unless an invalid option is supplied or an error occurs.
 ```
 
-本来`complete`是支持用另一个命令来进行自动补全的,但是试了试实在是太慢了,所以还是生成了一个bash函数.
+本来`complete`是支持用另一个命令来进行自动补全的,但是试了试实在是太慢了,所以还是生成了一个 bash 函数.
 
 因为我是编写了一个`_bgmi`函数来进行`bgmi`命令的自动补全,所以此处就应该`complete -F _bgmi bgmi`
 
-然后就是`_bgmi`函数本体了. config太多,只贴了一部分.
+然后就是`_bgmi`函数本体了. config 太多,只贴了一部分.
 
 ```bash
 _bgmi() {
@@ -189,9 +188,9 @@ complete -F _bgmi bgmi
 
 (这里用`${}`包起来跟直接使用`$var`没有什么区别,只是其他语言的变量前不用加`$`,用`{}`包起来个人看起来习惯一点.)
 
-因为`bgmi`的命令都是`bgmi action args`这样的形式,所以先判断`COMP_WORDS`的大小,如果等于1,说明还没输出对应的action,需要补全action. 如果大于1, 说明已经输入过了action,只需要补全对应的选项.
+因为`bgmi`的命令都是`bgmi action args`这样的形式,所以先判断`COMP_WORDS`的大小,如果等于 1,说明还没输出对应的 action,需要补全 action. 如果大于 1, 说明已经输入过了 action,只需要补全对应的选项.
 
-在bash中,生成对应补全选项的命令是`compgen`
+在 bash 中,生成对应补全选项的命令是`compgen`
 
 ```bash
 $ compgen --help
@@ -213,7 +212,7 @@ compgen: compgen [-abcdefgjksuv] [-o option] [-A action]
 
 接下来只需要把对应的内容根据模板的要求进行修改就可以了.
 
-## Zsh的自动补全
+## Zsh 的自动补全
 
 参照的这篇文章[https://github.com/spacewander/blogWithMarkdown/issues/32](https://github.com/spacewander/blogWithMarkdown/issues/32)
 
@@ -242,22 +241,22 @@ compdef _bgmi bgmi
 #if you are using windows, cygwin or babun, try `eval "$(bgmi complete|dos2unix)"`
 ```
 
-zsh跟bash有几点不同
+zsh 跟 bash 有几点不同
 
-bash中的complete在zsh中是compdef
+bash 中的 complete 在 zsh 中是 compdef
 
-zsh中用来保存目前所有输入的词组是`words`
+zsh 中用来保存目前所有输入的词组是`words`
 
-zsh中要生成对应的提醒的话用的是`_alternative`等命令,而不是把结果赋值给某个变量.
+zsh 中要生成对应的提醒的话用的是`_alternative`等命令,而不是把结果赋值给某个变量.
 
 其中有这样一个用法
 
-`${words[(i)cal]}` 这类似于js中的`words.indexOf('cal')` 而`#a`就相当于`a.length`
+`${words[(i)cal]}` 这类似于 js 中的`words.indexOf('cal')` 而`#a`就相当于`a.length`
 
 因为`_alternative`的功能是最全的,所以我就只用了`_alternative`这一个命令
 `cal:cal options:(( -f\:"Get the newest bangumi calendar from bangumi.moe." --force-update\:"Get the newest bangumi calendar from bangumi.moe." ))`
 
-如果有两个选项是同样的意思,直接重复输出就可以了,zsh会自动把他们合并成一行,就像这样 其中 `--force-update`和`-f`的帮助信息在我们输入的时候就是相同的.
+如果有两个选项是同样的意思,直接重复输出就可以了,zsh 会自动把他们合并成一行,就像这样 其中 `--force-update`和`-f`的帮助信息在我们输入的时候就是相同的.
 
 ```zsh
 ubuntu@VM-189-243-ubuntu ~ $ bgmi cal -

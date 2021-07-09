@@ -1,11 +1,10 @@
 ---
 title: 基于asyncio的web框架aiohttp
 date: 2018-10-05 17:42:21
-updated: 2018-10-05 17:42:21
 categories:
-- 编程
+  - 编程
 tags:
-- python
+  - python
 ---
 
 本来想扯一通标准库里添加了`asyncio`的意义, 什么统一了异步框架, 什么方便代码前移之类的了.
@@ -13,15 +12,15 @@ tags:
 
 迁移的主要阻力也不是各个框架实现异步的方式不同, 而是用到了框架的某些特性, 在其他框架里可能没有, `asyncio`成为标准库也改变不了这一点.
 
-不过python3.4 3.5 3.6添加了很多新功能,语言层面的异步支持越来越好了
+不过 python3.4 3.5 3.6 添加了很多新功能,语言层面的异步支持越来越好了
 
-在3.4 就是上面说的, 引入了`asyncio`的标准库.
+在 3.4 就是上面说的, 引入了`asyncio`的标准库.
 
-3.5有了一系列的bug fix ,可以见[why-is-python-3-5-3-the-lowest-supported-version](https://aiohttp.readthedocs.io/en/stable/faq.html#why-is-python-3-5-3-the-lowest-supported-version), 还支持了`async/await`语法.
+3.5 有了一系列的 bug fix ,可以见[why-is-python-3-5-3-the-lowest-supported-version](https://aiohttp.readthedocs.io/en/stable/faq.html#why-is-python-3-5-3-the-lowest-supported-version), 还支持了`async/await`语法.
 
 <!-- more -->
 
-不过3.5的时候`async/await`还不是关键字, 还可以给`async`赋值, 所以到了python3.7的时候挂了一堆库, 因为他们用了`async`当变量...
+不过 3.5 的时候`async/await`还不是关键字, 还可以给`async`赋值, 所以到了 python3.7 的时候挂了一堆库, 因为他们用了`async`当变量...
 
 ```python
 import asyncio
@@ -55,7 +54,7 @@ Hello world!
 Hello again!
 ```
 
-但是如果到了python3.7, 会报错`SyntaxError`, 也因为这个原因挂了一堆库.
+但是如果到了 python3.7, 会报错`SyntaxError`, 也因为这个原因挂了一堆库.
 
 ```bash
   File "app.py", line 14
@@ -64,13 +63,13 @@ Hello again!
 SyntaxError: invalid syntax
 ```
 
-比如说twisted, python3.7.0是6月27号发布的, 但是直到到前两天(2018-10-05), pypi上的最新版本还不能正常运行...
+比如说 twisted, python3.7.0 是 6 月 27 号发布的, 但是直到到前两天(2018-10-05), pypi 上的最新版本还不能正常运行...
 
 说了半天没用的...
 
-最近在折腾的python框架aiohttp其实没有这个问题. 因为aiohttp3.x.x的最低版本要求就是3.5.4, 从一开始就用到了`async/await`, 自然也不会有某个开发者把async再当作函数参数或者变量来赋值.
+最近在折腾的 python 框架 aiohttp 其实没有这个问题. 因为 aiohttp3.x.x 的最低版本要求就是 3.5.4, 从一开始就用到了`async/await`, 自然也不会有某个开发者把 async 再当作函数参数或者变量来赋值.
 
-出于好奇, 还是了解了一下aiohttp这个框架, 写了几个小玩具.
+出于好奇, 还是了解了一下 aiohttp 这个框架, 写了几个小玩具.
 
 ```python
 from aiohttp import web
@@ -109,24 +108,24 @@ def create_app():
 web.run_app(create_app())
 ```
 
-一个简单的例子, (如果需要数据库的话, 官方的例子是把mongo的连接池绑在了`app.mongo`上.)
+一个简单的例子, (如果需要数据库的话, 官方的例子是把 mongo 的连接池绑在了`app.mongo`上.)
 
 前面提到了, 语言层面的异步支持是越来越好了, 但是类库的支持还是有些匮乏.
 
-mongodb和redis的支持还算可以, mongodb的官方自己写了[`motor`](https://github.com/mongodb/motor), aiohttp的开发者写了[`aioredis`](https://github.com/aio-libs/aioredis).
+mongodb 和 redis 的支持还算可以, mongodb 的官方自己写了[`motor`](https://github.com/mongodb/motor), aiohttp 的开发者写了[`aioredis`](https://github.com/aio-libs/aioredis).
 
-但是如果想找一个异步的关系型数据库的ORM就非常难了. [SQLAlchemy的作者曾经写过一篇文章](http://techspot.zzzeek.org/2015/02/15/asynchronous-python-and-databases/), 说因为python本身就很慢, 所以异步也没有意义, 反而比同步还要慢.
+但是如果想找一个异步的关系型数据库的 ORM 就非常难了. [SQLAlchemy 的作者曾经写过一篇文章](http://techspot.zzzeek.org/2015/02/15/asynchronous-python-and-databases/), 说因为 python 本身就很慢, 所以异步也没有意义, 反而比同步还要慢.
 
-<del>但我还是相信python, 会有那么一天变快的(</del>
+<del>但我还是相信 python, 会有那么一天变快的(</del>
 
-异步的SQL ORM主要有这么几个
+异步的 SQL ORM 主要有这么几个
 
 1. [`peewee-async`](https://github.com/05bit/peewee-async)
 2. [`gino`](https://github.com/fantix/gino)
 
-`gino`直接pass, 因为目前只支持postgreSQL.
+`gino`直接 pass, 因为目前只支持 postgreSQL.
 
-`peewee-async`的问题是, 他其实是基于peewee的, 你要通过peewee来定义你的模块, 然后用`peewee-async`给的一个`Manager`来异步调用.
+`peewee-async`的问题是, 他其实是基于 peewee 的, 你要通过 peewee 来定义你的模块, 然后用`peewee-async`给的一个`Manager`来异步调用.
 
 举个例子, 他的异步代码是长这样的
 
@@ -158,19 +157,19 @@ async def my_async_func():
 
 像这个例子比较简单, 就只有一个外键, 还添加了`backref`, 就容易出问题了.
 
-因为本身是异步框架, 所以同步的代码都会阻塞整个事件循环, 在使用orm的时候会先设置禁止同步链接数据库, 只允许异步链接. 但是如果用了外键, peewee在你试图获取对应的属性的时候就会链接数据库, 取回对应的数据. 所以如果用了外键, 在查询和使用实例的时候总要小心翼翼的, 以避免触发同步查询.
+因为本身是异步框架, 所以同步的代码都会阻塞整个事件循环, 在使用 orm 的时候会先设置禁止同步链接数据库, 只允许异步链接. 但是如果用了外键, peewee 在你试图获取对应的属性的时候就会链接数据库, 取回对应的数据. 所以如果用了外键, 在查询和使用实例的时候总要小心翼翼的, 以避免触发同步查询.
 
-也许不用外键, 直接存id进去, 不依赖数据库的约束, 而在web层面约束可能好一些, 不会出现类似的问题.
+也许不用外键, 直接存 id 进去, 不依赖数据库的约束, 而在 web 层面约束可能好一些, 不会出现类似的问题.
 
-ORM扯完了, 几个经常会用到的东西.
+ORM 扯完了, 几个经常会用到的东西.
 
 模板: [`aiohttp-jinja2`](https://github.com/aio-libs/aiohttp-jinja2)
 
 session: [`aiohttp-session`](https://github.com/aio-libs/aiohttp-session)
 
-辅助的开发服务器, 支持livereload和hotreload[`aiohttp-devtools`](https://github.com/aio-libs/aiohttp-devtools)
+辅助的开发服务器, 支持 livereload 和 hotreload[`aiohttp-devtools`](https://github.com/aio-libs/aiohttp-devtools)
 
-devtools有一些坑, 主要是项目的readme不是很全, 主要还是要靠cli的help信息和源码...
+devtools 有一些坑, 主要是项目的 readme 不是很全, 主要还是要靠 cli 的 help 信息和源码...
 
 比如, 我的项目结构是这样的
 
@@ -192,7 +191,7 @@ project
 
 但是如果你的`pwd`是`app`, 此时不需要提供`root-path`, 只需要提供`app-apth`, 启动命令变为`adev runserver main.py`
 
-贴一下`runserver`的help信息
+贴一下`runserver`的 help 信息
 
 ```plain
 Usage: adev runserver [OPTIONS] [APP_PATH]
