@@ -4,11 +4,9 @@
 
 # Site
 title: Trim21's Blog
-# subtitle: 的确是一点微小的工作
-# description: 的确是一点微小的工作
 author: Trim21
 language: default
-email: trim21me@Gmail.com
+email: trim21.me@gmail.com
 timezone: Asia/Hong_Kong
 
 # URL
@@ -92,7 +90,12 @@ asset_pipeline:
   revisioning:
     enable: true
     keep: true
-    exclude: ["robots.txt", "*.json", "feed.xml", "favicon.ico", "sitemap.xml"]
+    exclude:
+      - "robots.txt"
+      - "*.json"
+      - "feed.xml"
+      - "favicon.ico"
+      - "sitemap.xml"
 
 feed:
   type: atom
