@@ -7,9 +7,9 @@ tags:
   - https
 ---
 
-最近用 caddy 作为家里一台服务器的 https 入口, 突然遇到了证书过期的问题.
+NAS 上面运行了一个 caddy 服务器，还设置了 https。最近突然遇到了证书过期的问题.
 
-一段时间之后发现是申请证书失败 `SERVFAIL for _acme-challenge.my_domain.`
+检查 log 发现是证书申请失败 `SERVFAIL for _acme-challenge.my_domain.`
 
 大概搜索了一下, 是因为路由器的 dnsmasq 过滤掉了完成验证需要的 dns 查询
 
