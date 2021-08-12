@@ -29,6 +29,7 @@
     "html-minifier": "^4.0.0"
   },
   "resolutions": {
+    "lodash": "4.17.21",
     "stylus": "0.54.8"
   }
 }
