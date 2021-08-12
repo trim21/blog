@@ -22,7 +22,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ./node_modules
-          key: node-${{ hashFiles('package-lock.json') }}
+          key: node-${{ hashFiles('yarn.lock') }}
 
       - run: yarn
         if: steps.cache-primes.outputs.cache-hit != 'true'
