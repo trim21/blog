@@ -34,6 +34,6 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: public
-          INSTALL_COMMAND: ""
-          build_command: ""
+          INSTALL_COMMAND: "echo install"
+          build_command: "echo build"
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
