@@ -1,4 +1,4 @@
-name: ci
+name: build
 
 on:
   push:
@@ -32,7 +32,8 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./publish
+          publish_dir: ./public
           commit_message: deploy ${{ github.ref }}
           cname: blog.trim21.me
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
