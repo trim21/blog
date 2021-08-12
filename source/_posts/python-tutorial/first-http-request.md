@@ -23,7 +23,7 @@ tags:
 
 ## 什么是网址
 
-![https://www.bilibili.com/](https://tva4.sinaimg.cn/large/bd69bf14ly1gdaneblb19j20c4021q2u.jpg)
+{% jsdelivr /static/bd69bf14ly1gdaneblb19j20c4021q2u.jpg https://www.bilibili.com/ %}
 
 在我们访问一个网站的时候，往往是从一个链接点进去的。比如这里的网址是`https://www.bilibili.com`。这就是一个`URL`，或者俗称`网址`。
 
@@ -70,11 +70,7 @@ print(r.text)
 
 然后在命令行中运行`python main.py`
 
-会打印出这样的东西
-
-![天书](https://tva1.sinaimg.cn/large/bd69bf14ly1gdanepe8k3j20nq0g8k5q.jpg)
-
-是不是让人头大，看不懂输出的都是什么东西，也看不懂程序干了什么事情。
+会打印一堆现在还看不懂的东西，下面开始讲讲这些输出的意义。
 
 ## 从 http 讲起
 
