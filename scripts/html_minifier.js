@@ -8,7 +8,6 @@ const options = {
   removeEmptyAttributes: true,
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
-  ignoreCustomComments: [/^\s*more/]
 }
 
 hexo.extend.filter.register('after_render:html',

@@ -83,19 +83,15 @@ marked:
 nofollow:
   enable: true
 
-#server:
-#  compress: true # 开启压缩
-
-asset_pipeline:
-  revisioning:
-    enable: true
-    keep: true
-    exclude:
-      - "robots.txt"
-      - "*.json"
-      - "feed.xml"
-      - "favicon.ico"
-      - "sitemap.xml"
+revisioning:
+  enable: true
+  keep: true
+  exclude:
+    - "robots.txt"
+    - "*.json"
+    - "feed.xml"
+    - "favicon.ico"
+    - "sitemap.xml"
 
 feed:
   type: atom
