@@ -10,6 +10,6 @@ const options = {
   removeStyleLinkTypeAttributes: true,
 };
 
-// hexo.extend.filter.register("after_render:html", function (str) {
-//   return minify(str, options);
-// });
+hexo.extend.filter.register("after_render:html", function (str) {
+  return minify(str, options);
+});
