@@ -99,6 +99,3 @@ feed:
   limit: 30
   content: true
   order_by: -date
-
-deploy:
-  type: cos

@@ -5,7 +5,7 @@
   "scripts": {
     "server": "hexo s",
     "start": "node new.js",
-    "build": "hexo clean && hexo g -d && node refreshCdn.js",
+    "build": "hexo g -d",
     "gen": "hexo clean && hexo g"
   },
   "hexo": {
