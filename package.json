@@ -30,6 +30,6 @@
     "qcloud-cdn-node-sdk": "1.0.0"
   },
   "resolutions": {
-    "stylus": "^0.54.8"
+    "stylus": "0.54.8"
   }
 }
