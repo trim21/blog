@@ -32,10 +32,10 @@
 <% if (page.total > 1){ %>
   <nav id="page-nav">
     <%- paginator({
-      prev_text: "&laquo; " + __('prev'),
+      prev_text: __('prev'),
       mid_size: 1,
       end_size: 1,
-      next_text: __('next') + " &raquo;"
+      next_text: __('next')
     }) %>
   </nav>
 <% } %>

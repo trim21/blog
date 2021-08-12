@@ -18,7 +18,6 @@
   color: #ccc
   text-shadow: 0 1px #fff
   margin-left: 8px
-
   &:before
     content: "\2022"
 
@@ -51,90 +50,69 @@
   line-height: line-height-title
   transition: color 0.2s
 
-  // a&:hover
-  //   color: color-link
-
 .article-entry
   @extend $base-style
   clearfix()
   color: color-default
   padding: 0 article-padding
-
   p, table
     line-height: line-height
     margin: line-height 0
-
   h1, h2, h3, h4, h5, h6
     font-weight: bold
-
   h1, h2, h3, h4, h5, h6
     line-height: line-height-title
     margin: line-height-title 0
-
   a
     color: color-link
     text-decoration: none
-
     &:hover
       text-decoration: underline
-
   ul, ol, dl
     margin-top: line-height
     margin-bottom: line-height
-
   img, video
     max-width: 100%
     height: auto
     display: block
     margin: auto
-
   iframe
     border: none
-
   table
     width: 100%
     border-collapse: collapse
     border-spacing: 0
-
   th
     font-weight: bold
     border-bottom: 3px solid color-border
     padding-bottom: 0.5em
-
   td
     border-bottom: 1px solid color-border
     padding: 10px 0
-
   blockquote
     font-family: font-serif
     margin: line-height 0
     padding: 0 0.8em;
     border-left: 4px solid #DDD
     color: #777
-
     footer
       font-size: font-size
       margin: line-height 0
       font-family: font-sans
-
       cite
         &:before
           content: "—"
           padding: 0 0.5em
-
   .pullquote
     text-align: left
     width: 45%
     margin: 0
-
     &.left
       margin-left: 0.5em
       margin-right: 1em
-
     &.right
       margin-right: 0.5em
       margin-left: 1em
-
   .caption
     color: color-grey
     display: block
@@ -142,15 +120,12 @@
     margin-top: 0.5em
     position: relative
     text-align: center
-
   // http://webdesignerwall.com/tutorials/css-elastic-videos
-
   .video-container
     position: relative
     padding-top: (9 / 16 * 100) % // 16:9 ratio
     height: 0
     overflow: hidden
-
     iframe, object, embed
       position: absolute
       top: 0
@@ -175,7 +150,6 @@
   color: color-grey
   text-shadow: 0 1px #fff
   text-decoration: none
-
   &:hover
     background: color-link
     color: #fff
@@ -189,11 +163,9 @@
   border-top: 2px solid color-border
   padding-top: line-height
   margin: 0 article-padding article-padding
-
   a
     color: color-grey
     text-decoration: none
-
     &:hover
       color: color-default
 
@@ -207,7 +179,6 @@
 
 .article-comment-link
   float: right
-
   &:before
     content: "\f075"
     font-family: font-icon
@@ -233,7 +204,6 @@
   margin-top: block-margin
   text-align: center
   display: block
-
   &:hover
     color: color-default
   @media mq-normal
@@ -258,7 +228,6 @@
   color: color-border
   line-height: 1em
   font-weight: bold
-
   #article-nav-newer &
     margin-right: -2px
 
@@ -278,19 +247,15 @@
 .article-gallery-img
   display: none
   max-width: 100%
-
   &:first-child
     display: block
-
   &.loaded
     position: absolute
     display: block
-
   img
     display: block
     max-width: 100%
     margin: 0 auto
-
 /*
 $article-gallery-ctrl
   position: absolute

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "hexo s",
-    "start": "node new.js",
+    "s": "hexo s",
+    "new": "node new.js",
     "build": "hexo g -d",
     "gen": "hexo clean && hexo g"
   },
