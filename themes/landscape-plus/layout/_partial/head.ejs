@@ -47,6 +47,7 @@
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%- partial('google-analytics') %>
 
     <%- open_graph({
         twitter_id: theme.twitter,
@@ -63,8 +64,5 @@
         <link rel="icon" href="<%- theme.favicon %>">
     <% } %>
 
-    <%- partial('google-analytics') %>
     <%- css('css/style') %>
-
-
 </head>

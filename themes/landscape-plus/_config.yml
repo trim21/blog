@@ -31,6 +31,12 @@ css:
     info:
       href: https://cdn.jsdelivr.net/npm/fancybox@3.0.1/dist/css/jquery.fancybox.css
       integrity: sha256-iK+zjGHeeTQux1laFiGc4EZWPacH5acc6CnZBGji1ns=
+
+  - name: NatoSansSC
+    position: afterBody
+    info:
+      href: https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap
+
   - name: font-awesome
     position: afterBody
     info:
