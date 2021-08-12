@@ -23,7 +23,7 @@ tags:
 
 ## 什么是网址
 
-{% jsdelivr /static/bd69bf14ly1gdaneblb19j20c4021q2u.jpg https://www.bilibili.com/ %}
+![https://www.bilibili.com/](https://cdn.jsdelivr.net/gh/trim21/blog/static/bd69bf14ly1gdaneblb19j20c4021q2u.jpg)
 
 在我们访问一个网站的时候，往往是从一个链接点进去的。比如这里的网址是`https://www.bilibili.com`。这就是一个`URL`，或者俗称`网址`。
 

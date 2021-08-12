@@ -31,8 +31,5 @@
   "resolutions": {
     "lodash": "4.17.21",
     "stylus": "0.54.8"
-  },
-  "devDependencies": {
-    "hexo-util": "^2.5.0"
   }
 }
