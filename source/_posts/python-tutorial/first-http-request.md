@@ -2,20 +2,20 @@
 title: 发一个HTTP请求-爬虫要做的第一件事
 date: 2020-03-29
 categories:
-- 编程
-- 教程
-- python
+  - 编程
+  - 教程
+  - python
 tags:
-- python
+  - python
 ---
 
-这是python教程的第二篇（第一篇见{% post_link python-tutorial/install-python %}）
+这是 python 教程的第二篇（第一篇见{% post_link python-tutorial/install-python %}）
 
-一般提到python，就会说用来写爬虫如何如何。
+一般提到 python，就会说用来写爬虫如何如何。
 
-爬虫会自动的发一些http请求，然后解析服务器返回的结果，得到自己想要的数据。
+爬虫会自动的发一些 http 请求，然后解析服务器返回的结果，得到自己想要的数据。
 
-所以教程的第二篇就从几个简单的http请求开始。
+所以教程的第二篇就从几个简单的 http 请求开始。
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ tags:
 
 这个链接就是在网络上，大家用来区分不同的东西所用的`统一资源定位系统`。
 
-- 统一，是说大家都这么干，B站这么干，微博这么干，百度也这么干。
+- 统一，是说大家都这么干，B 站这么干，微博这么干，百度也这么干。
 - 资源，则是比如网站，图片，或者一个视频，都是网络上的一个资源。
 - 定位，则是用来确定某个资源的位置。
 
@@ -45,21 +45,21 @@ tags:
 
 而整个网址剩下的部分，则是用来区分同一个网站不同的内容。
 
-- `/s` 则是path，用来在同一个网站中区分不同的内容。
-- `?` 用来区分path和路径参数
-- `wd=123`则是路径参数，用来告诉服务器wd的值是123。比如一个路径参数是`username=alice`，则是用来告诉服务器用户名是alice。
+- `/s` 则是 path，用来在同一个网站中区分不同的内容。
+- `?` 用来区分 path 和路径参数
+- `wd=123`则是路径参数，用来告诉服务器 wd 的值是 123。比如一个路径参数是`username=alice`，则是用来告诉服务器用户名是 alice。
 
-## 来用python发一个请求
+## 来用 python 发一个请求
 
-我们先用命令行安装一个python中常用的客户端
+我们先用命令行安装一个 python 中常用的客户端
 
 ```bash
 pip install requests
 ```
 
-pip是python用的包管理器，用于获取别人写的程序（一个包）。我们这里安装了别人写的`requests`。
+pip 是 python 用的包管理器，用于获取别人写的程序（一个包）。我们这里安装了别人写的`requests`。
 
-然后新建一个py文件，这里叫`main.py`吧。
+然后新建一个 py 文件，这里叫`main.py`吧。
 
 ```python
 import requests
@@ -76,12 +76,12 @@ print(r.text)
 
 是不是让人头大，看不懂输出的都是什么东西，也看不懂程序干了什么事情。
 
-## 从http讲起
+## 从 http 讲起
 
-http请求是简单地一问一答的模式。用户问一句，服务器才答一句。用户发送的是`http请求`，服务器返回的是`http响应`
+http 请求是简单地一问一答的模式。用户问一句，服务器才答一句。用户发送的是`http请求`，服务器返回的是`http响应`
 
-而一个http请求可以简单分为四个部分: `方法` `网址` `请求头` `请求体`。
-一个http响应则分为`状态码`，`头部`和`响应体`三部分。
+而一个 http 请求可以简单分为四个部分: `方法` `网址` `请求头` `请求体`。
+一个 http 响应则分为`状态码`，`头部`和`响应体`三部分。
 
 方法除了我们已经用过的`GET`，还有`POST`，`PATCH`，`PUT`，`DELETE`等方法。
 
@@ -91,7 +91,7 @@ http请求是简单地一问一答的模式。用户问一句，服务器才答�
 
 而我们打印出来的`r.text`则是服务器的响应体
 
-我们用一个http测试网站<https://httpbin.org/#/>来发一些简单地请求。一步一步的理解一个http请求到底包含什么东西。
+我们用一个 http 测试网站<https://httpbin.org/#/>来发一些简单地请求。一步一步的理解一个 http 请求到底包含什么东西。
 
 ```python
 import requests
@@ -102,7 +102,7 @@ r = requests.get("https://httpbin.org/headers", headers=headers)
 print(r.text)
 ```
 
-我们向`requests.get`传入了`headers`参数，这是一个python的dict，是python内置的数据类型，表示的是键值对的映射。用来告诉requests中headers的`hello`是`world`。
+我们向`requests.get`传入了`headers`参数，这是一个 python 的 dict，是 python 内置的数据类型，表示的是键值对的映射。用来告诉 requests 中 headers 的`hello`是`world`。
 
 这句话可能有些拗口，举个例子:
 
@@ -111,9 +111,9 @@ headers = {"hello": "world"}
 print(headers["hello"])
 ```
 
-可以看到，程序最后输出了`world`，表示我们通过这个dict，把`"hello"`映射到了`"world"`
+可以看到，程序最后输出了`world`，表示我们通过这个 dict，把`"hello"`映射到了`"world"`
 
-我们通过这种方式，用来告诉程序我们这个http请求的headers，而`https://httpbin.org/headers`会把我们的`请求头`作为`请求体`的一部分返回给我们。
+我们通过这种方式，用来告诉程序我们这个 http 请求的 headers，而`https://httpbin.org/headers`会把我们的`请求头`作为`请求体`的一部分返回给我们。
 
 所以我们会看到如下的程序运行结果
 
@@ -131,7 +131,7 @@ python main.py
 }
 ```
 
-其中`"Hello": "world"`就是我们传入的`headers`。其他的结果则是requests默认的请求头。
+其中`"Hello": "world"`就是我们传入的`headers`。其他的结果则是 requests 默认的请求头。
 
 我们再加几个请求头:
 
@@ -170,9 +170,9 @@ python main.py
 }
 ```
 
-### http报文
+### http 报文
 
-http请求是基于文本的，我们可以把http报文直接写出来。
+http 请求是基于文本的，我们可以把 http 报文直接写出来。
 
 请求:
 
@@ -212,10 +212,10 @@ Access-Control-Allow-Credentials: true
 }
 ```
 
-前面说过，一个http响应分为`状态码`，`头部`和`响应体`三部分。
+前面说过，一个 http 响应分为`状态码`，`头部`和`响应体`三部分。
 
 响应的第一行`HTTP/1.1 200 OK`中，`HTTP/1.1`是协议，`200 OK`则是状态码。由一个数字和和一个简单地文本说明来组成。
 
 第二行开始则是响应的`头部`，跟我们的`请求头`一样，由一系列的键值对组成，用来提供响应的附加信息。比如`Date`表示响应的服务器时间，`Content-Type`表示`响应体`中数据的格式，`Content-Length`表示响应体作为文本的长度。
 
-而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里`Content-Type`是`application/json`，用到的是[json格式](https://www.json.org/json-zh.html)，看起来跟python的dict几乎相同。
+而空行之后到整个响应结束都是`响应体`，也就是我们打印出来的`r.text`。是一个纯文本，但是可以以纯文本来表示各种各样的数据。比如这里`Content-Type`是`application/json`，用到的是[json 格式](https://www.json.org/json-zh.html)，看起来跟 python 的 dict 几乎相同。

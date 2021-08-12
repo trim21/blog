@@ -1,6 +1,6 @@
 /* global hexo:true */
-'use strict'
-const minify = require('html-minifier').minify
+"use strict";
+const minify = require("html-minifier").minify;
 const options = {
   removeComments: true,
   collapseWhitespace: true,
@@ -8,10 +8,8 @@ const options = {
   removeEmptyAttributes: true,
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
-}
+};
 
-hexo.extend.filter.register('after_render:html',
-  function (str) {
-    return minify(str, options)
-  }
-)
+hexo.extend.filter.register("after_render:html", function (str) {
+  return minify(str, options);
+});

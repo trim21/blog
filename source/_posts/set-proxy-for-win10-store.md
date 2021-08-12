@@ -3,23 +3,23 @@ title: 给win10应用商店设置代理
 date: 2019-06-26 21:32:31
 update: 2019-06-26 21:32:31
 categories:
-- 编程
+  - 编程
 tags:
-- python
-- windows
+  - python
+  - windows
 ---
 
-最近网络状况实在是不好,用win10应用商店下载应用怎么也不成功.修改系统代理也不管用.
+最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用.
 参照[少数派的这篇文章](https://sspai.com/post/41137)设置了代理,总算是解决了问题.
 
 <!-- more -->
 
-其中,最麻烦的是找到对应uwp应用的sid,因为是要在表里一项一项的去找.
+其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.
 
-win10商店对应的应用在注册表中的`DisplayName`是`Microsoft.WindowsStore`,
-所以遍历`HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings`的所有子key,找到对应`DisplayName`中包含`Microsoft.WindowsStore`的一项就可以了.
+win10 商店对应的应用在注册表中的`DisplayName`是`Microsoft.WindowsStore`,
+所以遍历`HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings`的所有子 key,找到对应`DisplayName`中包含`Microsoft.WindowsStore`的一项就可以了.
 
-因为手动一项一项的去找效率实在是太低,就直接写了个python脚本来遍历.
+因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.
 
 ```python
 import winreg
@@ -70,6 +70,6 @@ if __name__ == '__main__':
     main()
 ```
 
-直接保存成py文件,然后运行,控制台的第二行会输出类似`S-1-15-2-****`的一个SID,就是在`CheckNetIsolation.exe loopbackexempt -a -p=${SID}`中要用到的SID.
+直接保存成 py 文件,然后运行,控制台的第二行会输出类似`S-1-15-2-****`的一个 SID,就是在`CheckNetIsolation.exe loopbackexempt -a -p=${SID}`中要用到的 SID.
 
-这之后,设置系统代理,重启win10商店,就能通过代理下载应用了.
+这之后,设置系统代理,重启 win10 商店,就能通过代理下载应用了.

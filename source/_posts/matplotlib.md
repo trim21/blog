@@ -3,10 +3,10 @@ title: ubuntu安装matplotlib
 updated: 2016-07-25 19:26:07
 date: 2016-07-25 19:26:07
 tags:
-- python
+  - python
 ---
 
-(可恶,git用的不熟练,把commit丢了...重写文章)
+(可恶,git 用的不熟练,把 commit 丢了...重写文章)
 
 总结一下,在安装了`NumPy`之后还需要安装
 
@@ -16,6 +16,7 @@ tags:
 4. cairocffi
 
 <!-- more -->
+
 freetype 下载地址 [http://download.savannah.gnu.org/releases/freetype/](http://download.savannah.gnu.org/releases/freetype/)
 
 ```bash
@@ -25,7 +26,7 @@ sudo make
 sudo make install
 ```
 
-libpng和libffi都在apt上有
+libpng 和 libffi 都在 apt 上有
 
 ```bash
 ➜  artic git:(master) ✗ search libffi
@@ -38,6 +39,6 @@ libpng12-0 - PNG library - runtime
 libpng12-dev - PNG library - development
 ```
 
-直接apt-get安装即可
+直接 apt-get 安装即可
 
-调用`matplotlib`的时候图像式全黑的,提示我安装`cairocffi`,是pip上的包,安装了第三个之后直接`pip`安装这个就可以了.
+调用`matplotlib`的时候图像式全黑的,提示我安装`cairocffi`,是 pip 上的包,安装了第三个之后直接`pip`安装这个就可以了.

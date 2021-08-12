@@ -2,16 +2,17 @@
 title: 参与python文档的中文翻译
 date: 2019-03-31 01:28:36
 categories:
-- 编程
+  - 编程
 tags:
-- python
+  - python
 ---
 
-今天看到这个帖子[别开心太早， Python 官方文档的翻译差远了 - V2EX](https://www.v2ex.com/t/550164) 发现参与python文档翻译的门槛还挺低的，就尝试了一下翻译了两段文档.
+今天看到这个帖子[别开心太早， Python 官方文档的翻译差远了 - V2EX](https://www.v2ex.com/t/550164) 发现参与 python 文档翻译的门槛还挺低的，就尝试了一下翻译了两段文档.
 
 ## 参与翻译的方法
 
 <!-- more -->
+
 按照 [pep-545](https://www.python.org/dev/peps/pep-0545/)的说法, 有三步需要做:
 
 1. 注册一个 <https://bugs.python.org> 的账号, 这个用户名在签 license 的时候会用到.
@@ -26,4 +27,4 @@ tags:
 
 [python/python-docs-zh-cn: zh_CN translation of the Python documentation](https://github.com/python/python-docs-zh-cn)
 
-中文的 po 文件在这个仓库里, 每个小时会有一个 bot 会自动把 transifex 上面的翻译同步到仓库里面去, 但是自己的名字并不会出现在这个仓库的contributors里面, 233
+中文的 po 文件在这个仓库里, 每个小时会有一个 bot 会自动把 transifex 上面的翻译同步到仓库里面去, 但是自己的名字并不会出现在这个仓库的 contributors 里面, 233
