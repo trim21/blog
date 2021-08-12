@@ -29,8 +29,6 @@ jobs:
 
       - run: yarn build
 
-      - run: cp ./_redirects public
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
