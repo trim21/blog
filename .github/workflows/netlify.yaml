@@ -29,13 +29,10 @@ jobs:
 
       - run: yarn build
 
-      - run: cp ./_redirects public
-
-      - uses: jsmrcaga/action-netlify-deploy@v1.6.0
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: public
-          INSTALL_COMMAND: "echo install"
-          build_command: "echo build"
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          publish_dir: ./publish
+          commit_message: deploy ${{ github.ref }}
+          cname: blog.trim21.me
+          github_token: ${{ secrets.GITHUB_TOKEN }}
