@@ -1,6 +1,7 @@
 ---
 title: 输入法切换到Rime
 date: 2019-10-23
+updated: 2021-08-13
 categories:
   - 工具
 ---
