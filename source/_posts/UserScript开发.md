@@ -76,11 +76,11 @@ GM_addStyle("#my-userscript-wrap{background-color:red}");
 
 右键扩展的图标, 选择管理扩展程序
 
-![1](https://ws1.sinaimg.cn/large/bd69bf14ly1fsqd1me9o7j205a05fdfu.jpg)
+![1](../static/bd69bf14ly1fsqd1me9o7j205a05fdfu.jpg)
 
 在其中找到`允许访问文件网址`(也就是以`file://` 开头的 url)
 
-![2](https://ws1.sinaimg.cn/large/bd69bf14ly1fsqd0vt6d5j20je0kujt9.jpg)
+![2](../static/bd69bf14ly1fsqd0vt6d5j20je0kujt9.jpg)
 
 首先说下`Tampermonkey`的行为,如果脚本`@require`的是一个本地文件,那么每次加载的脚本的时候都会加载最新的本地文件. 如果`@require`的是`http`或者`https`协议的文件,那`Tampermonkey`会在第一次运行之后把文件内容缓存, 如果缓存存在, 就算文件内容更改了, 也不会更新.(但是可以手动更新). 所以不能直接通过`file`协议安装打包后的脚本,因为这样会导致重新打包后生效的还是旧代码. 需要通过`@require`这个 meta 来解决这个问题.
 

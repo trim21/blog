@@ -88,7 +88,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 
 现在访问`http://localhost:4000/`就可以看到效果了.
 
-![default theme](https://ws3.sinaimg.cn/large/bd69bf14jw1f3zjixa0x5j21fm0sbaf3.jpg)
+![default theme](../static/bd69bf14jw1f3zjixa0x5j21fm0sbaf3.jpg)
 
 这是默认主题，而且现在只有一篇文章。打开`source/_posts`就可以看到。
 再次新建`.md`文件，就会被渲染成文章。
