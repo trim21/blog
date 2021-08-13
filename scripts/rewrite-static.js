@@ -13,13 +13,13 @@ hexo.extend.filter.register("markdown-it:renderer", function (md) {
       console.log(src[1]);
       return;
     }
-    let path = src[1];
-    const origin = path;
-    if (posix.isAbsolute(path)) {
-      console.log(path);
-      path = posix.join("/source/_posts/md", path);
-    }
 
-    src[1] = `https://cdn.jsdelivr.net` + posix.join("/gh/trim21/blog/source/", src[1]);
+    let path = src[1];
+    if (!posix.isAbsolute(path)) {
+      console.log(path);
+      path = posix.join("/_posts", path);
+      console.log(path)
+    }
+    src[1] = `https://cdn.jsdelivr.net` + posix.join("/gh/trim21/blog/source/", path);
   });
 });
