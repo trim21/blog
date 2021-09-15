@@ -32,6 +32,6 @@
   },
   "resolutions": {
     "lodash": "4.17.21",
-    "stylus": "0.54.8"
+    "stylus": "0.55.0"
   }
 }
