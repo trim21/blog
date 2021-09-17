@@ -16,9 +16,7 @@ hexo.extend.filter.register("markdown-it:renderer", function (md) {
 
     let path = src[1];
     if (!posix.isAbsolute(path)) {
-      console.log(path);
       path = posix.join("/_posts", path);
-      console.log(path)
     }
     src[1] = `https://cdn.jsdelivr.net` + posix.join("/gh/trim21/blog/source/", path);
   });
