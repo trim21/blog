@@ -2,7 +2,8 @@
 title: 用pyenv安装python
 date: 2019-12-23
 tags:
-  - nas
+  - python
+  - linux
 ---
 
 [pyenv](https://github.com/pyenv/pyenv)是用来安装多个版本的 python
