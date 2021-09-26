@@ -12,7 +12,7 @@ tags:
 
 官方提供了安装脚本
 
-```bash
+```console
 curl https://cdn.jsdelivr.net/gh/pyenv/pyenv-installer/bin/pyenv-installer | bash
 ```
 
@@ -20,13 +20,13 @@ curl https://cdn.jsdelivr.net/gh/pyenv/pyenv-installer/bin/pyenv-installer | bas
 
 启用 cache:
 
-```bash
+```console
 mkdir -p .pyenv/cache
 ```
 
 使用 ccache, 可以缓存构件中的对象
 
-```bash
+```console
 git clone https://github.com/yyuu/pyenv-ccache.git $(pyenv root)/plugins/pyenv-ccache
 sudo apt install ccache
 ```
@@ -35,31 +35,31 @@ sudo apt install ccache
 
 zipimport.ZipImportError: can't decompress data; zlib not available
 
-```bash
+```console
 sudo apt install zlib1g-dev
 ```
 
 WARNING: The Python bz2 extension was not compiled. Missing the bzip2 lib?
 
-```bash
+```console
 sudo apt install libbz2-dev
 ```
 
 WARNING: The Python readline extension was not compiled. Missing the GNU readline lib?
 
-```bash
+```console
 sudo apt-get install libreadline-dev
 ```
 
 ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
 
-```bash
+```console
 sudo apt install libssl-dev
 ```
 
 WARNING: The Python sqlite3 extension was not compiled. Missing the SQLite3 lib?
 
-```bash
+```console
 sudo apt install libsqlite3-dev
 ```
 
@@ -67,7 +67,7 @@ sudo apt install libsqlite3-dev
 
 ModuleNotFoundError: No module named '\_ctypes'
 
-```bash
+```console
 sudo apt install libffi-dev
 ```
 
@@ -79,6 +79,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 `xxenv-latest` 用来直接选中最新的版本，比如使用 3.8 来选中最新的 3.8.9 版本。
 
-```bash
+```console
 git clone https://github.com/momo-lab/xxenv-latest.git "$(pyenv root)"/plugins/xxenv-latest
 ```
