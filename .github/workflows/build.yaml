@@ -36,4 +36,3 @@ jobs:
           commit_message: deploy ${{ github.ref }}
           cname: blog.trim21.me
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          force_orphan: true
