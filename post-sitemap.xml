@@ -9,96 +9,8 @@
 
 
     <url>
-        <loc>https://blog.trim21.me/2017/05/auto-deploy-with-webhook.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2018/10/bgm.tv-ip-viewer.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2019/12/build-a-nas.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2016/04/build-blog-whith-hexo-and-github-pages.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2019/06/build-python-package-with-pyinstaller.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2019/03/join-python-zh-cn-translaters.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2018/11/learning-golang.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2018/10/python-aiohttp.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.trim21.me/2016/08/rasberrypi-and-stepping-motor.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.trim21.me/2019/06/set-proxy-for-win10-store.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
+        <lastmod>2022-03-14T17:30:58.569Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -106,7 +18,7 @@
 
     <url>
         <loc>https://blog.trim21.me/2017/05/ubuntu-reboot-to-BIOS.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
+        <lastmod>2022-03-14T17:30:58.569Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -114,7 +26,7 @@
 
     <url>
         <loc>https://blog.trim21.me/2018/10/use-vue-in-userscript.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
+        <lastmod>2022-03-14T17:30:58.569Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -122,7 +34,95 @@
 
     <url>
         <loc>https://blog.trim21.me/2018/10/webpack-userscript.html</loc>
-        <lastmod>2022-02-26T10:53:28.064Z</lastmod>
+        <lastmod>2022-03-14T17:30:58.569Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2017/05/auto-deploy-with-webhook.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2018/10/bgm.tv-ip-viewer.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2019/12/build-a-nas.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2016/04/build-blog-whith-hexo-and-github-pages.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2019/06/build-python-package-with-pyinstaller.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2019/03/join-python-zh-cn-translaters.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2018/11/learning-golang.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2018/10/python-aiohttp.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.trim21.me/2016/08/rasberrypi-and-stepping-motor.html</loc>
+        <lastmod>2022-03-14T17:30:58.565Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
