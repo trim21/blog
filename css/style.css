@@ -405,8 +405,6 @@ a:hover {
   width: 100%;
   height: 100%;
   background: #21282e;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   z-index: -1;
 }
