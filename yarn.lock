@@ -615,13 +615,13 @@ hexo-renderer-markdown-it@6.0.1:
     markdown-it-sub "^1.0.0"
     markdown-it-sup "^1.0.0"
 
-hexo-renderer-stylus@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/hexo-renderer-stylus/-/hexo-renderer-stylus-2.0.1.tgz#c65566e97e9058a52e46c82b0c45cf561f4b94cb"
-  integrity sha512-1S4AG8RtzWqVrqKIYv2AJ4UYms5SHDjkdYS7IiGwgUejL24agbTktpAbnH2cG1JWZ15SRqYN0UGB9aAoSAgvEA==
+hexo-renderer-stylus@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/hexo-renderer-stylus/-/hexo-renderer-stylus-2.1.0.tgz#4cbae08d36c7390b791c2cc3df7c53c3ff615106"
+  integrity sha512-Nef4YCr7JX8jaRaByhzXMSsWnDed+RgJj6aU/ARnYu3Bn5xz/qRz52VJG7KqD0Xuysxa9TIBdVUgNzBrSFn3DQ==
   dependencies:
-    nib "^1.1.2"
-    stylus "^0.54.8"
+    nib "^1.2.0"
+    stylus "^0.57.0"
 
 hexo-server@3.0.0:
   version "3.0.0"
@@ -1032,12 +1032,10 @@ negotiator@0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-nib@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/nib/-/nib-1.1.2.tgz#6a69ede4081b95c0def8be024a4c8ae0c2cbb6c7"
-  integrity sha1-amnt5AgblcDe+L4CSkyK4MLLtsc=
-  dependencies:
-    stylus "0.54.5"
+nib@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/nib/-/nib-1.2.0.tgz#cf650a975307edaa8683470430f82ba132bf9f7b"
+  integrity sha512-7HgrnMl/3yOmWykueO8/D0q+0iWwe7Z+CK2Eaq/xQV8w1hK80WN1oReRQkfkrztbAAnp/nTHkUSl5EcVkor6JQ==
 
 no-case@^2.2.0:
   version "2.3.2"
@@ -1297,7 +1295,7 @@ strip-indent@^3.0.0:
   dependencies:
     min-indent "^1.0.0"
 
-stylus@0.54.5, stylus@0.58.1, stylus@^0.54.8:
+stylus@0.58.1, stylus@^0.57.0:
   version "0.58.1"
   resolved "https://registry.yarnpkg.com/stylus/-/stylus-0.58.1.tgz#7e425bb493c10dde94cf427a138d3eae875a3b44"
   integrity sha512-AYiCHm5ogczdCPMfe9aeQa4NklB2gcf4D/IhzYPddJjTgPc+k4D/EVE0yfQbZD43MHP3lPy+8NZ9fcFxkrgs/w==
