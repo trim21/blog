@@ -1,5 +1,5 @@
 ---
-title: golang 结构体的内存细节
+title: go 的一些内存细节
 date: 2022-08-02 21:56:18
 categories:
   - 编程
