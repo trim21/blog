@@ -1,2 +1,174 @@
-<!DOCTYPE HTML><html><head><meta charset="utf-8"><title>输入法切换到Rime | Trim21&#39;s Blog</title><meta name="author" content="Trim21"><meta name="description" content="QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
-又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。"><meta name="keywords" content=""><meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta property="og:title" content="输入法切换到Rime"><meta property="og:site_name" content="Trim21&#39;s Blog"><meta property="og:image" content="/favicon.ico"><link href="/favicon.ico" rel="icon"><link rel="alternate" href="/atom.xml" title="Trim21&#39;s Blog" type="application/atom+xml"><link rel="stylesheet" href="/css/style.css" media="screen"><meta name="generator" content="Hexo 6.2.0"></head><body><div class="blog"><div class="content"><header><div class="site-branding"><h1 class="site-title"><a href="/">Trim21&#39;s Blog</a></h1><p class="site-description"></p></div><nav class="site-navigation"><ul></ul></nav></header><main class="site-main posts-loop"><article><h3 class="article-title"><span>输入法切换到Rime</span></h3><div class="article-top-meta"><span class="posted-on"><a href="/2019/10/migrate-to-rime.html" rel="bookmark"><time class="entry-date published" datetime="2019-10-22T16:00:00.000Z">2019-10-22</time></a></span></div><div class="article-content"><div class="entry"><p>QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。</p><p>又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。</p><span id="more"></span><p><img src="https://cdn.jsdelivr.net/gh/trim21/blog/source/static/rime-preview.jpg" alt="最终设置的效果"></p><h2 id="安装">安装</h2><p>一路下一步，唯一的坑在于<code>自定义用户文件夹</code>这个功能。<strong>不要设置自定义用户文件夹</strong>。</p><p>如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。</p><p>rime 有一个包管理器，但是这个包管理器在 windows 上并不能正确的识别用户文件夹：无论用户怎么设置，包管理器都会认为用户文件夹在默认的 <code>%APPDATA%/rime</code>。包管理器也只会把下载到文件安装到这个路径里面，但小狼毫只从用户设置的文件夹中加载配置。这样一来，包管理器完全无法工作。</p><h2 id="同步">同步</h2><p>同步 rime 有一个自带的同步功能，也就是安装完后看到的<code>【小狼毫】用戶資料同步</code>开始菜单选项。</p><p>首先打开用户文件夹中的<code>installtion.yaml</code>（我就不介绍 yaml 语法了）<br>，添加一个<code>sync_dir</code>选项指向你想要同步的位置，比如我设置的是<code>$OneDrive/rime</code>，那么在点击同步之后，rime 会在<code>$sync_dir</code>文件夹下新建一个文件夹，名为这个文件里面的<code>id</code>一项（这一项你也是可以改的，比如我改成了<code>windows</code>），然后把你这台机器里面的所有配置和和词库同步过去。</p><p>如果 rime 在这个文件夹下面还找到了其他机器的同步结果，他还会合并其他机器的词库，所以只要定时的让小狼毫自动同步，就能解决多台机器的同步问题。</p><h2 id="设置">设置</h2><p>Rime 所有的设置（除了词库文件）都是 yaml，为了能合并不同的 YAML 中的，rime 用到了一些关键词比如<code>patch</code>。</p><p>小狼毫的配置文件在<code>$RIME_CONFIG_DIR/weasel.custom.yaml</code>中。</p><h3 id="设置外观">设置外观</h3><h4 id="设置候选词数量">设置候选词数量</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">&quot;menu/page_size&quot;:</span> <span class="number">9</span></span><br></pre></td></tr></table></figure><h4 id="设置主题">设置主题</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">&quot;style/color_scheme&quot;:</span> <span class="string">steam</span></span><br><span class="line">  <span class="attr">&quot;style/font_face&quot;:</span> <span class="string">&quot;Microsoft YaHei&quot;</span> <span class="comment"># 显示字体</span></span><br><span class="line">  <span class="attr">&quot;style/font_point&quot;:</span> <span class="number">14</span> <span class="comment"># 字体大小</span></span><br><span class="line">  <span class="attr">&quot;style/horizontal&quot;:</span> <span class="literal">true</span> <span class="comment"># 水平显示</span></span><br><span class="line">  <span class="attr">&quot;style/layout/margin_x&quot;:</span> <span class="number">7</span> <span class="comment"># 窗口边界距离</span></span><br><span class="line">  <span class="attr">&quot;style/layout/margin_y&quot;:</span> <span class="number">7</span> <span class="comment"># 窗口边界距离</span></span><br><span class="line">  <span class="attr">&quot;style/layout/spacing&quot;:</span> <span class="number">2</span> <span class="comment">#候选竖排时候与候选词的间距</span></span><br><span class="line">  <span class="attr">&quot;style/layout/candidate_spacing&quot;:</span> <span class="number">1</span> <span class="comment"># 候选间距</span></span><br><span class="line">  <span class="attr">&quot;style/layout/round_corner&quot;:</span> <span class="number">8</span> <span class="comment"># 圆的拐角</span></span><br><span class="line">  <span class="comment"># 还有一些额外的设置，这不是完整的列表，只是我用到的</span></span><br></pre></td></tr></table></figure><p><code>style/color_scheme</code> 设置了内置的配色方案，完整的列表可以在这里找到 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/rime-aca/color_schemes">https://github.com/rime-aca/color_schemes</a></p><p>如果觉得内置的都不好看，可以用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bennyyip.github.io/Rime-See-Me/">配色方案生成器</a>自己设计一个。</p><h3 id="设置输入方案">设置输入方案</h3><p>输入方案的设置在 <code>$RIME_CONFIG_DIR/default.custom.yaml</code>。</p><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">double_pinyin_flypy</span></span><br></pre></td></tr></table></figure><p><code>double_pinyin_flypy</code> 从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/rime/rime-double-pinyin">这里</a>安装，我是直接复制了原文件到我的配置文件夹中。</p></div></div><div class="article-footer"><div class="article-meta pull-left"><span class="post-categories"><i class="icon-categories"></i> <a href="/categories/工具/">工具</a></span></div></div></article><section id="comment" class="comment"><div id="utterances"><script src="https://utteranc.es/client.js" repo="trim21/blog" issue-term="migrate-to-rime" crossorigin="anonymous" theme="github-light" async></script></div></section></main><footer class="site-footer"><p class="site-info">Proudly powered by <a href="https://hexo.io/" rel="external nofollow noreferrer" target="_blank">Hexo</a> and Theme by <a href="https://github.com/CodeDaraW/Hacker" rel="external nofollow noreferrer" target="_blank">Hacker</a><br>&copy; 2022 Trim21</p></footer></div></div></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>输入法切换到Rime | Trim21&#39;s Blog</title>
+
+  
+  <meta name="author" content="Trim21">
+  
+
+  
+  <meta name="description" content="QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
+又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="输入法切换到Rime"/>
+
+  <meta property="og:site_name" content="Trim21&#39;s Blog"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Trim21&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Trim21&#39;s Blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>输入法切换到Rime</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/migrate-to-rime.html" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-22T16:00:00.000Z">
+          2019-10-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。</p>
+<p>又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。</p>
+<span id="more"></span>
+<p><img src="../static/rime-preview.jpg" alt="最终设置的效果"></p>
+<h2 id="安装">安装</h2>
+<p>一路下一步，唯一的坑在于<code>自定义用户文件夹</code>这个功能。<strong>不要设置自定义用户文件夹</strong>。</p>
+<p>如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。</p>
+<p>rime 有一个包管理器，但是这个包管理器在 windows 上并不能正确的识别用户文件夹：无论用户怎么设置，包管理器都会认为用户文件夹在默认的 <code>%APPDATA%/rime</code>。包管理器也只会把下载到文件安装到这个路径里面，但小狼毫只从用户设置的文件夹中加载配置。这样一来，包管理器完全无法工作。</p>
+<h2 id="同步">同步</h2>
+<p>同步 rime 有一个自带的同步功能，也就是安装完后看到的<code>【小狼毫】用戶資料同步</code>开始菜单选项。</p>
+<p>首先打开用户文件夹中的<code>installtion.yaml</code>（我就不介绍 yaml 语法了）<br>
+，添加一个<code>sync_dir</code>选项指向你想要同步的位置，比如我设置的是<code>$OneDrive/rime</code>，那么在点击同步之后，rime 会在<code>$sync_dir</code>文件夹下新建一个文件夹，名为这个文件里面的<code>id</code>一项（这一项你也是可以改的，比如我改成了<code>windows</code>），然后把你这台机器里面的所有配置和和词库同步过去。</p>
+<p>如果 rime 在这个文件夹下面还找到了其他机器的同步结果，他还会合并其他机器的词库，所以只要定时的让小狼毫自动同步，就能解决多台机器的同步问题。</p>
+<h2 id="设置">设置</h2>
+<p>Rime 所有的设置（除了词库文件）都是 yaml，为了能合并不同的 YAML 中的，rime 用到了一些关键词比如<code>patch</code>。</p>
+<p>小狼毫的配置文件在<code>$RIME_CONFIG_DIR/weasel.custom.yaml</code>中。</p>
+<h3 id="设置外观">设置外观</h3>
+<h4 id="设置候选词数量">设置候选词数量</h4>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">&quot;menu/page_size&quot;:</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置主题">设置主题</h4>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">&quot;style/color_scheme&quot;:</span> <span class="string">steam</span></span><br><span class="line">  <span class="attr">&quot;style/font_face&quot;:</span> <span class="string">&quot;Microsoft YaHei&quot;</span> <span class="comment"># 显示字体</span></span><br><span class="line">  <span class="attr">&quot;style/font_point&quot;:</span> <span class="number">14</span> <span class="comment"># 字体大小</span></span><br><span class="line">  <span class="attr">&quot;style/horizontal&quot;:</span> <span class="literal">true</span> <span class="comment"># 水平显示</span></span><br><span class="line">  <span class="attr">&quot;style/layout/margin_x&quot;:</span> <span class="number">7</span> <span class="comment"># 窗口边界距离</span></span><br><span class="line">  <span class="attr">&quot;style/layout/margin_y&quot;:</span> <span class="number">7</span> <span class="comment"># 窗口边界距离</span></span><br><span class="line">  <span class="attr">&quot;style/layout/spacing&quot;:</span> <span class="number">2</span> <span class="comment">#候选竖排时候与候选词的间距</span></span><br><span class="line">  <span class="attr">&quot;style/layout/candidate_spacing&quot;:</span> <span class="number">1</span> <span class="comment"># 候选间距</span></span><br><span class="line">  <span class="attr">&quot;style/layout/round_corner&quot;:</span> <span class="number">8</span> <span class="comment"># 圆的拐角</span></span><br><span class="line">  <span class="comment"># 还有一些额外的设置，这不是完整的列表，只是我用到的</span></span><br></pre></td></tr></table></figure>
+<p><code>style/color_scheme</code> 设置了内置的配色方案，完整的列表可以在这里找到 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/rime-aca/color_schemes">https://github.com/rime-aca/color_schemes</a></p>
+<p>如果觉得内置的都不好看，可以用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bennyyip.github.io/Rime-See-Me/">配色方案生成器</a>自己设计一个。</p>
+<h3 id="设置输入方案">设置输入方案</h3>
+<p>输入方案的设置在 <code>$RIME_CONFIG_DIR/default.custom.yaml</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">double_pinyin_flypy</span></span><br></pre></td></tr></table></figure>
+<p><code>double_pinyin_flypy</code> 从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/rime/rime-double-pinyin">这里</a>安装，我是直接复制了原文件到我的配置文件夹中。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具/">工具</a>
+    </span>
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+	<section id="comment" class="comment">
+		<div id="utterances">
+			<script
+					src="https://utteranc.es/client.js"
+					repo="trim21/blog"
+					issue-term="migrate-to-rime"
+					crossorigin="anonymous"
+					theme="github-light"
+					async
+			></script>
+		</div>
+	</section>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" rel="external nofollow noreferrer" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" rel="external nofollow noreferrer" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2022 Trim21
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

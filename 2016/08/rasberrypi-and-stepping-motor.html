@@ -1,1 +1,165 @@
-<!DOCTYPE HTML><html><head><meta charset="utf-8"><title>树莓派控制步进电机 | Trim21&#39;s Blog</title><meta name="author" content="Trim21"><meta name="description" content="有一个题目需要用步进电机控制转速,而且需要控制转动特定的角度,所以找到了步进电机这种东西来拍照."><meta name="keywords" content="python,树莓派"><meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta property="og:title" content="树莓派控制步进电机"><meta property="og:site_name" content="Trim21&#39;s Blog"><meta property="og:image" content="/favicon.ico"><link href="/favicon.ico" rel="icon"><link rel="alternate" href="/atom.xml" title="Trim21&#39;s Blog" type="application/atom+xml"><link rel="stylesheet" href="/css/style.css" media="screen"><meta name="generator" content="Hexo 6.2.0"></head><body><div class="blog"><div class="content"><header><div class="site-branding"><h1 class="site-title"><a href="/">Trim21&#39;s Blog</a></h1><p class="site-description"></p></div><nav class="site-navigation"><ul></ul></nav></header><main class="site-main posts-loop"><article><h3 class="article-title"><span>树莓派控制步进电机</span></h3><div class="article-top-meta"><span class="posted-on"><a href="/2016/08/rasberrypi-and-stepping-motor.html" rel="bookmark"><time class="entry-date published" datetime="2016-08-13T13:53:02.000Z">2016-08-13</time></a></span></div><div class="article-content"><div class="entry"><p>有一个题目需要用步进电机控制转速,而且需要控制转动特定的角度,所以找到了步进电机这种东西来拍照.</p><span id="more"></span><p>步进电机内部是通过不同线圈分别通上不同方向的电流,按顺序通一定的电流,就可以让电机转动一个特定的角度.</p><p>之前我以为在转动的时候会一颤一颤的,非常明显的进动,但是实际使用发现并不是这样,实际上上一次转动的角度是非常小的,所以并没有非常的明显的卡顿感.</p><p>我用的电机可以看出来一共有 5 根线,一根正极,其他四根分别接驱动板的四个信号输出端.然后用树莓派的 GPIO 分别输出信号给驱动板.驱动板对相应信号作出反应,会输出相应的电压.</p><p>驱动板我用的是 L298N,这个板子在淘宝店上有好几家店卖具体样子不同的产品,这个板子上面有四个<strong>使能</strong>,这词我琢磨了半天没懂,后来才发现是<code>enable</code>...所以其实就是在通上 5V 的电压之后就可以用单片机控制电压输出与否了.</p><p>我买的板子上的使能是用跳线做为使能的,就是用跳线短接的时候就已经使能了.</p><p>但是我傻傻的吧 gpio 接上去了,问题就出来了.....我眼看着我的树莓派的灯越来越暗,然后树莓派被烧了.</p><p>其实就是把跳线短接就已经使能了.这个时候把树莓派的 gpio 口输出接到驱动板的 in 口就可以控制了.</p><p>当时用的程序,这个程序是控制了我的电机旋转了接近 180°.</p><p>python3</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> io</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">io.setmode(io.BOARD)</span><br><span class="line"></span><br><span class="line">out1=<span class="number">12</span></span><br><span class="line">out2=<span class="number">16</span></span><br><span class="line">out3=<span class="number">18</span></span><br><span class="line">out4=22s</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># Setup leds</span></span><br><span class="line">    io.setup(out1,io.OUT)</span><br><span class="line">    io.output(out1,<span class="number">0</span>)</span><br><span class="line">    io.setup(out2,io.OUT)</span><br><span class="line">    io.output(out2,<span class="number">0</span>)</span><br><span class="line">    io.setup(out3,io.OUT)</span><br><span class="line">    io.output(out3,<span class="number">0</span>)</span><br><span class="line">    io.setup(out4,io.OUT)</span><br><span class="line">    io.output(out4,<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># Run blinking forever</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            io.output(out1,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out4,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out2,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out1,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out3,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out2,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out4,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out3,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">    <span class="comment"># Stop on Ctrl+C and clean up</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        io.cleanup()</span><br></pre></td></tr></table></figure></div></div><div class="article-footer"><div class="article-meta pull-left"><span class="post-categories"><i class="icon-categories"></i> <a href="/categories/硬件/">硬件</a> </span><span class="post-tags"><i class="icon-tags"></i> <a href="/tag/python/">python</a><a href="/tag/树莓派/">树莓派</a></span></div></div></article><section id="comment" class="comment"><div id="utterances"><script src="https://utteranc.es/client.js" repo="trim21/blog" issue-term="rasberrypi-and-stepping-motor" crossorigin="anonymous" theme="github-light" async></script></div></section></main><footer class="site-footer"><p class="site-info">Proudly powered by <a href="https://hexo.io/" rel="external nofollow noreferrer" target="_blank">Hexo</a> and Theme by <a href="https://github.com/CodeDaraW/Hacker" rel="external nofollow noreferrer" target="_blank">Hacker</a><br>&copy; 2022 Trim21</p></footer></div></div></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>树莓派控制步进电机 | Trim21&#39;s Blog</title>
+
+  
+  <meta name="author" content="Trim21">
+  
+
+  
+  <meta name="description" content="有一个题目需要用步进电机控制转速,而且需要控制转动特定的角度,所以找到了步进电机这种东西来拍照.">
+  
+
+  
+  
+  <meta name="keywords" content="python,树莓派">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="树莓派控制步进电机"/>
+
+  <meta property="og:site_name" content="Trim21&#39;s Blog"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Trim21&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Trim21&#39;s Blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>树莓派控制步进电机</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/08/rasberrypi-and-stepping-motor.html" rel="bookmark">
+        <time class="entry-date published" datetime="2016-08-13T13:53:02.000Z">
+          2016-08-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>有一个题目需要用步进电机控制转速,而且需要控制转动特定的角度,所以找到了步进电机这种东西来拍照.</p>
+<span id="more"></span>
+<p>步进电机内部是通过不同线圈分别通上不同方向的电流,按顺序通一定的电流,就可以让电机转动一个特定的角度.</p>
+<p>之前我以为在转动的时候会一颤一颤的,非常明显的进动,但是实际使用发现并不是这样,实际上上一次转动的角度是非常小的,所以并没有非常的明显的卡顿感.</p>
+<p>我用的电机可以看出来一共有 5 根线,一根正极,其他四根分别接驱动板的四个信号输出端.然后用树莓派的 GPIO 分别输出信号给驱动板.驱动板对相应信号作出反应,会输出相应的电压.</p>
+<p>驱动板我用的是 L298N,这个板子在淘宝店上有好几家店卖具体样子不同的产品,这个板子上面有四个<strong>使能</strong>,这词我琢磨了半天没懂,后来才发现是<code>enable</code>...所以其实就是在通上 5V 的电压之后就可以用单片机控制电压输出与否了.</p>
+<p>我买的板子上的使能是用跳线做为使能的,就是用跳线短接的时候就已经使能了.</p>
+<p>但是我傻傻的吧 gpio 接上去了,问题就出来了.....我眼看着我的树莓派的灯越来越暗,然后树莓派被烧了.</p>
+<p>其实就是把跳线短接就已经使能了.这个时候把树莓派的 gpio 口输出接到驱动板的 in 口就可以控制了.</p>
+<p>当时用的程序,这个程序是控制了我的电机旋转了接近 180°.</p>
+<p>python3</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> io</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">io.setmode(io.BOARD)</span><br><span class="line"></span><br><span class="line">out1=<span class="number">12</span></span><br><span class="line">out2=<span class="number">16</span></span><br><span class="line">out3=<span class="number">18</span></span><br><span class="line">out4=22s</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># Setup leds</span></span><br><span class="line">    io.setup(out1,io.OUT)</span><br><span class="line">    io.output(out1,<span class="number">0</span>)</span><br><span class="line">    io.setup(out2,io.OUT)</span><br><span class="line">    io.output(out2,<span class="number">0</span>)</span><br><span class="line">    io.setup(out3,io.OUT)</span><br><span class="line">    io.output(out3,<span class="number">0</span>)</span><br><span class="line">    io.setup(out4,io.OUT)</span><br><span class="line">    io.output(out4,<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># Run blinking forever</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            io.output(out1,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out4,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out2,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out1,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out3,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out2,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out4,<span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">            io.output(out3,<span class="number">0</span>)</span><br><span class="line">            time.sleep(<span class="number">0.3</span>)</span><br><span class="line">    <span class="comment"># Stop on Ctrl+C and clean up</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        io.cleanup()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/硬件/">硬件</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tag/python/">python</a><a href="/tag/树莓派/">树莓派</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+	<section id="comment" class="comment">
+		<div id="utterances">
+			<script
+					src="https://utteranc.es/client.js"
+					repo="trim21/blog"
+					issue-term="rasberrypi-and-stepping-motor"
+					crossorigin="anonymous"
+					theme="github-light"
+					async
+			></script>
+		</div>
+	</section>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" rel="external nofollow noreferrer" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" rel="external nofollow noreferrer" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2022 Trim21
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
