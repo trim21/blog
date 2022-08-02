@@ -62,8 +62,9 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-#theme: hacker
-theme: landscape-plus
+theme: hacker
+#theme: material
+#theme: landscape-plus
 
 sitemap:
   path: sitemap.xml
