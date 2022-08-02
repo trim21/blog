@@ -190,25 +190,3 @@ article table pre {
   overflow-x: auto;
   overflow-y: hidden;
 }
-@media (prefers-color-scheme: dark) {
-  article {
-    color: #f6f2f5;
-  }
-  article .article-title {
-    color: #f6f2f5;
-  }
-  article .article-title a {
-    color: #f6f2f5;
-  }
-  article .article-title a:hover {
-    color: #f6f2f5;
-  }
-  article .article-excerpt,
-  article .article-content,
-  article .featured-media {
-    color: #fff;
-  }
-  article code {
-    color: #f45542;
-  }
-}

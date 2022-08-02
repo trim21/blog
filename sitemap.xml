@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
+    
+    <lastmod>2022-08-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.trim21.me/2018/10/python-aiohttp.html</loc>
     
     <lastmod>2022-08-02</lastmod>
@@ -120,15 +129,6 @@
   
   <url>
     <loc>https://blog.trim21.me/2018/11/learning-golang.html</loc>
-    
-    <lastmod>2022-08-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
     
     <lastmod>2022-08-02</lastmod>
     

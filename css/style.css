@@ -459,14 +459,6 @@ body .blog .content {
   padding: 80px 10px 10px;
   margin: 0 auto;
 }
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000;
-  }
-  body .blog {
-    background-color: #110f12;
-  }
-}
 header {
   line-height: 1.8rem;
 }
@@ -712,28 +704,6 @@ article table pre {
   overflow-x: auto;
   overflow-y: hidden;
 }
-@media (prefers-color-scheme: dark) {
-  article {
-    color: #f6f2f5;
-  }
-  article .article-title {
-    color: #f6f2f5;
-  }
-  article .article-title a {
-    color: #f6f2f5;
-  }
-  article .article-title a:hover {
-    color: #f6f2f5;
-  }
-  article .article-excerpt,
-  article .article-content,
-  article .featured-media {
-    color: #fff;
-  }
-  article code {
-    color: #f45542;
-  }
-}
 article.archive {
   padding: 0;
   margin: 2em auto;
@@ -776,23 +746,6 @@ article.archive {
 }
 .archive-post time a:hover {
   color: #f03838;
-}
-@media (prefers-color-scheme: dark) {
-  .archive-post .archive-title {
-    color: #f6f2f5;
-  }
-  .archive-post .archive-title a {
-    color: #fff;
-  }
-  .archive-post .archive-title a:hover {
-    color: #f6f2f5;
-  }
-  .archive-post time a {
-    color: #8e8e93;
-  }
-  .archive-post time a:hover {
-    color: #f03838;
-  }
 }
 article .tags-cloud {
   width: 100%;
@@ -943,19 +896,6 @@ article .categories-cloud .post-categories a:not(:last-of-type):after {
   color: #fff;
   background-color: #f03838;
   border-color: #f03838;
-}
-@media (prefers-color-scheme: dark) {
-  .pagination .pagination-prev,
-  .pagination .pagination-next {
-    color: #f03838;
-    border: 1px solid #636366;
-  }
-  .pagination .pagination-prev:hover,
-  .pagination .pagination-next:hover {
-    color: #000;
-    background-color: #f03838;
-    border-color: #f03838;
-  }
 }
 footer.site-footer {
   position: relative;
@@ -1150,37 +1090,6 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
-}
-@media (prefers-color-scheme: dark) {
-  .entry .gist {
-    background: #222;
-    border: 1px solid #000;
-    text-shadow: 0 0 1px #000;
-    color: #fff;
-  }
-  .entry .gist .gist-file .gist-meta {
-    text-shadow: 0 0 1px #000;
-  }
-  figure.highlight {
-    background: #222;
-    text-shadow: 0 0 1px #000;
-  }
-  figure.highlight figcaption {
-    text-shadow: 0 0 1px #000;
-  }
-  figure.highlight .code {
-    border-left: 1px solid #000;
-    color: #fff;
-  }
-  pre .comment,
-  pre .template_comment,
-  pre .diff .header,
-  pre .doctype,
-  pre .pi,
-  pre .lisp .string,
-  pre .javadoc {
-    color: #586e75;
-  }
 }
 @media (min-width: 768px) {
   article {
