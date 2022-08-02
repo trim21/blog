@@ -13,7 +13,8 @@ jobs:
         node-version: [16]
     steps:
       - uses: actions/checkout@v3
-
+        with:
+          submodules: recursive
       - name: Setup node
         uses: actions/setup-node@v3
         with:
