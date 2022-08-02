@@ -10,17 +10,12 @@
   
 
   
-  <meta name="description" content="GitHub Pages 介绍
-本博客就是用的hexo 生成并自动部署的。主题是landscape-plus 我实际用的时候根据自己的情况做了一些修改.
-主要参照的是 V2ex 上的Hexo 部署 Github， Coding 进行国内外分流最全教程
-刚刚上去看了看,发现楼主域名挂了,所以文章也都挂了..
-ps:coding 现在会在 pages 服务中插广告了,不推荐使用.但是如果你能忍受的话要比 GitHub Pages 速度快一些.
-GitHub Pages 其实就是在 GitHub 的 repo 里面放好你整个博客网站的静态文件.首先使用 hexo 把 markdown 渲染成静态文件(html,css,js),.添加到某个 repo 中,然后 push 到 GitHub 上,这样一来,整个 repo 里面就有了你博客所有的静态文件,GitHub 在你访问特定的域名的时候把相应的静态文件发回来,你就可以访问你的播客了.(所以如果要放其他的网站也是可以的,不一定非要用做博客,比如托管项目文档之类的.)">
+  <meta name="description" content="使用 GitHub actions 自动部属博客到 GitHub pages。">
   
 
   
   
-  <meta name="keywords" content="nodejs,git,gitHub">
+  <meta name="keywords" content="nodejs,git,github">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -88,80 +83,16 @@ GitHub Pages 其实就是在 GitHub 的 repo 里面放好你整个博客网站�
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="GitHub-Pages-介绍">GitHub Pages 介绍</h2>
-<p>本博客就是用的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/zh-cn/">hexo</a> 生成并自动部署的。主题是<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/xiangming/landscape-plus">landscape-plus</a> 我实际用的时候根据自己的情况做了一些修改.</p>
-<p>主要参照的是 V2ex 上的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.v2ex.com/t/264283">Hexo 部署 Github， Coding 进行国内外分流最全教程</a><br>
-刚刚上去看了看,发现楼主域名挂了,所以文章也都挂了..</p>
-<p>ps:coding 现在会在 pages 服务中插广告了,不推荐使用.但是如果你能忍受的话要比 GitHub Pages 速度快一些.</p>
-<p>GitHub Pages 其实就是在 GitHub 的 repo 里面放好你整个博客网站的静态文件.首先使用 hexo 把 markdown 渲染成静态文件(html,css,js),.添加到某个 repo 中,然后 push 到 GitHub 上,这样一来,整个 repo 里面就有了你博客所有的静态文件,GitHub 在你访问特定的域名的时候把相应的静态文件发回来,你就可以访问你的播客了.(所以如果要放其他的网站也是可以的,不一定非要用做博客,比如托管项目文档之类的.)</p>
+        <p>使用 GitHub actions 自动部属博客到 GitHub pages。</p>
 <span id="more"></span>
-<h2 id="安装-git">安装 git</h2>
-<p>git 是一个代码管理工具,官网是<a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/">https://git-scm.com/</a> 如果你已经科学上网了就直接下载好了,因为 git 的安装包是放在 AWS 上面的,所以有很大概率下载不下来.<br>
-可以用阿里云的镜像,找到版本号最大的那个直接安装就好了.<a target="_blank" rel="noopener external nofollow noreferrer" href="https://npm.taobao.org/mirrors/git-for-windows/">https://npm.taobao.org/mirrors/git-for-windows/</a></p>
-<p>安装过程中也是一路下一步.</p>
-<p>安装完后在你的开始菜单中找到 git bash,下面的操作都要在这个黑框框中进行了.</p>
-<h2 id="hexo-安装">hexo 安装</h2>
-<h3 id="linux-用户">linux 用户</h3>
-<p>需要<code>node</code>和<code>npm</code>,比较方便的办法是安装包管理器自带的 nodejs 和 npm,再用 npm 安装<code>n</code>,然后用<code>n</code>安装最新版的 node.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nodejs npm -y</span><br><span class="line">sudo npm install n -g</span><br><span class="line">sudo n latest</span><br></pre></td></tr></table></figure>
-<h3 id="windows">windows</h3>
-<p>下载地址<a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/">https://nodejs.org/</a></p>
-<p>LTS 或者是 Latest 都可以,用来渲染博客的话区别不大.</p>
-<p>安装过程中一路 next，然后在 console 中输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>如果安装成功了，会输出现在安装的 node 的版本。</p>
-<p>然后安装 hexo</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-<p>然后在你想要放博客文件的地方运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init BLOG_DRI_NAME</span><br></pre></td></tr></table></figure>
-<p>在此会新建一个以<code>BLOG_DIR_NAME</code>为名的文件夹在文件夹中就是 hexo 需要的文件。<br>
-（本来想贴个 tree，但是文件太多了，就不贴了。）</p>
-<p>现在看一下效果</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> BLOG_DIR_NAME</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>可以看到控制台输出了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-<p>现在访问<code>http://localhost:4000/</code>就可以看到效果了.</p>
-<p><img src="../static/bd69bf14jw1f3zjixa0x5j21fm0sbaf3.jpg" alt="default theme"></p>
-<p>这是默认主题，而且现在只有一篇文章。打开<code>source/_posts</code>就可以看到。<br>
-再次新建<code>.md</code>文件，就会被渲染成文章。</p>
-<h3 id="安装新主题">安装新主题</h3>
-<p>直接用最流行的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/iissnan/hexo-theme-next">NexT</a>举例吧.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>然后编辑<code>_config.yml</code>,或者<code>_config.yaml</code>,找到其中 theme 的这一行,修改成我们想用的 next</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
-<p>注意在<code>:</code>之后一定要有一个空格，才能被正确识别。</p>
-<p>之后重新<code>hexo s</code>就能看到新的主题了.</p>
-<h2 id="自动部署">自动部署</h2>
-<p>现在这样博客只有自己能看到,想要让别人也能看到就需要 GitHub Pages 服务了.<br>
-首先需要注册一个 GitHub 账号.<br>
-<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/">https://github.com/</a></p>
-<h3 id="新建-GitHub-仓库">新建 GitHub 仓库</h3>
-<p>直接新建一个 repo，名称要叫做<code>your_username.github.io</code></p>
-<h3 id="添加-GitHub-密钥">添加 GitHub 密钥</h3>
-<p>在 bash 中运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;you@youremail.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>然后直接一路回车就好了。看到一个这样子的东西，说明生成成功了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">The key&#x27;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|  .o=XB=         |</span><br><span class="line">|   .+=B.         |</span><br><span class="line">|   ..+* .        |</span><br><span class="line">|    o+++         |</span><br><span class="line">|     +..S        |</span><br><span class="line">|   .  .o..       |</span><br><span class="line">|    = +=+        |</span><br><span class="line">|     O+B.=       |</span><br><span class="line">|     .E++.=      |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-<p>在 GitHub 上的个人帐号设置里添加一个 sshkey，把生成的 id_sra.pub 的文件内容复制过去就可以了。</p>
-<h3 id="设置自动部署">设置自动部署</h3>
-<p>配置播客文件夹下的<code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">网站标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">描述</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">default</span></span><br><span class="line"><span class="attr">email:</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Hong_Kong</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">default_category:</span> <span class="string">uncategorized</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line"><span class="attr">tag_map:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">NexT</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">你的repo地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<p>可以设置首页上现实标签，分类和所有文章，但是这个怎么设置我忘记了= =||</p>
-<p>主题在<code># Extensions</code>里的<code>theme</code>中设置</p>
-<p>需要设置的是<code># Deployment</code></p>
-<p>需要安装插件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>安装成功之后运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo deploy</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p><code>hexo clean</code>清除目前已经生成的静态文件。<br>
-<code>hexo g</code>是<code>hexo generate</code>的缩写，根据 md 渲染生成静态网页<br>
-<code>hexo deploy</code>发布到 GitHub。</p>
-<p>或者你可以直接同时生成和发布</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<p>如果发布成功了,会显示 git 仓库已经提交.也可以去 GitHub 的相应仓库看看里面的文件有没有更新.</p>
-<p>输出说明 deploy 已经成功了，此时访问<code>your_username.github.io</code>就可以看到你的博客了。</p>
+<h2 id="GitHub-Pages-介绍">GitHub Pages 介绍</h2>
+<p>github pages 是 github 提供的服务，github 会为特定仓库的默认分支（比如 <code>$&#123;username&#125;.github.io</code> ）或者其他仓库的 <code>gh-pages</code> 分支提供静态文件服务。</p>
+<p><code>$&#123;username&#125;.github.io</code> 仓库的文件会直接放在 <code>$&#123;username&#125;.github.io</code> 域名的根目录下，其他的仓库则会放在<code>/$&#123;repo_name&#125;/</code> 子目录下。</p>
+<p>比如，我在 <code>blog</code> 仓库下创建 <code>gh-pages</code> 分支，在根目录创建一个 <code>index.html</code> 文件。以我的用户名<code>trim21</code>为例，访问 <code>https://trim21.github.io/blog/index.html</code> 就可以正常看到文件。</p>
+<h2 id="GitHub-Actions">GitHub Actions</h2>
+<p>2019 年 GitHub 上线了自己的 CI，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.github.com/cn/actions">GitHub Actions</a>，在此之前大家一般会使用 travis CI 或者 circle CI 等。但是直接用 github actions 可以避免额外注册账号，设置 github access token 等等权限问题。</p>
+<p>有了 github actions 之后就不再需要博客提供的各种部属插件了，只需要在 github actions 中构建博客，并且把生成的<code>public/</code>文件夹推到<code>gh-pages</code> 分支就可以了。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">node</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;16&quot;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">yarn</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">yarn</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line">          <span class="attr">commit_message:</span> <span class="string">deploy</span> <span class="string">$&#123;&#123;</span> <span class="string">github.ref</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">cname:</span> <span class="string">blog.trim21.me</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -185,7 +116,7 @@ GitHub Pages 其实就是在 GitHub 的 repo 里面放好你整个博客网站�
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tag/nodejs/">nodejs</a><a href="/tag/git/">git</a><a href="/tag/gitHub/">gitHub</a>
+        <a href="/tag/nodejs/">nodejs</a><a href="/tag/git/">git</a><a href="/tag/github/">github</a>
     </span>
     
 
