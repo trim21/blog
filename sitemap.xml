@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
-    
-    <lastmod>2022-09-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.trim21.me/2018/10/bgm.tv-ip-viewer.html</loc>
     
     <lastmod>2022-09-14</lastmod>
@@ -30,6 +21,15 @@
   
   <url>
     <loc>https://blog.trim21.me/2019/12/build-a-nas.html</loc>
+    
+    <lastmod>2022-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
     
     <lastmod>2022-09-14</lastmod>
     
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://blog.trim21.me/tag/shell/</loc>
-    <lastmod>2022-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.trim21.me/tag/bgm/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,6 +234,13 @@
   
   <url>
     <loc>https://blog.trim21.me/tag/nas/</loc>
+    <lastmod>2022-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/tag/shell/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
