@@ -63,6 +63,12 @@ WARNING: The Python sqlite3 extension was not compiled. Missing the SQLite3 lib?
 sudo apt install libsqlite3-dev
 ```
 
+WARNING: The Python lzma extension was not compiled. Missing the lzma lib?
+
+```console
+sudo apt-get install liblzma-dev
+```
+
 实际使用的时候可能会报错
 
 ModuleNotFoundError: No module named '\_ctypes'
