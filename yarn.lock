@@ -462,10 +462,10 @@ hexo-front-matter@^3.0.0:
   dependencies:
     js-yaml "^4.1.0"
 
-hexo-fs@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-4.0.0.tgz#65edfc28139b2ea470d08b94c495ab7ada97378e"
-  integrity sha512-nyFouUzoxabGraHzDGoF90sq+KDlZV94nUQarfVxwxBdI7x3LVeb9Y3r+HKYyxUyo2HtrJUILJh3UM0qzdBq9A==
+hexo-fs@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-4.1.1.tgz#4a95d0d6b15eb7baf642ce54b8234fb32e5f032d"
+  integrity sha512-aDysNTyv8ElcerbFVbPLRXnYt+QDY6gAOZZ5DLbCxudY0Ywppqd+uZ03gZ2BDypIBvmNB27WYWYz76M+Yv/YXw==
   dependencies:
     bluebird "^3.7.2"
     chokidar "^3.5.3"
