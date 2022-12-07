@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.trim21.me/2017/05/auto-deploy-with-webhook.html</loc>
+    
+    <lastmod>2022-12-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
     
     <lastmod>2022-12-07</lastmod>
@@ -120,15 +129,6 @@
   
   <url>
     <loc>https://blog.trim21.me/2018/10/webpack-userscript.html</loc>
-    
-    <lastmod>2022-12-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2017/05/auto-deploy-with-webhook.html</loc>
     
     <lastmod>2022-12-07</lastmod>
     
