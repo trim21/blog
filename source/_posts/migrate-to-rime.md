@@ -12,7 +12,7 @@ QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
 
 <!-- more -->
 
-![最终设置的效果](../static/rime-preview.jpg)
+![最终设置的效果](/static/rime-preview.jpg)
 
 ## 安装
 

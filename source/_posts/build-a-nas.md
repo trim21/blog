@@ -55,20 +55,20 @@ tags:
 
 硬盘还没选好, 先把其他的硬件装起来了.
 
-![机箱架子](../static/nas/bd69bf14ly1ga6r768jf7j23402c04qx.jpg)
-![正面](../static/nas/bd69bf14ly1ga6r674zqxj22c0340kjt.jpg)
+![机箱架子](/static/nas/bd69bf14ly1ga6r768jf7j23402c04qx.jpg)
+![正面](/static/nas/bd69bf14ly1ga6r674zqxj22c0340kjt.jpg)
 
-![之前的itx机箱](../static/nas/bd69bf14ly1ga6r542c9aj22c0340e8a.jpg)
+![之前的itx机箱](/static/nas/bd69bf14ly1ga6r542c9aj22c0340e8a.jpg)
 
 空间非常紧张, 说紧凑也行
 
-![好几年没见](../static/nas/bd69bf14ly1ga6r4qqltgj22c0340b2g.jpg)
+![好几年没见](/static/nas/bd69bf14ly1ga6r4qqltgj22c0340b2g.jpg)
 
-![CPU背板](../static/nas/bd69bf14ly1ga6r47dg8gj22c03407wr.jpg)
+![CPU背板](/static/nas/bd69bf14ly1ga6r47dg8gj22c03407wr.jpg)
 
 已经有点生锈了
 
-![20191222_152216649_iOS.heic](../static/nas/bd69bf14ly1ga6r3qvkv5j22c03407wq.jpg)
+![20191222_152216649_iOS.heic](/static/nas/bd69bf14ly1ga6r3qvkv5j22c03407wq.jpg)
 
 这个机箱要把所有的线接上之后再把主板扣上去.
 

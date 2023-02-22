@@ -11,7 +11,7 @@ tags:
 
 <!-- more -->
 
-![效果图](../static/bd69bf14ly1fw4c4bspy5j20b10cagmq.jpg)
+![效果图](/static/bd69bf14ly1fw4c4bspy5j20b10cagmq.jpg)
 
 按钮和弹出框都是 Vue 做的.
 

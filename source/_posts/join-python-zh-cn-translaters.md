@@ -23,7 +23,7 @@ tags:
 
 翻译是以每段为单位进行的
 
-![](../static/bd69bf14ly1g1l2x2j9x2j20yh0po7fd.jpg)
+![](/static/bd69bf14ly1g1l2x2j9x2j20yh0po7fd.jpg)
 
 [python/python-docs-zh-cn: zh_CN translation of the Python documentation](https://github.com/python/python-docs-zh-cn)
 
