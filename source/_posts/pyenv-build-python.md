@@ -83,8 +83,4 @@ sudo apt install libffi-dev
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 ```
 
-`xxenv-latest` 用来直接选中最新的版本，比如使用 3.8 来选中最新的 3.8.9 版本。
-
-```console
-git clone https://github.com/momo-lab/xxenv-latest.git "$(pyenv root)"/plugins/xxenv-latest
-```
+有些旧文章可能还推荐 `xxenv-latest` 这一插件，但是这一功能已经在比较新的 pyenv 内置了，而且 `latest` 命令也已经被占用，所以不再需要了。现在只需要使用 `pyenv install 3.8` 就会自动使用目前最新的 python 3.8 子版本，如 `3.8.16` 。
