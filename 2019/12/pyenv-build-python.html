@@ -88,9 +88,9 @@
 <p>官方提供了安装脚本</p>
 <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">curl https://cdn.jsdelivr.net/gh/pyenv/pyenv-installer/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure>
 <p>(用 jsdeliver 是因为 raw.githubusercontent.com 现在访问不通了)</p>
-<p>启用 cache:</p>
+<p>启用 cache，用于缓存下载的 python 源代码:</p>
 <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">mkdir -p .pyenv/cache</span><br></pre></td></tr></table></figure>
-<p>使用 ccache, 可以缓存构件中的对象</p>
+<p>使用 ccache, 可以缓存编译中产生的中间文件，不是必需，但是在多次构建统一版本的 python 时可以有效加速。</p>
 <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yyuu/pyenv-ccache.git $(pyenv root)/plugins/pyenv-ccache</span><br><span class="line">sudo apt install ccache</span><br></pre></td></tr></table></figure>
 <p>安装过程中会出现的错误</p>
 <p>zipimport.ZipImportError: can't decompress data; zlib not available</p>
