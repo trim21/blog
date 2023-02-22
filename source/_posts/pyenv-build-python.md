@@ -18,13 +18,13 @@ curl https://cdn.jsdelivr.net/gh/pyenv/pyenv-installer/bin/pyenv-installer | bas
 
 (用 jsdeliver 是因为 raw.githubusercontent.com 现在访问不通了)
 
-启用 cache:
+启用 cache，用于缓存下载的 python 源代码:
 
 ```console
 mkdir -p .pyenv/cache
 ```
 
-使用 ccache, 可以缓存构件中的对象
+使用 ccache, 可以缓存编译中产生的中间文件，不是必需，但是在多次构建统一版本的 python 时可以有效加速。
 
 ```console
 git clone https://github.com/yyuu/pyenv-ccache.git $(pyenv root)/plugins/pyenv-ccache
