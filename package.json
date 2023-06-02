@@ -8,7 +8,7 @@
     "build": "hexo g -d",
     "gen": "hexo clean && hexo g"
   },
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "yarn@3.6.0",
   "hexo": {
     "version": "6.3.0"
   },
