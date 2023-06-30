@@ -992,9 +992,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hexo-renderer-markdown-it@npm:7.0.0":
-  version: 7.0.0
-  resolution: "hexo-renderer-markdown-it@npm:7.0.0"
+"hexo-renderer-markdown-it@npm:7.1.0":
+  version: 7.1.0
+  resolution: "hexo-renderer-markdown-it@npm:7.1.0"
   dependencies:
     hexo-util: ^3.0.1
     markdown-it: ^13.0.1
@@ -1009,7 +1009,7 @@ __metadata:
     markdown-it-mark: ^3.0.0
     markdown-it-sub: ^1.0.0
     markdown-it-sup: ^1.0.0
-  checksum: b6ad54038c53bac9c3bc7c9b32efe2f6344be89296301706f66217a22c314173f86ffb112807b388a40d16a2fcf368b9768cc7c44592c4a4cf29b3b2149b624d
+  checksum: cc96c99a1b898995450dec6bb82ca85ada5b1f23003d65d381e2adf54fe68a1f98e61a9afbbd52e300687dd98de1f4eb601e661b5dd41d2e0722717b08990969
   languageName: node
   linkType: hard
 
@@ -1054,7 +1054,7 @@ __metadata:
     hexo-generator-sitemap: 3.0.1
     hexo-generator-tag: 2.0.0
     hexo-renderer-ejs: 2.0.0
-    hexo-renderer-markdown-it: 7.0.0
+    hexo-renderer-markdown-it: 7.1.0
     hexo-renderer-stylus: 3.0.0
     hexo-server: 3.0.0
     markdown-it-for-inline: 0.1.1
