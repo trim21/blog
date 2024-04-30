@@ -2,51 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.trim21.me/2016/04/build-blog-whith-hexo-and-github-pages.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2019/06/build-python-package-with-pyinstaller.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2019/03/join-python-zh-cn-translaters.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2018/11/learning-golang.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.trim21.me/2018/10/python-aiohttp.html</loc>
     
     <lastmod>2024-04-30</lastmod>
@@ -110,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.trim21.me/2018/10/bgm.tv-ip-viewer.html</loc>
     
     <lastmod>2024-04-30</lastmod>
@@ -128,7 +74,61 @@
   </url>
   
   <url>
+    <loc>https://blog.trim21.me/2017/12/bash-zsh-autocompltion.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.trim21.me/2019/12/build-a-nas.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2016/04/build-blog-whith-hexo-and-github-pages.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2019/06/build-python-package-with-pyinstaller.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2019/03/join-python-zh-cn-translaters.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2018/11/learning-golang.html</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.trim21.me/2019/12/pyenv-build-python.html</loc>
     
     <lastmod>2024-04-30</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://blog.trim21.me/tag/shell/</loc>
+    <loc>https://blog.trim21.me/tag/bgm/</loc>
     <lastmod>2024-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.trim21.me/tag/bgm/</loc>
+    <loc>https://blog.trim21.me/tag/shell/</loc>
     <lastmod>2024-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
