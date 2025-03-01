@@ -41,3 +41,20 @@ article.archive {
 .archive-post time a:hover {
   color: #f03838;
 }
+@media (prefers-color-scheme: dark) {
+  .archive-post .archive-title {
+    color: #f6f2f5;
+  }
+  .archive-post .archive-title a {
+    color: #fff;
+  }
+  .archive-post .archive-title a:hover {
+    color: #f6f2f5;
+  }
+  .archive-post time a {
+    color: #8e8e93;
+  }
+  .archive-post time a:hover {
+    color: #f03838;
+  }
+}

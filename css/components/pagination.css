@@ -28,3 +28,16 @@
   background-color: #f03838;
   border-color: #f03838;
 }
+@media (prefers-color-scheme: dark) {
+  .pagination .pagination-prev,
+  .pagination .pagination-next {
+    color: #f03838;
+    border: 1px solid #636366;
+  }
+  .pagination .pagination-prev:hover,
+  .pagination .pagination-next:hover {
+    color: #000;
+    background-color: #f03838;
+    border-color: #f03838;
+  }
+}
