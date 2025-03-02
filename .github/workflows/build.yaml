@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+  pull_request:
+    branches:
+      - master
+
 env:
   hugo: "0.144.2"
 
@@ -28,6 +32,7 @@ jobs:
       - run: hugo build
 
       - name: Deploy
+        if: ${{ github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./public
