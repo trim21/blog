@@ -9,8 +9,6 @@ type: post
 
 本项目已弃坑。
 
-先放成品 [bgm-ip-viewer](http://bgm-ip-viewer.trim21.cn)
-
 在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
 
 <!-- more -->

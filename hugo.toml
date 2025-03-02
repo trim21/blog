@@ -6,6 +6,9 @@ enableRobotsTXT = true
 enableGitInfo = true
 titleCaseStyle = 'none'
 
+[permalinks]
+posts = '/:year/:month/:slugorfilename/'
+
 [pagination]
 pagerSize = 20
 
@@ -14,7 +17,7 @@ dateFormat = "2006-01-02"
 customCommentHTML = """
 <script src="https://utteranc.es/client.js"
     repo="trim21/blog"
-    issue-term="title"
+    issue-term="pathname"
     crossorigin="anonymous"
     async></script>
 """
