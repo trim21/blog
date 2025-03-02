@@ -8,13 +8,9 @@
   "customManagers": [
     {
       "customType": "jsonata",
-      "fileMatch": [
-        "^.github/workflows/.*\\.ya?ml?$"
-      ],
+      "fileMatch": ["^.github/workflows/.*\\.ya?ml?$"],
       "fileFormat": "yaml",
-      "matchStrings": [
-        "[env.{'currentValue': hugo}]"
-      ],
+      "matchStrings": ["[env.{'currentValue': hugo}]"],
       "depNameTemplate": "hugo",
       "packageNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
@@ -23,9 +19,7 @@
   "packageRules": [
     {
       "semanticCommitType": "build",
-      "matchPackageNames": [
-        "rust-lang/rust"
-      ]
+      "matchPackageNames": ["rust-lang/rust"]
     }
-  ],
+  ]
 }

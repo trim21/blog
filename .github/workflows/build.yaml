@@ -23,7 +23,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '${{ env.hugo }}'
+          hugo-version: "${{ env.hugo }}"
 
       - run: hugo build
 
