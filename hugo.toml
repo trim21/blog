@@ -26,9 +26,6 @@ Title = "Hi there"
 name = 'github'
 url = "https://github.com/trim21"
 
-[analytics.google]
-SiteVerificationTag = "UA-91727260-1"
-
 [[menu.main]]
 name = "Blog"
 weight = 1
