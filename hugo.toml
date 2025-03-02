@@ -5,6 +5,8 @@ theme = 'gokarna'
 enableRobotsTXT = true
 enableGitInfo = true
 titleCaseStyle = 'none'
+buildExpired = true
+noChmod = true
 
 [permalinks]
 posts = '/:year/:month/:slugorfilename/'
