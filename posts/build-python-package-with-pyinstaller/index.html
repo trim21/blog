@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>用PyInstaller打包python应用</title>
+    <meta name="description" content="那天突然好奇，docker-compose是用什么语言写的。然后一看，发现居然是用 python2 写的。
+但想到我安装的时候从来没在乎过机器上有没有安装 python，或者我的 python 版本是多少，而是按照官网的文档，直接下载一个二进制文件来安装的。突然眼前一亮。看了一下对应的构建代码，发现他是 …">
+    <meta name="keywords" content='python'>
+
+    <meta property="og:url" content="https://blog.trim21.me/posts/build-python-package-with-pyinstaller/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="用PyInstaller打包python应用">
+    <meta property="og:description" content="那天突然好奇，docker-compose是用什么语言写的。然后一看，发现居然是用 python2 写的。
+但想到我安装的时候从来没在乎过机器上有没有安装 python，或者我的 python 版本是多少，而是按照官网的文档，直接下载一个二进制文件来安装的。突然眼前一亮。看了一下对应的构建代码，发现他是 …">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="用PyInstaller打包python应用">
+    <meta name="twitter:description" content="那天突然好奇，docker-compose是用什么语言写的。然后一看，发现居然是用 python2 写的。
+但想到我安装的时候从来没在乎过机器上有没有安装 python，或者我的 python 版本是多少，而是按照官网的文档，直接下载一个二进制文件来安装的。突然眼前一亮。看了一下对应的构建代码，发现他是 …">
+    <meta property="twitter:domain" content="https://blog.trim21.me/posts/build-python-package-with-pyinstaller/">
+    <meta property="twitter:url" content="https://blog.trim21.me/posts/build-python-package-with-pyinstaller/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/posts/build-python-package-with-pyinstaller/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/about/" > About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>用PyInstaller打包python应用</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              June 2, 2019
+
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/python">python</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>那天突然好奇，<code>docker-compose</code>是用什么语言写的。然后一看，发现居然是用 python2 写的。</p>
+<p>但想到我安装的时候从来没在乎过机器上有没有安装 python，或者我的 python 版本是多少，而是按照官网的文档，直接下载一个二进制文件来安装的。突然眼前一亮。看了一下对应的构建代码，发现他是用<a href="https://github.com/pyinstaller/pyinstaller"><code>PyInstaller</code></a>来进行打包的，把一个 python 应用打包成单个的二进制文件。</p>
+<p>一般来说，正常的 python 包的分发会基于 pip 的，发布到 pypi 和用户下载的都是代码文件（和其他语言编译的二进制文件），如果依赖于其他的 package 会在安装的时候再进行下载。</p>
+<p>但用<code>PyInstaller</code>，打包出来的可执行文件中包含了所有用到的依赖和 python 解释器，并不需要本机安装了 python 或者 pip，像 docker-compose 这样的工具，打包之后成一个单文件，对于用户在安装和使用的时候都会方便许多，而对于我们开发者来说，就不用考虑兼容旧的 python 版本，可以直接使用 python3.6 的新语法如 type annotation 等，使用某些只有 python3.6 以上版本才能用的依赖库，自然也比原来爽了许多。</p>
+<p>首先，PyInstaller 的工作原理是从一个 py 文件出发在静态分析出所有用到的依赖，然后把所有的依赖打包起来，在用户使用二进制的时候释放到一个临时文件夹中，用 Python 解释器来运行。</p>
+<p>PyInstaller 入门的文章已经有很多了，就不再重复写一遍了，主要遇到的坑有这么几个。</p>
+<h2 id="用到的非-py-文件要手动指定路径一起打包">用到的非 py 文件要手动指定路径一起打包</h2>
+<p>我的程序中用到了一些模板文件，是在程序运行起来之后才根据需要加载决定是否渲染的。这些文件因为不是 python 文件，所以 PyInstaller 在分析的时候也不会知道是程序的一部分，就不会打包在二进制中。</p>
+<p>在程序运行的时候，如果用到了对应的文件，因为没有被打包进来的缘故，程序就会报错。</p>
+<p>如果用命令行来指定要一起打包的文件效率过低，所以可以编写一个 spec 文件来告诉 PyInstaller 要如何打包。</p>
+<p>（这是我之前尝试打包我的程序是用到的 spec 文件，但是因为不支持<code>entry_points</code>的原因，所以我最后放弃了使用这个办法，但是打包出来的程序在不用到<code>entry_points</code>的情况下是跟直接使用 pip 安装行为一致的。）</p>
+<p><code>bgmi.spec</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># -*- mode: python -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">PyInstaller.building.api</span> <span style="color:#ff7b72">import</span> EXE, PYZ
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">from</span> <span style="color:#ff7b72">PyInstaller.building.build_main</span> <span style="color:#ff7b72">import</span> Analysis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os.path</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">importlib</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bindata_dir <span style="color:#ff7b72;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#39;bgmi/front/templates&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#39;bgmi/lib/models/migrations&#39;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">def</span> <span style="color:#d2a8ff;font-weight:bold">get_bindata</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> dir_path <span style="color:#ff7b72;font-weight:bold">in</span> bindata_dir:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span> file <span style="color:#ff7b72;font-weight:bold">in</span> os<span style="color:#ff7b72;font-weight:bold">.</span>listdir(dir_path):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">yield</span> (os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(dir_path, file), dir_path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>block_cipher <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>package_imports <span style="color:#ff7b72;font-weight:bold">=</span> [[<span style="color:#a5d6ff">&#39;peewee_migrate&#39;</span>, [<span style="color:#a5d6ff">&#39;template.txt&#39;</span>]]]
+</span></span><span style="display:flex;"><span>datas <span style="color:#ff7b72;font-weight:bold">=</span> list(get_bindata())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> package, files <span style="color:#ff7b72;font-weight:bold">in</span> package_imports:
+</span></span><span style="display:flex;"><span>    proot <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>dirname(importlib<span style="color:#ff7b72;font-weight:bold">.</span>import_module(package)<span style="color:#ff7b72;font-weight:bold">.</span>__file__)
+</span></span><span style="display:flex;"><span>    datas<span style="color:#ff7b72;font-weight:bold">.</span>extend((os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(proot, f), package) <span style="color:#ff7b72">for</span> f <span style="color:#ff7b72;font-weight:bold">in</span> files)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a <span style="color:#ff7b72;font-weight:bold">=</span> Analysis([<span style="color:#a5d6ff">&#39;bgmi/__main__.py&#39;</span>],
+</span></span><span style="display:flex;"><span>             pathex<span style="color:#ff7b72;font-weight:bold">=</span>[<span style="color:#a5d6ff">&#39;.&#39;</span>],
+</span></span><span style="display:flex;"><span>             hiddenimports<span style="color:#ff7b72;font-weight:bold">=</span>[],
+</span></span><span style="display:flex;"><span>             hookspath<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">None</span>,
+</span></span><span style="display:flex;"><span>             datas<span style="color:#ff7b72;font-weight:bold">=</span>datas,
+</span></span><span style="display:flex;"><span>             runtime_hooks<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">None</span>,
+</span></span><span style="display:flex;"><span>             cipher<span style="color:#ff7b72;font-weight:bold">=</span>block_cipher)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pyz <span style="color:#ff7b72;font-weight:bold">=</span> PYZ(a<span style="color:#ff7b72;font-weight:bold">.</span>pure, cipher<span style="color:#ff7b72;font-weight:bold">=</span>block_cipher)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exe <span style="color:#ff7b72;font-weight:bold">=</span> EXE(
+</span></span><span style="display:flex;"><span>    pyz,
+</span></span><span style="display:flex;"><span>    a<span style="color:#ff7b72;font-weight:bold">.</span>scripts,
+</span></span><span style="display:flex;"><span>    a<span style="color:#ff7b72;font-weight:bold">.</span>binaries,
+</span></span><span style="display:flex;"><span>    a<span style="color:#ff7b72;font-weight:bold">.</span>zipfiles,
+</span></span><span style="display:flex;"><span>    a<span style="color:#ff7b72;font-weight:bold">.</span>datas,
+</span></span><span style="display:flex;"><span>    name<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;bgmi&#39;</span>,
+</span></span><span style="display:flex;"><span>    debug<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">False</span>,
+</span></span><span style="display:flex;"><span>    strip<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">None</span>,
+</span></span><span style="display:flex;"><span>    upx<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>,
+</span></span><span style="display:flex;"><span>    console<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>,
+</span></span><span style="display:flex;"><span>    bootloader_ignore_signals<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">True</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>其中，<code>a = Analysis(['bgmi/__main__.py'],</code>为程序的入口就是原本如果使用命令行的话，在 PyInstaller 后面跟的那个 py 文件路径。</p>
+<p>而<code>get_bin_data</code>则是找到所有要打包进去的非 py 文件，告诉 PyInstaller 这些文件需要打包。<code>datas</code>的格式应该是一个<code>List[List]</code>。而内部的列表第一个元素是文件的路径，第二个元素是文件要打包到的文件夹。</p>
+<p>比如说，如果要一起打包<code>a/b/c.txt</code>文件，<code>datas</code>中就应该添加一项<code>[('a/b/c.txt', 'a/b'), ]</code>，含义是告诉 PyInstaller 要把<code>。/b/c.txt</code>文件打包到<code>a/b</code>文件夹中，如果要打包整个文件夹，我不太确定能不能直接填写文件夹的路径，我是选择了用 python 列出文件夹内的所有文件，然后一股脑的添加到 datas 里面。</p>
+<p>而如果你用到的某个依赖（没错，在我这个例子里面就是<code>peewee-migrate</code>，他有一个<code>template.txt</code>文件，是在运行的时候动态读取的，同样需要添加到 datas 中。</p>
+<p>就是这段代码实现的功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>package_imports <span style="color:#ff7b72;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span>    [<span style="color:#a5d6ff">&#39;peewee_migrate&#39;</span>, [<span style="color:#a5d6ff">&#39;template.txt&#39;</span>]],
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>datas <span style="color:#ff7b72;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> package, files <span style="color:#ff7b72;font-weight:bold">in</span> package_imports:
+</span></span><span style="display:flex;"><span>    proot <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>dirname(importlib<span style="color:#ff7b72;font-weight:bold">.</span>import_module(package)<span style="color:#ff7b72;font-weight:bold">.</span>__file__)
+</span></span><span style="display:flex;"><span>    datas<span style="color:#ff7b72;font-weight:bold">.</span>extend((os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(proot, f), package) <span style="color:#ff7b72">for</span> f <span style="color:#ff7b72;font-weight:bold">in</span> files)
+</span></span></code></pre></div><p>在<code>package_imports</code>中定义每个包需要额外引入的文件，在下面循环中找到所有需要打包的文件的路径，然后添加到 data 中去。</p>
+<h2 id="支持-entry_point">支持 entry_point</h2>
+<p>这个支持 entry point 的意思不是说，我用来有一个用<code>console_scripts</code>做为入口的 python 程序如何用 pyinstaller 打包。</p>
+<p>而是说，如果你在<code>entry_points</code>里添加了其他的东西，比如说我的 python 程序中添加了这样的几个<code>entry_points</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#ff7b72">[options.entry_points]</span>
+</span></span><span style="display:flex;"><span>bgmi.downloader.delegate <span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">  aria2-rpc = bgmi.downloader.aria2_rpc:Aria2DownloadRPC
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">  deluge-rpc = bgmi.downloader.deluge:DelugeRPC
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">  transmission-rpc = bgmi.downloader.transmissionRpc:TransmissionRPC</span>
+</span></span></code></pre></div><p>如果程序是通过<code>pip install -e .</code>安装到 python 环境中的，在运行程序的时候可以正常被<code>load_entry_point</code>加载。</p>
+<p>但如果是在 pyinstaller 打包出来的二进制中，默认程序是无法加载到任何<code>entry_points</code>的，因为<code>PyInstaller</code>默认只会打包所有的 py 文件，而一个包的<code>entry_points</code>的信息保存在<code>package</code>同级的目录<code>package.egg-ino/entry_points.txt</code>文件中，需要用之前提到的办法，把这个文件夹也打包进去，而且要跟<code>package</code>同级。这样在运行释放临时文件的时候，才能正常加载<code>package</code>对应的<code>entry_points</code>。</p>
+
+        
+        <div class="post-comments">
+            <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "trim21" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

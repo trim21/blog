@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Trim21&#39;s Blog</title>
+    <link>https://blog.trim21.me/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Trim21&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 May 2017 02:20:20 +0800</lastBuildDate>
+    <atom:link href="https://blog.trim21.me/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ubuntu使用命令重启进入BIOS</title>
+      <link>https://blog.trim21.me/posts/ubuntu-reboot-to-bios/</link>
+      <pubDate>Fri, 19 May 2017 02:20:20 +0800</pubDate>
+      <guid>https://blog.trim21.me/posts/ubuntu-reboot-to-bios/</guid>
+      <description>&lt;p&gt;今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&amp;hellip;)百度搜索无果,google 发现了结果&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reboot --firmware-setup&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;会直接重启进入 BIOS&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
