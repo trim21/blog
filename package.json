@@ -5,6 +5,7 @@
   "scripts": {
     "format": "prettier -w .",
     "pre-commit": "lint-staged",
+    "update": "git commit -m update -a && git push",
     "prepare": "husky"
   },
   "dependencies": {
