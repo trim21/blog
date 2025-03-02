@@ -1,4 +1,4 @@
-# baseURL = 'https://blog.trim21.me/'
+baseURL = 'https://blog.trim21.me/'
 languageCode = 'zh-cn'
 title = "Trim21's Blog"
 # theme = "hugo-coder"
