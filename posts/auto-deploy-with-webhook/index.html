@@ -185,78 +185,55 @@
 <p>因为 github pages 要求 push 到<code>${username}.github.io</code>的仓库中, 比如我的用户名是<code>trim21</code>, 我就需要把文件 push 到<code>trim21.github.io</code>去, 所以我们需要告诉<code>hexo</code>他要操作的部署的仓库地址.</p>
 <p>而<code>_config.yml</code>里面又不能使用环境变量, 只能每次部署的时候把对应的仓库链接给 echo 进去, 避免泄漏.</p>
 <p>我的<code>_config.yml</code>文件结尾是这样的</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Deployment</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#8b949e;font-style:italic">## Docs: https://hexo.io/docs/deployment.html</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">deploy</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">type</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">git</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">branch</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">master</span><span style="color:#6e7681">
-</span></span></span></code></pre></div><p>然后 echo 到<code>_config.yml</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;  repository: https://</span><span style="color:#a5d6ff">${</span><span style="color:#79c0ff">token</span><span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">@github.com/Trim21/trim21.github.io&#34;</span> &gt;&gt; ./_config.yml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span></code></pre></div><p>然后 echo 到<code>_config.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;  repository: https://</span><span style="color:#e6db74">${</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">@github.com/Trim21/trim21.github.io&#34;</span> &gt;&gt; ./_config.yml
 </span></span></code></pre></div><p>就变成了</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Deployment</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#8b949e;font-style:italic">## Docs: https://hexo.io/docs/deployment.html</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">deploy</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">type</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">git</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">branch</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">master</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">repository</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">https://real_token@github.com/Trim21/trim21.github.io</span><span style="color:#6e7681">
-</span></span></span></code></pre></div><p>当然, 这里的 token 因为已经在环境变量中设置好了, 所以在配置文件中已经是正确的路径地址了.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">https://real_token@github.com/Trim21/trim21.github.io</span>
+</span></span></code></pre></div><p>当然, 这里的 token 因为已经在环境变量中设置好了, 所以在配置文件中已经是正确的路径地址了.</p>
 <p>而远程地址是这样的情况下, 就可以正常使用<code>hexo-deploy-git</code>了, 而不需要额外的设置.</p>
 <p>还有一个坑, 因为 travis 不允许从对应的仓库 clone 两次, 所以不能把文章直接 clone 到<code>source/_posts</code>去, 要把之前 clone 的文章移动过去&hellip;</p>
 <p>最后贴一下我的 travis 配置.</p>
 <p>其中<code>git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</code>的一步是多余的, 如果你没有提前 clone 的话, hexo 的部署插件会替你 clone.</p>
 <p>而<code>myecho</code>文件里除了把正确的仓库地址 echo 的文件里, 还有对应的<code>hexo g -d</code>, 和调用腾讯云的 api 来刷新 cdn 缓存.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#7ee787">branches</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">only</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span>- <span style="color:#a5d6ff">master</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">language</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">node_js</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">sudo</span>:<span style="color:#6e7681"> </span><span style="color:#79c0ff">false</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">node_js</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">&#34;8.11&#34;</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">install</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">sudo apt install libtool automake autoconf nasm -y</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">cd ..</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">git clone --depth 1 https://github.com/Trim21/blog.git</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">git config --global user.name $username</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">git config --global user.email $email</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">cd blog</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">mv ../blog-posts ./source/_posts</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">npm install</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">git clone https://github.com/Trim21/landscape-plus themes/landscape-plus</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">ls -ahl</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#8b949e;font-style:italic"># - chmod +x myecho</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">script</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>- <span style="color:#a5d6ff">bash myecho</span><span style="color:#6e7681">
-</span></span></span></code></pre></div>
-        
-        <div class="post-comments">
-            <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "trim21" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">only</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">master</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">language</span>: <span style="color:#ae81ff">node_js</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">sudo</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">node_js</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;8.11&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">install</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">sudo apt install libtool automake autoconf nasm -y</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cd ..</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone --depth 1 https://github.com/Trim21/blog.git</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git config --global user.name $username</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git config --global user.email $email</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cd blog</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">mv ../blog-posts ./source/_posts</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">npm install</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone https://github.com/Trim21/landscape-plus themes/landscape-plus</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">ls -ahl</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># - chmod +x myecho</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">bash myecho</span>
+</span></span></code></pre></div>
         
     </div>
 
@@ -266,6 +243,16 @@
 
     
     
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="title"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
     
 </div>
 

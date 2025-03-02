@@ -172,42 +172,19 @@ freetype libpng libffi cairocffi freetype 下载地址 http://download.savannah.
 <li>cairocffi</li>
 </ol>
 <p>freetype 下载地址 <a href="http://download.savannah.gnu.org/releases/freetype/">http://download.savannah.gnu.org/releases/freetype/</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.gz
 </span></span><span style="display:flex;"><span>tar xvf freetype-2.6.5
 </span></span><span style="display:flex;"><span>sudo make
 </span></span><span style="display:flex;"><span>sudo make install
 </span></span></code></pre></div><p>libpng 和 libffi 都在 apt 上有</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#ff7b72;font-weight:bold">(</span>master<span style="color:#ff7b72;font-weight:bold">)</span> ✗ search libffi
-</span></span><span style="display:flex;"><span>libffi-dev - Foreign Function Interface library <span style="color:#ff7b72;font-weight:bold">(</span>development files<span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#ff7b72;font-weight:bold">(</span>master<span style="color:#ff7b72;font-weight:bold">)</span> ✗ search libpng
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗ search libffi
+</span></span><span style="display:flex;"><span>libffi-dev - Foreign Function Interface library <span style="color:#f92672">(</span>development files<span style="color:#f92672">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗ search libpng
 </span></span><span style="display:flex;"><span>libpng12-0 - PNG library - runtime
 </span></span><span style="display:flex;"><span>libpng12-dev - PNG library - development
 </span></span></code></pre></div><p>直接 apt-get 安装即可</p>
 <p>调用<code>matplotlib</code>的时候图像式全黑的,提示我安装<code>cairocffi</code>,是 pip 上的包,安装了第三个之后直接<code>pip</code>安装这个就可以了.</p>
 
-        
-        <div class="post-comments">
-            <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "trim21" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
         
     </div>
 
@@ -217,6 +194,16 @@ freetype libpng libffi cairocffi freetype 下载地址 http://download.savannah.
 
     
     
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="title"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
     
 </div>
 

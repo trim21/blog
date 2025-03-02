@@ -189,42 +189,42 @@ string 字符串, 使用双引号 比如&quot;hello world&quot; …">
 <p>比如 python 中的<code>Map[str, str]</code>在 golang 中为<code>map[string]string</code>, 这个 map 只能以 string 为 key, 以 string 为 value.</p>
 <p>如果要一个可以存储任意数据类型的 map 可以<code>map[string]interface{}</code></p>
 <h3 id="函数">函数</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">main</span>(arg1 argType1, arg2 argType2) (returnType1, returnType2){
-</span></span><span style="display:flex;"><span>    main body
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(<span style="color:#a6e22e">arg1</span> <span style="color:#a6e22e">argType1</span>, <span style="color:#a6e22e">arg2</span> <span style="color:#a6e22e">argType2</span>) (<span style="color:#a6e22e">returnType1</span>, <span style="color:#a6e22e">returnType2</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span> <span style="color:#a6e22e">body</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>golang 中, 变量的类型是放在变量名之后的.</p>
 <h3 id="struct">struct</h3>
 <p>结构体, 类似于 python 中的 class.</p>
 <h4 id="定义">定义</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">type</span> Episode <span style="color:#ff7b72">struct</span> {
-</span></span><span style="display:flex;"><span>    Title   <span style="color:#ff7b72">string</span>
-</span></span><span style="display:flex;"><span>    Torrent <span style="color:#ff7b72">string</span>
-</span></span><span style="display:flex;"><span>    Episode <span style="color:#ff7b72">int</span>
-</span></span><span style="display:flex;"><span>    Time    <span style="color:#ff7b72">int</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Episode</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Title</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Torrent</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Episode</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Time</span>    <span style="color:#66d9ef">int</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="初始化">初始化</h4>
 <p>使用大括号</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">var</span> e = Episode{
-</span></span><span style="display:flex;"><span>    Title:   <span style="color:#a5d6ff">&#34;hello world&#34;</span>,
-</span></span><span style="display:flex;"><span>    Episode: <span style="color:#a5d6ff">1</span>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">e</span> = <span style="color:#a6e22e">Episode</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Title</span>:   <span style="color:#e6db74">&#34;hello world&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Episode</span>: <span style="color:#ae81ff">1</span>,
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="结构体的方法">结构体的方法</h4>
 <p>如果要在其上绑定函数, 使用</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">func</span> (episode <span style="color:#ff7b72;font-weight:bold">*</span>Episode) <span style="color:#d2a8ff;font-weight:bold">getTitle</span>() <span style="color:#ff7b72">string</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> episode.Title
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">episode</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Episode</span>) <span style="color:#a6e22e">getTitle</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">episode</span>.<span style="color:#a6e22e">Title</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>条用跟其他语言的调用方法类似.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span>e.<span style="color:#d2a8ff;font-weight:bold">getTitle</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">getTitle</span>()
 </span></span></code></pre></div><h3 id="接口-interface">接口 interface</h3>
 <p>还没有实际用到, 所以只有一些粗浅的理解.</p>
 <p>interface 接口是为了面向对象而出现的, 一个函数可以参数可以为一系列不特定的类型, 但无所谓具体的类型, 只要这个类型实现了特定的方法即可.</p>
 <p>比如一个<code>writeTo</code>函数接受一个<code>io.Writer</code>的参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">writeTo</span>(w io.Writer) <span style="color:#ff7b72">error</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">writeTo</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>) <span style="color:#66d9ef">error</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// io.Writer</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">type</span> Writer <span style="color:#ff7b72">interface</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#d2a8ff;font-weight:bold">Write</span>(p []<span style="color:#ff7b72">byte</span>) (n <span style="color:#ff7b72">int</span>, err <span style="color:#ff7b72">error</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#75715e">// io.Writer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Writer</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">p</span> []<span style="color:#66d9ef">byte</span>) (<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>只要是实现了<code>Write</code>方法的, 输入值和返回值匹配<code>([]byte) (int, error)</code>类型都可以做为这个函数的参数. 比如说默认的标准库<code>os</code>提供的<code>os.Stdout</code>就是一个实现了<code>io.Writer</code>接口的类型. 比如说, 这里就可以以<code>writeTo(os.Stdout)</code>的形式调用.</p>
 <h3 id="channel">channel</h3>
@@ -240,110 +240,87 @@ string 字符串, 使用双引号 比如&quot;hello world&quot; …">
 <blockquote>
 <p>不要通过共享内存来通信，而应该通过通信来共享内存</p></blockquote>
 <p>而<code>channel</code>, 就是 go 提供的通信的工具. 可以在一个线程中发送数据, 在另一个线程中接收数据. 如果我们要写一个异步爬虫, 就可以开四个线程来爬取数据, 在爬到数据后通过 channel 发送到主线程, 然后在主线程中使用 channel 接受, 交给 pipeline 来处理.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">package</span> main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">costumer</span>(c <span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">int</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> each <span style="color:#ff7b72;font-weight:bold">:=</span> <span style="color:#ff7b72">range</span> c {
-</span></span><span style="display:flex;"><span>        fmt.<span style="color:#d2a8ff;font-weight:bold">Printf</span>(<span style="color:#a5d6ff">&#34;costume %d\n&#34;</span>, each)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">costumer</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">each</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">c</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;costume %d\n&#34;</span>, <span style="color:#a6e22e">each</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
-</span></span><span style="display:flex;"><span>    fmt.<span style="color:#d2a8ff;font-weight:bold">Println</span>(<span style="color:#a5d6ff">&#34;hello world&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> c = make(<span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">int</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">go</span> <span style="color:#d2a8ff;font-weight:bold">costumer</span>(c)
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> index <span style="color:#ff7b72;font-weight:bold">:=</span> <span style="color:#a5d6ff">0</span>; index &lt; <span style="color:#a5d6ff">5</span>; index<span style="color:#ff7b72;font-weight:bold">++</span> {
-</span></span><span style="display:flex;"><span>        c <span style="color:#ff7b72;font-weight:bold">&lt;-</span> index
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">costumer</span>(<span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">index</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">index</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">index</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>使用<code>go costumer(channel)</code>启动了一个新的消费者线程, 而主线程自己也是一个<code>goroutine</code>, 虽然跟<code>costumer</code>不在同一个线程中, 但是仍然可以通过 channel 通信, 在这里, 主线程就是生产者, 消费者模型中的生产者.</p>
 <h3 id="并发控制">并发控制</h3>
 <p>有时候并不需要很大的并发量, 比如我们只想起 4 个或者 8 个生产者, 可以使用<code>sync.WaitGroup</code>来进行并发控制.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff7b72">package</span> main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#34;sync&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sync&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> controller = <span style="color:#d2a8ff;font-weight:bold">newController</span>(<span style="color:#a5d6ff">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">controller</span> = <span style="color:#a6e22e">newController</span>(<span style="color:#ae81ff">4</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> urls = []<span style="color:#ff7b72">string</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">urls</span> = []<span style="color:#66d9ef">string</span>{}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> index <span style="color:#ff7b72;font-weight:bold">:=</span> <span style="color:#a5d6ff">0</span>; index &lt; <span style="color:#a5d6ff">20</span>; index<span style="color:#ff7b72;font-weight:bold">++</span> {
-</span></span><span style="display:flex;"><span>        urls = append(urls, fmt.<span style="color:#d2a8ff;font-weight:bold">Sprintf</span>(<span style="color:#a5d6ff">&#34;%d&#34;</span>, index))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">index</span> &lt; <span style="color:#ae81ff">20</span>; <span style="color:#a6e22e">index</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">urls</span> = append(<span style="color:#a6e22e">urls</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#a6e22e">index</span>))
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">go</span> controller.<span style="color:#d2a8ff;font-weight:bold">dispatchGocoutine</span>(urls)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">dispatchGocoutine</span>(<span style="color:#a6e22e">urls</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> each <span style="color:#ff7b72;font-weight:bold">:=</span> <span style="color:#ff7b72">range</span> controller.output {
-</span></span><span style="display:flex;"><span>        fmt.<span style="color:#d2a8ff;font-weight:bold">Println</span>(<span style="color:#a5d6ff">&#34;collect output &#34;</span> <span style="color:#ff7b72;font-weight:bold">+</span> each)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">each</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">output</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;collect output &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">each</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">type</span> asyncControl <span style="color:#ff7b72">struct</span> {
-</span></span><span style="display:flex;"><span>    wrg       sync.WaitGroup
-</span></span><span style="display:flex;"><span>    output     <span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">string</span>
-</span></span><span style="display:flex;"><span>    goroutineCnt <span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">asyncControl</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wrg</span>       <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span>     <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">goroutineCnt</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// newController</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> <span style="color:#d2a8ff;font-weight:bold">newController</span>(size <span style="color:#ff7b72">int</span>) <span style="color:#ff7b72;font-weight:bold">*</span>asyncControl {
-</span></span><span style="display:flex;"><span>    d <span style="color:#ff7b72;font-weight:bold">:=</span> new(asyncControl)
-</span></span><span style="display:flex;"><span>    d.wrg = sync.WaitGroup{}
-</span></span><span style="display:flex;"><span>    d.output = make(<span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">string</span>)
-</span></span><span style="display:flex;"><span>    d.goroutineCnt = make(<span style="color:#ff7b72">chan</span> <span style="color:#ff7b72">int</span>, size)
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> d
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// newController</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">newController</span>(<span style="color:#a6e22e">size</span> <span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">asyncControl</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">asyncControl</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">wrg</span> = <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">output</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">goroutineCnt</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">size</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">d</span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> (controller <span style="color:#ff7b72;font-weight:bold">*</span>asyncControl) <span style="color:#d2a8ff;font-weight:bold">dispatchGocoutine</span>(urls []<span style="color:#ff7b72">string</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> _, url <span style="color:#ff7b72;font-weight:bold">:=</span> <span style="color:#ff7b72">range</span> urls {
-</span></span><span style="display:flex;"><span>        controller.goroutineCnt <span style="color:#ff7b72;font-weight:bold">&lt;-</span> <span style="color:#a5d6ff">0</span> <span style="color:#8b949e;font-style:italic">// 限制线程数</span>
-</span></span><span style="display:flex;"><span>        controller.wrg.<span style="color:#d2a8ff;font-weight:bold">Add</span>(<span style="color:#a5d6ff">1</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">go</span> controller.<span style="color:#d2a8ff;font-weight:bold">asyncTask</span>(url)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">controller</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">asyncControl</span>) <span style="color:#a6e22e">dispatchGocoutine</span>(<span style="color:#a6e22e">urls</span> []<span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">url</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">urls</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">goroutineCnt</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e">// 限制线程数</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">wrg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">asyncTask</span>(<span style="color:#a6e22e">url</span>)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    controller.wrg.<span style="color:#d2a8ff;font-weight:bold">Wait</span>() <span style="color:#8b949e;font-style:italic">// 等待至所有分发出去的线程结束</span>
-</span></span><span style="display:flex;"><span>    close(controller.output)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">wrg</span>.<span style="color:#a6e22e">Wait</span>() <span style="color:#75715e">// 等待至所有分发出去的线程结束</span>
+</span></span><span style="display:flex;"><span>    close(<span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">output</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">func</span> (controller <span style="color:#ff7b72;font-weight:bold">*</span>asyncControl) <span style="color:#d2a8ff;font-weight:bold">asyncTask</span>(url <span style="color:#ff7b72">string</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">defer</span> <span style="color:#ff7b72">func</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72;font-weight:bold">&lt;-</span>controller.goroutineCnt
-</span></span><span style="display:flex;"><span>        controller.wrg.<span style="color:#d2a8ff;font-weight:bold">Done</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">controller</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">asyncControl</span>) <span style="color:#a6e22e">asyncTask</span>(<span style="color:#a6e22e">url</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">goroutineCnt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">wrg</span>.<span style="color:#a6e22e">Done</span>()
 </span></span><span style="display:flex;"><span>    }()
-</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// some task here</span>
-</span></span><span style="display:flex;"><span>    controller.output <span style="color:#ff7b72;font-weight:bold">&lt;-</span> <span style="color:#a5d6ff">&#34;processed &#34;</span> <span style="color:#ff7b72;font-weight:bold">+</span> url
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// some task here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">output</span> <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;processed &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">url</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>因为提到在缓冲区已满的情况下写入是阻塞的, 所以可以利用这一点来进行并发控制. <code>goroutineCnt</code>就是用来控制最大线程数的任务. 当我们试图开启一个新的线程的时候, 先向<code>goroutineCnt</code>中进行一次写入, 再开启一个新的任务. 而在工作进程中, 在整个函数执行完成后则从<code>goroutineCnt</code>中进行一次读取. 缓冲区就会空出一位来, 而进行工作分发的线程的阻塞此时就结束了, 在成功写入信道之后则会开启一个新的线程. 保持工作线程数量永远不会超过<code>goroutineCnt</code>的缓冲区长度.</p>
 <p>这个<code>sync.WaitGroup</code>是另一个并发的工具, 因为不能确定其他 goroutine 什么时候才能结束, 所以使用<code>wrk.Wait()</code>来在分发结束后阻塞分发的线程, 在所有分发出去的线程结束后关闭信道.</p>
 
-        
-        <div class="post-comments">
-            <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "trim21" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
         
     </div>
 
@@ -353,6 +330,16 @@ string 字符串, 使用双引号 比如&quot;hello world&quot; …">
 
     
     
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="title"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
     
 </div>
 

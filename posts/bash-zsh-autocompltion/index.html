@@ -167,29 +167,29 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <p><a href="https://github.com/BGmi/BGmi">BGmi</a>起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.</p>
 <h2 id="分析一下需求">分析一下需求</h2>
 <p>BGmi 的命令都是同样的结构,<code>bgmi action1 --opt1 arg1 --opt2 arg2</code>,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接<code>add_parser</code>和<code>add_argument</code>相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的<code>action</code>和相应的<code>opts</code>存在了一个变量中</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actions_and_arguments <span style="color:#ff7b72;font-weight:bold">=</span> [
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actions_and_arguments <span style="color:#f92672">=</span> [
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;action&#39;</span>: ACTION_ADD,
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;help&#39;</span>: <span style="color:#a5d6ff">&#39;Subscribe bangumi.&#39;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;arguments&#39;</span>: [
-</span></span><span style="display:flex;"><span>            {<span style="color:#a5d6ff">&#39;dest&#39;</span>: <span style="color:#a5d6ff">&#39;name&#39;</span>,
-</span></span><span style="display:flex;"><span>             <span style="color:#a5d6ff">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;name&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>unicode_, nargs<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;+&#39;</span>,
-</span></span><span style="display:flex;"><span>                            help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;Bangumi name&#39;</span>), },
-</span></span><span style="display:flex;"><span>            {<span style="color:#a5d6ff">&#39;dest&#39;</span>: <span style="color:#a5d6ff">&#39;--episode&#39;</span>,
-</span></span><span style="display:flex;"><span>             <span style="color:#a5d6ff">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;episode&#39;</span>,
-</span></span><span style="display:flex;"><span>                            help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;Add bangumi and mark it as specified episode.&#39;</span>,
-</span></span><span style="display:flex;"><span>                            type<span style="color:#ff7b72;font-weight:bold">=</span>int), },
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;action&#39;</span>: ACTION_ADD,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;help&#39;</span>: <span style="color:#e6db74">&#39;Subscribe bangumi.&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;arguments&#39;</span>: [
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;dest&#39;</span>: <span style="color:#e6db74">&#39;name&#39;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>, type<span style="color:#f92672">=</span>unicode_, nargs<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;+&#39;</span>,
+</span></span><span style="display:flex;"><span>                            help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Bangumi name&#39;</span>), },
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;dest&#39;</span>: <span style="color:#e6db74">&#39;--episode&#39;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;episode&#39;</span>,
+</span></span><span style="display:flex;"><span>                            help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Add bangumi and mark it as specified episode.&#39;</span>,
+</span></span><span style="display:flex;"><span>                            type<span style="color:#f92672">=</span>int), },
 </span></span><span style="display:flex;"><span>        ]
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;action&#39;</span>: ACTION_DELETE,
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;help&#39;</span>: <span style="color:#a5d6ff">&#39;Unsubscribe bangumi.&#39;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a5d6ff">&#39;arguments&#39;</span>: [
-</span></span><span style="display:flex;"><span>            {<span style="color:#a5d6ff">&#39;dest&#39;</span>: <span style="color:#a5d6ff">&#39;--name&#39;</span>,
-</span></span><span style="display:flex;"><span>             <span style="color:#a5d6ff">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;name&#39;</span>, nargs<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;+&#39;</span>, type<span style="color:#ff7b72;font-weight:bold">=</span>unicode_,
-</span></span><span style="display:flex;"><span>                            help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;Bangumi name to unsubscribe.&#39;</span>), },
-</span></span><span style="display:flex;"><span>            {<span style="color:#a5d6ff">&#39;dest&#39;</span>: <span style="color:#a5d6ff">&#39;--batch&#39;</span>,
-</span></span><span style="display:flex;"><span>             <span style="color:#a5d6ff">&#39;kwargs&#39;</span>: dict(action<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;store_true&#39;</span>, help<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;No confirmation.&#39;</span>), },
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;action&#39;</span>: ACTION_DELETE,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;help&#39;</span>: <span style="color:#e6db74">&#39;Unsubscribe bangumi.&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;arguments&#39;</span>: [
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;dest&#39;</span>: <span style="color:#e6db74">&#39;--name&#39;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;kwargs&#39;</span>: dict(metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>, nargs<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;+&#39;</span>, type<span style="color:#f92672">=</span>unicode_,
+</span></span><span style="display:flex;"><span>                            help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Bangumi name to unsubscribe.&#39;</span>), },
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;dest&#39;</span>: <span style="color:#e6db74">&#39;--batch&#39;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;kwargs&#39;</span>: dict(action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;No confirmation.&#39;</span>), },
 </span></span><span style="display:flex;"><span>        ]
 </span></span><span style="display:flex;"><span>    }]
 </span></span></code></pre></div><p>一个<code>list</code>中储存了多个<code>dict</code>,每个<code>dict</code>对应一个<code>action</code>,每个<code>action</code>的选项存在<code>arguments</code>字段中.这里的命名可能有些混乱,写的时候没太注意.</p>
@@ -200,18 +200,18 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <h3 id="先说下-bash-的语法">先说下 bash 的语法</h3>
 <p>基本上会用到的数据类型就是字符串和数字了,字符串两边需要加单引号的双引号,或者是反引号.而单引号和双引号还有一些不同.双引号允许转义,而单引号不允许</p>
 <p>shell 的语法跟编程语言的语法有一些不同,感觉 shell 的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export <span style="color:#79c0ff">var</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$var</span><span style="color:#a5d6ff">&#34;</span> <span style="color:#8b949e;font-style:italic"># 1</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$var</span><span style="color:#a5d6ff"> 233&#34;</span> <span style="color:#8b949e;font-style:italic"># 1 233</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#39;$var&#39;</span> <span style="color:#8b949e;font-style:italic"># $var</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;`ls`&#34;</span> <span style="color:#8b949e;font-style:italic"># 输出ls命令的输出</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export var<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$var<span style="color:#e6db74">&#34;</span> <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$var<span style="color:#e6db74"> 233&#34;</span> <span style="color:#75715e"># 1 233</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;$var&#39;</span> <span style="color:#75715e"># $var</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;`ls`&#34;</span> <span style="color:#75715e"># 输出ls命令的输出</span>
 </span></span></code></pre></div><p>在双引号字符串中,以<code>$</code>开头的会被替换成对应的变量,用反引号包起来的内容会视为命令,运行之后把输出替换为字符串的一部分</p>
 <h3 id="然后是具体的代码">然后是具体的代码</h3>
 <p>bash 用来提供自动补全的命令是<code>complete</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>complete --help
-</span></span><span style="display:flex;"><span>complete: complete <span style="color:#ff7b72;font-weight:bold">[</span>-abcdefgjksuv<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-pr<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-DE<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-o option<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-A action<span style="color:#ff7b72;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>-G globpat<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-W wordlist<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-F <span style="color:#ff7b72">function</span><span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-C command<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-X filterpat<span style="color:#ff7b72;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>-P prefix<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-S suffix<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>name ...<span style="color:#ff7b72;font-weight:bold">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>complete --help
+</span></span><span style="display:flex;"><span>complete: complete <span style="color:#f92672">[</span>-abcdefgjksuv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-pr<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-DE<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-A action<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-G globpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-W wordlist<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-F <span style="color:#66d9ef">function</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C command<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-X filterpat<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-P prefix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S suffix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>name ...<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>    Specify how arguments are to be completed by Readline.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    For each NAME, specify how arguments are to be completed.  If no options
@@ -220,11 +220,11 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    Options:
 </span></span><span style="display:flex;"><span>      -p        print existing completion specifications in a reusable format
-</span></span><span style="display:flex;"><span>      -r        remove a completion specification <span style="color:#ff7b72">for</span> each NAME, or, <span style="color:#ff7b72">if</span> no
+</span></span><span style="display:flex;"><span>      -r        remove a completion specification <span style="color:#66d9ef">for</span> each NAME, or, <span style="color:#66d9ef">if</span> no
 </span></span><span style="display:flex;"><span>                NAMEs are supplied, all completion specifications
-</span></span><span style="display:flex;"><span>      -D        apply the completions and actions as the default <span style="color:#ff7b72">for</span> commands
+</span></span><span style="display:flex;"><span>      -D        apply the completions and actions as the default <span style="color:#66d9ef">for</span> commands
 </span></span><span style="display:flex;"><span>                without any specific completion defined
-</span></span><span style="display:flex;"><span>      -E        apply the completions and actions to <span style="color:#a5d6ff">&#34;empty&#34;</span> commands --
+</span></span><span style="display:flex;"><span>      -E        apply the completions and actions to <span style="color:#e6db74">&#34;empty&#34;</span> commands --
 </span></span><span style="display:flex;"><span>                completion attempted on a blank line
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    When completion is attempted, the actions are applied in the order the
@@ -236,90 +236,90 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span></code></pre></div><p>本来<code>complete</code>是支持用另一个命令来进行自动补全的,但是试了试实在是太慢了,所以还是生成了一个 bash 函数.</p>
 <p>因为我是编写了一个<code>_bgmi</code>函数来进行<code>bgmi</code>命令的自动补全,所以此处就应该<code>complete -F _bgmi bgmi</code></p>
 <p>然后就是<code>_bgmi</code>函数本体了. config 太多,只贴了一部分.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>_bgmi<span style="color:#ff7b72;font-weight:bold">()</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    local pre cur action
 </span></span><span style="display:flex;"><span>    local actions bangumi config
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">actions</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;add delete update cal config filter fetch download list mark search source complete&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">config</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;BANGUMI_MOE_URL SAVE_PATH DOWNLOAD_DELEGATE MAX_PAGE TMP_PATH DANMAKU_API_URL&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=()</span>
+</span></span><span style="display:flex;"><span>    actions<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;add delete update cal config filter fetch download list mark search source complete&#34;</span>
+</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;BANGUMI_MOE_URL SAVE_PATH DOWNLOAD_DELEGATE MAX_PAGE TMP_PATH DANMAKU_API_URL&#34;</span>
+</span></span><span style="display:flex;"><span>    COMPREPLY<span style="color:#f92672">=()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">pre</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">${</span><span style="color:#79c0ff">COMP_WORDS</span>[COMP_CWORD-1]<span style="color:#a5d6ff">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">cur</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">${</span><span style="color:#79c0ff">COMP_WORDS</span>[COMP_CWORD]<span style="color:#a5d6ff">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[</span> <span style="color:#79c0ff">$COMP_CWORD</span> -eq <span style="color:#a5d6ff">1</span> <span style="color:#ff7b72;font-weight:bold">]</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$actions</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">else</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#79c0ff">action</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">${</span><span style="color:#79c0ff">COMP_WORDS</span>[1]<span style="color:#a5d6ff">}</span>
+</span></span><span style="display:flex;"><span>    pre<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>COMP_WORDS[COMP_CWORD-1]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    cur<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>COMP_WORDS[COMP_CWORD]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $COMP_CWORD -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$actions<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        action<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>COMP_WORDS[1]<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">case</span> <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$action</span><span style="color:#a5d6ff">&#34;</span> in
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$action<span style="color:#e6db74">&#34;</span> in
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            update <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            update <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local opts
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">opts</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;--download -d --not-ignore&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$opts</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--download -d --not-ignore&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            filter <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            filter <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local opts
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">opts</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;--subtitle --include --exclude --regex&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$opts</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--subtitle --include --exclude --regex&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            config <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$config</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            config <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$config<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            cal <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            cal <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local opts
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">opts</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;--today -f --force-update --download-cover --no-save&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$opts</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--today -f --force-update --download-cover --no-save&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            source <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            source <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local source
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">source</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;bangumi_moe mikan_project dmhy&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$source</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            source<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bangumi_moe mikan_project dmhy&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$source<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            search <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            search <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local opts
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">opts</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;--count --regex-filter --download --dupe&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$opts</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--count --regex-filter --download --dupe&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            download <span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            download <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>            local opts
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">opts</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;--list --mark --status&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#79c0ff">COMPREPLY</span><span style="color:#ff7b72;font-weight:bold">=(</span> <span style="color:#ff7b72">$(</span> compgen -W <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$opts</span><span style="color:#a5d6ff">&#34;</span> -- <span style="color:#79c0ff">$cur</span> <span style="color:#ff7b72">)</span> <span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span>            opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--list --mark --status&#34;</span>
+</span></span><span style="display:flex;"><span>            COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span> compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- $cur <span style="color:#66d9ef">)</span> <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>            ;;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">esac</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">esac</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>complete -F _bgmi bgmi
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># run `eval &#34;$(bgmi complete)&#34;` in your bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># run `eval &#34;$(bgmi complete)&#34;` in your bash</span>
 </span></span></code></pre></div><p><code>COMP_WORDS</code>是保存了当前命令行所有输入内容的一个数组,<code>COMP_CWORD</code>是当前正在输入的词的索引.
 所以,<code>pre=${COMP_WORDS[COMP_CWORD-1]}</code>是当前正在输入的前一个词,<code>cur=${COMP_WORDS[COMP_CWORD]}</code>是正在输入的词.</p>
 <p>(这里用<code>${}</code>包起来跟直接使用<code>$var</code>没有什么区别,只是其他语言的变量前不用加<code>$</code>,用<code>{}</code>包起来个人看起来习惯一点.)</p>
 <p>因为<code>bgmi</code>的命令都是<code>bgmi action args</code>这样的形式,所以先判断<code>COMP_WORDS</code>的大小,如果等于 1,说明还没输出对应的 action,需要补全 action. 如果大于 1, 说明已经输入过了 action,只需要补全对应的选项.</p>
 <p>在 bash 中,生成对应补全选项的命令是<code>compgen</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ compgen --help
-</span></span><span style="display:flex;"><span>compgen: compgen <span style="color:#ff7b72;font-weight:bold">[</span>-abcdefgjksuv<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-o option<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-A action<span style="color:#ff7b72;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ff7b72;font-weight:bold">[</span>-G globpat<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-W wordlist<span style="color:#ff7b72;font-weight:bold">]</span>  <span style="color:#ff7b72;font-weight:bold">[</span>-F <span style="color:#ff7b72">function</span><span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-C command<span style="color:#ff7b72;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ff7b72;font-weight:bold">[</span>-X filterpat<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-P prefix<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>-S suffix<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>word<span style="color:#ff7b72;font-weight:bold">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ compgen --help
+</span></span><span style="display:flex;"><span>compgen: compgen <span style="color:#f92672">[</span>-abcdefgjksuv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-A action<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>-G globpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-W wordlist<span style="color:#f92672">]</span>  <span style="color:#f92672">[</span>-F <span style="color:#66d9ef">function</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C command<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>-X filterpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-P prefix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S suffix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>word<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    Display possible completions depending on the options.
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Intended to be used from within a shell <span style="color:#ff7b72">function</span> generating possible
+</span></span><span style="display:flex;"><span>    Intended to be used from within a shell <span style="color:#66d9ef">function</span> generating possible
 </span></span><span style="display:flex;"><span>    completions.  If the optional WORD argument is supplied, matches against
 </span></span><span style="display:flex;"><span>    WORD are generated.
 </span></span><span style="display:flex;"><span>
@@ -330,26 +330,26 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <h2 id="zsh-的自动补全">Zsh 的自动补全</h2>
 <p>参照的这篇文章<a href="https://github.com/spacewander/blogWithMarkdown/issues/32">https://github.com/spacewander/blogWithMarkdown/issues/32</a></p>
 <p>先放个结果&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>_bgmi<span style="color:#ff7b72;font-weight:bold">(){</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">(){</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[[</span> <span style="color:#a5d6ff">${#</span><span style="color:#79c0ff">words</span><span style="color:#a5d6ff">}</span> -le <span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">]]</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>        _alternative <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>            <span style="color:#a5d6ff">&#39;action:action options:((add\:&#34;Subscribe bangumi.&#34; delete\:&#34;Unsubscribe bangumi.&#34; list\:&#34;List subscribed bangumi.&#34; filter\:&#34;Set bangumi fetch filter.&#34; update\:&#34;Update bangumi calendar and subscribed bangumi episode.&#34; cal\:&#34;Print bangumi calendar.&#34; config\:&#34;Config BGmi.&#34; mark\:&#34;Mark bangumi episode.&#34; download\:&#34;Download manager.&#34; fetch\:&#34;Fetch bangumi.&#34; search\:&#34;Search torrents from data source by keyword&#34; source\:&#34;Select date source bangumi_moe or mikan_project&#34; install\:&#34;Install BGmi front / admin / download delegate&#34; upgrade\:&#34;Check update.&#34; history\:&#34;List your history of following bangumi&#34; ))&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">${#</span>words<span style="color:#e6db74">}</span> -le <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        _alternative <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            <span style="color:#e6db74">&#39;action:action options:((add\:&#34;Subscribe bangumi.&#34; delete\:&#34;Unsubscribe bangumi.&#34; list\:&#34;List subscribed bangumi.&#34; filter\:&#34;Set bangumi fetch filter.&#34; update\:&#34;Update bangumi calendar and subscribed bangumi episode.&#34; cal\:&#34;Print bangumi calendar.&#34; config\:&#34;Config BGmi.&#34; mark\:&#34;Mark bangumi episode.&#34; download\:&#34;Download manager.&#34; fetch\:&#34;Fetch bangumi.&#34; search\:&#34;Search torrents from data source by keyword&#34; source\:&#34;Select date source bangumi_moe or mikan_project&#34; install\:&#34;Install BGmi front / admin / download delegate&#34; upgrade\:&#34;Check update.&#34; history\:&#34;List your history of following bangumi&#34; ))&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[[</span> <span style="color:#a5d6ff">${</span><span style="color:#79c0ff">words</span>[(i)cal]<span style="color:#a5d6ff">}</span> -le <span style="color:#a5d6ff">${#</span><span style="color:#79c0ff">words</span><span style="color:#a5d6ff">}</span> <span style="color:#ff7b72;font-weight:bold">]]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>        _alternative <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>        <span style="color:#a5d6ff">&#39;cal:cal options:((--today\:&#34;Show bangumi calendar for today.&#34; -f\:&#34;Get the newest bangumi calendar from bangumi.moe.&#34; --force-update\:&#34;Get the newest bangumi calendar from bangumi.moe.&#34; --download-cover\:&#34;Download the cover to local&#34; --no-save\:&#34;Do not save the bangumi data when force update.&#34; ))&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">${</span>words[(i)cal]<span style="color:#e6db74">}</span> -le <span style="color:#e6db74">${#</span>words<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        _alternative <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        <span style="color:#e6db74">&#39;cal:cal options:((--today\:&#34;Show bangumi calendar for today.&#34; -f\:&#34;Get the newest bangumi calendar from bangumi.moe.&#34; --force-update\:&#34;Get the newest bangumi calendar from bangumi.moe.&#34; --download-cover\:&#34;Download the cover to local&#34; --no-save\:&#34;Do not save the bangumi data when force update.&#34; ))&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>compdef _bgmi bgmi
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#usage: eval &#34;$(bgmi complete)&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#if you are using windows, cygwin or babun, try `eval &#34;$(bgmi complete|dos2unix)&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#usage: eval &#34;$(bgmi complete)&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if you are using windows, cygwin or babun, try `eval &#34;$(bgmi complete|dos2unix)&#34;`</span>
 </span></span></code></pre></div><p>zsh 跟 bash 有几点不同</p>
 <p>bash 中的 complete 在 zsh 中是 compdef</p>
 <p>zsh 中用来保存目前所有输入的词组是<code>words</code></p>
@@ -359,35 +359,12 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <p>因为<code>_alternative</code>的功能是最全的,所以我就只用了<code>_alternative</code>这一个命令
 <code>cal:cal options:(( -f\:&quot;Get the newest bangumi calendar from bangumi.moe.&quot; --force-update\:&quot;Get the newest bangumi calendar from bangumi.moe.&quot; ))</code></p>
 <p>如果有两个选项是同样的意思,直接重复输出就可以了,zsh 会自动把他们合并成一行,就像这样 其中 <code>--force-update</code>和<code>-f</code>的帮助信息在我们输入的时候就是相同的.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>ubuntu@VM-189-243-ubuntu ~ $ bgmi cal -
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>ubuntu@VM-189-243-ubuntu ~ $ bgmi cal -
 </span></span><span style="display:flex;"><span>--download-cover      -- Download the cover to local
 </span></span><span style="display:flex;"><span>--force-update    -f  -- Get the newest bangumi calendar from bangumi.moe.
 </span></span><span style="display:flex;"><span>--no-save             -- Do not save the bangumi data when force update.
-</span></span><span style="display:flex;"><span>--today               -- Show bangumi calendar <span style="color:#ff7b72">for</span> today.
+</span></span><span style="display:flex;"><span>--today               -- Show bangumi calendar <span style="color:#66d9ef">for</span> today.
 </span></span></code></pre></div>
-        
-        <div class="post-comments">
-            <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "trim21" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
         
     </div>
 
@@ -397,6 +374,16 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 
     
     
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="title"
+    theme="github-dark"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
     
 </div>
 
