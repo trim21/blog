@@ -1,160 +1,215 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
 
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>git | Trim21&#39;s</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.trim21.me/tags/git/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.trim21.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.trim21.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.trim21.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.trim21.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.trim21.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://blog.trim21.me/tags/git/index.xml">
+<link rel="alternate" hreflang="en" href="https://blog.trim21.me/tags/git/">
+<noscript>
     <style>
-        :root {
-            --accent-color: #FF4D4D;
-            --font-size: 17.5px;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    
-    
-    
-    
-    
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <title>Git</title>
-    <meta name="description" content="">
-    <meta name="keywords" content=''>
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    <meta property="og:url" content="https://blog.trim21.me/tags/git/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Git">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="https://blog.trim21.me/">
-    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Git">
-    <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://blog.trim21.me/tags/git/">
-    <meta property="twitter:url" content="https://blog.trim21.me/tags/git/">
-    <meta name="twitter:image" content="https://blog.trim21.me/">
+    </style>
+</noscript><meta property="og:url" content="https://blog.trim21.me/tags/git/">
+  <meta property="og:site_name" content="Trim21&#39;s">
+  <meta property="og:title" content="git">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git">
+<meta name="twitter:description" content="">
 
-    
-    <link rel="canonical" href="https://blog.trim21.me/tags/git/">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
-
-    
-    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
-
-    
-    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
-
-    
-    
 </head>
-<body>
-        <script>
-            
-            setThemeByUserPref();
-        </script><header class="header">
-    <nav class="header-nav">
 
-        
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-        <div class="nav-title">
-            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.trim21.me/" accesskey="h" title="Trim21&#39;s (Alt + H)">Trim21&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div class="nav-links">
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
-            </div>
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
-            </div>
-            
-
-            <span class="nav-icons-divider"></span>
-            <div class="nav-link dark-theme-toggle">
-                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                <a aria-hidden="true" role="switch">
-                    <span class="theme-toggle-icon" data-feather="moon"></span>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.trim21.me/posts/" title="Blog">
+                    <span>Blog</span>
                 </a>
-            </div>
-
-            <div class="nav-link" id="hamburger-menu-toggle">
-                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
-                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
-                    <span data-feather="menu"></span>
-                </a>
-            </div>
-
-            
-            <ul class="nav-hamburger-list visibility-hidden">
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/posts/" > Blog </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/about/" > About </a>
-                </li>
-                
-                <li class="nav-item dark-theme-toggle">
-                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                    <a role="switch">
-                        <span class="theme-toggle-icon" data-feather="moon"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
+            </li>
+        </ul>
     </nav>
 </header>
-<main id="content">
-    <div class="container list-posts">
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    git
+  </h1>
+</header>
 
-    <h1 class="list-title"></h1>
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">利用hexo和GitHub pages服务搭建博客
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>使用 GitHub actions 自动部属博客到 GitHub pages。
+GitHub Pages 介绍 github pages 是 github 提供的服务，github 会为特定仓库的默认分支（比如 ${username}.github.io ）或者其他仓库的 gh-pages 分支提供静态文件服务。
+${username}.github.io 仓库的文件会直接放在 ${username}.github.io 域名的根目录下，其他的仓库则会放在/${repo_name}/ 子目录下。
+比如，我在 blog 仓库下创建 gh-pages 分支，在根目录创建一个 index.html 文件。以我的用户名trim21为例，访问 https://trim21.github.io/blog/index.html 就可以正常看到文件。
+GitHub Actions 2019 年 GitHub 上线了自己的 CI，GitHub Actions，在此之前大家一般会使用 travis CI 或者 circle CI 等。但是直接用 github actions 可以避免额外注册账号，设置 github access token 等等权限问题。
+有了 github actions 之后就不再需要博客提供的各种部属插件了，只需要在 github actions 中构建博客，并且把生成的public/文件夹推到gh-pages 分支就可以了。
+name: build on: push: branches: - master jobs: main: runs-on: ubuntu-latest steps: - uses: actions/checkout@v3 - name: Setup node uses: actions/setup-node@v3 with: node-version: &#34;16&#34; - name: install run: yarn - name: build run: yarn build - name: Deploy uses: peaceiris/actions-gh-pages@v3 with: publish_dir: ./public commit_message: deploy ${{ github.ref }} cname: blog.trim21.me github_token: ${{ secrets.GITHUB_TOKEN }} </p>
+  </div>
+  <footer class="entry-footer"><span title='2016-04-16 01:03:39 +0800 +0800'>2016-04-16</span></footer>
+  <a class="entry-link" aria-label="post link to 利用hexo和GitHub pages服务搭建博客" href="https://blog.trim21.me/posts/build-blog-whith-hexo-and-github-pages/"></a>
+</article>
+    </main>
     
-
-    <h2 class="posts-year">2016</h2><div class="post-title">
-     <a href="https://blog.trim21.me/posts/build-blog-whith-hexo-and-github-pages/" class="post-link">利用hexo和GitHub pages服务搭建博客</a>
-     
-     
-     
-     
-
-     
-
-     
-      <div class="flex-break"></div>
-      <span class="post-date">April 16, 2016</span>
-     
-</div>
-
-    
-
-</div>
-
-
-        </main><footer class="footer">
-    
-    
-
-    
-
-    
-
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://blog.trim21.me/">Trim21&#39;s</a></span> · 
 
     <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

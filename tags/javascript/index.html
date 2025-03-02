@@ -1,188 +1,262 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
 
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>javascript | Trim21&#39;s</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.trim21.me/tags/javascript/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.trim21.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.trim21.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.trim21.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.trim21.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.trim21.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://blog.trim21.me/tags/javascript/index.xml">
+<link rel="alternate" hreflang="en" href="https://blog.trim21.me/tags/javascript/">
+<noscript>
     <style>
-        :root {
-            --accent-color: #FF4D4D;
-            --font-size: 17.5px;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    
-    
-    
-    
-    
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <title>Javascript</title>
-    <meta name="description" content="">
-    <meta name="keywords" content=''>
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    <meta property="og:url" content="https://blog.trim21.me/tags/javascript/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Javascript">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="https://blog.trim21.me/">
-    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Javascript">
-    <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://blog.trim21.me/tags/javascript/">
-    <meta property="twitter:url" content="https://blog.trim21.me/tags/javascript/">
-    <meta name="twitter:image" content="https://blog.trim21.me/">
+    </style>
+</noscript><meta property="og:url" content="https://blog.trim21.me/tags/javascript/">
+  <meta property="og:site_name" content="Trim21&#39;s">
+  <meta property="og:title" content="javascript">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript">
+<meta name="twitter:description" content="">
 
-    
-    <link rel="canonical" href="https://blog.trim21.me/tags/javascript/">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
-
-    
-    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
-
-    
-    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
-
-    
-    
 </head>
-<body>
-        <script>
-            
-            setThemeByUserPref();
-        </script><header class="header">
-    <nav class="header-nav">
 
-        
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-        <div class="nav-title">
-            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.trim21.me/" accesskey="h" title="Trim21&#39;s (Alt + H)">Trim21&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div class="nav-links">
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
-            </div>
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
-            </div>
-            
-
-            <span class="nav-icons-divider"></span>
-            <div class="nav-link dark-theme-toggle">
-                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                <a aria-hidden="true" role="switch">
-                    <span class="theme-toggle-icon" data-feather="moon"></span>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.trim21.me/posts/" title="Blog">
+                    <span>Blog</span>
                 </a>
-            </div>
-
-            <div class="nav-link" id="hamburger-menu-toggle">
-                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
-                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
-                    <span data-feather="menu"></span>
-                </a>
-            </div>
-
-            
-            <ul class="nav-hamburger-list visibility-hidden">
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/posts/" > Blog </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/about/" > About </a>
-                </li>
-                
-                <li class="nav-item dark-theme-toggle">
-                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                    <a role="switch">
-                        <span class="theme-toggle-icon" data-feather="moon"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
+            </li>
+        </ul>
     </nav>
 </header>
-<main id="content">
-    <div class="container list-posts">
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    javascript
+  </h1>
+</header>
 
-    <h1 class="list-title"></h1>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">在UserScript中使用Vue
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>之前写了一个用户脚本, 在站外一键点 bgm 格子 为了添加一个 UI, 但又不想用 jQuery 手动绑一堆事件, 就直接上了 Vue. 所以需要用 Webpack 打包对应的 vue 文件到 userscript 里.
+按钮和弹出框都是 Vue 做的.
+因为之前一直用的是vue-cli提供的 webpack 模板, 所以不太熟悉 webpack, 踩了不少坑.
+参考vue-loader
+首先在 webpack 的设置中添加一个loader, 再添加一个插件
+// webpack.config.js const VueLoaderPlugin = require(&#34;vue-loader/lib/plugin&#34;); module.exports = { module: { rules: [ // ... other rules { test: /\.vue$/, loader: &#34;vue-loader&#34;, options: { loaders: { scss: &#34;vue-style-loader!css-loader!postcss-loader!sass-loader&#34;, // &lt;style lang=&#34;scss&#34;&gt; }, }, }, ], }, plugins: [ // make sure to include the plugin! new VueLoaderPlugin(), ], }; 然后在代码里, 参照 Vue 官方的模板, 只要初始化一个实例就能正常显示内容了.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-11 15:26:00 +0800 +0800'>2018-10-11</span></footer>
+  <a class="entry-link" aria-label="post link to 在UserScript中使用Vue" href="https://blog.trim21.me/posts/use-vue-in-userscript/"></a>
+</article>
 
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">使用webpack打包userscript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>原本用的是 grunt 来打包 webpack, 但是 grunt 只是依赖于简单的字符串替换和拼接, 效率过低.
+既然 webpack 可以用来打包别的 js 文件, 那么打包一个 userscript 肯定也没什么问题, 甚至大材小用了.
+所以自己写了一个模板webpack-userscript-template
+因为找了一下, 发现相应的工具还是有些缺陷的.
+主要有两个问题:
+生成 userscript 的 meta 注释 没有一个好用的 http client 库. 所以为了自己写 userscript 爽一点, 写了两个库解决了这个问题.
+userscript-metadata-webpack-plugin用来解决生成 meta 的问题
+axios-userscript-adapter是 axios 的一个 adapter, 用来解决进行 http 请求的问题.
+本来 github 上是有一个 webpack-userscript 项目的, 但是里面不知道为什么, 打包用到的是 bash, 理解不了…就自己写了一个webpack-userscript-template
+使用 axios 的时候不要忘了加入 connect 的 meta
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-03 11:15:35 +0800 +0800'>2018-10-03</span></footer>
+  <a class="entry-link" aria-label="post link to 使用webpack打包userscript" href="https://blog.trim21.me/posts/webpack-userscript/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">提高userscript开发效率的一些工具
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>这已经是旧文了, 见{% post_link webpack-userscript 使用webpack打包userscript %}
+最一开始写 userscript 的时候是在编辑器里修改后复制粘贴到Tampermonkey中,后来觉得实在是太麻烦了,就搜了一下 Github 有没有什么现成的模板可以用.
+发现了这个turboteddy/userscript-grunt-template. 用了一下发现比原来效率高了不止一点. 就根据一些个人习惯稍微改了一下
+因为我用的用户脚本扩展是Tampermonkey,所以下文中的Tampermonkey也包括了其他的同类插件.
+我自己实际使用的代码在这里Trim21/userscript-grunt-template, 下面的内容以这个 repo 为准
+最起码需要的几个功能 代码分块,不同类型的代码放在不同的文件中,比如要插入网页的 html 要放在html文件中,样式对应的代码放在css文件中,这样同时拥有了编辑器或者 IDE 的自动补全. LiveReload,即修改代码后自动刷新网页查看效果. 分成几部分来说
+首先是代码分块, 这点用一个打包工具就可以做到了,比如我这里用到的是Grunt,因为Grunt有人已经写好了一个grunt-userscript-meta,用来直接生成 userscript 开头的 meta 信息, 那么自动补全的问题也随之解决了.
+开始 Grunt 的介绍我就不贴了 不了解的话也不会太影响使用 有兴趣的话可以看阮一峰的 Grunt 介绍
+git clone git@github.com:Trim21/userscript-grunt-template.git cd userscript-grunt-template npm i npm run dev 更改src/js/index.js中的内容,grunt 就会重新打包生成dist/latest中 js 的内容
+所有的原文件都在src文件夹中,html和css要在对应的文件夹里.
+如果在 js 中想要引用对应的内容,要用到/* @include ../html/page1.html */这样的语法.(基于grunt-preprocess)
+比如说要使用GM_addStyle,但是字符串又太长, 就可以把对应的样式放在css/page1.css,然后在 js 中这样写
+GM_addStyle(&#34;/* @include ../css/page1.css */&#34;); css/page1.css
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-06-28 04:29:21 +0800 +0800'>2018-06-28</span></footer>
+  <a class="entry-link" aria-label="post link to 提高userscript开发效率的一些工具" href="https://blog.trim21.me/posts/userscript%E5%BC%80%E5%8F%91/"></a>
+</article>
+    </main>
     
-
-    <h2 class="posts-year">2018</h2><div class="post-title">
-     <a href="https://blog.trim21.me/posts/use-vue-in-userscript/" class="post-link">在UserScript中使用Vue</a>
-     
-     
-     
-     
-
-     
-
-     
-      <div class="flex-break"></div>
-      <span class="post-date">October 11, 2018</span>
-     
-</div>
-<div class="post-title">
-     <a href="https://blog.trim21.me/posts/webpack-userscript/" class="post-link">使用webpack打包userscript</a>
-     
-     
-     
-     
-
-     
-
-     
-      <div class="flex-break"></div>
-      <span class="post-date">October 3, 2018</span>
-     
-</div>
-<div class="post-title">
-     <a href="https://blog.trim21.me/posts/userscript%E5%BC%80%E5%8F%91/" class="post-link">提高userscript开发效率的一些工具</a>
-     
-     
-     
-     
-
-     
-
-     
-      <div class="flex-break"></div>
-      <span class="post-date">June 28, 2018</span>
-     
-</div>
-
-    
-
-</div>
-
-
-        </main><footer class="footer">
-    
-    
-
-    
-
-    
-
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://blog.trim21.me/">Trim21&#39;s</a></span> · 
 
     <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

@@ -1,183 +1,262 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
 
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>生成bgm.tv关联条目网络 | Trim21&#39;s</title>
+<meta name="keywords" content="nodejs, bgm">
+<meta name="description" content="本项目已弃坑。
+先放成品 bgm-ip-viewer
+在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
+爬取数据并生成关联条目网络
+爬取数据
+爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型.
+比如我定义了条目 item
+import scrapy
+from scrapy import Field
+
+
+class SubjectItem(scrapy.Item):
+    # define the fields for your item here like:
+    id = Field()
+    _id = Field()
+    name = Field()
+    image = Field()
+    subject_type = Field()
+    name_cn = Field()
+    tags = Field()
+    info = Field()
+
+    score = Field()
+
+    score_details = Field()
+
+    wishes = Field()
+    done = Field()
+    doings = Field()
+    on_hold = Field()
+    dropped = Field()
+每个Field()中保存的的数据类型可以是 str, int, bool等基础的数据类型, 也可以是list, dict这种组合类型.">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.trim21.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.trim21.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.trim21.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.trim21.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.trim21.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
+<noscript>
     <style>
-        :root {
-            --accent-color: #FF4D4D;
-            --font-size: 17.5px;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    
-    
-    
-    
-    
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <title>生成bgm.tv关联条目网络</title>
-    <meta name="description" content="本项目已弃坑。
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
+  <meta property="og:site_name" content="Trim21&#39;s">
+  <meta property="og:title" content="生成bgm.tv关联条目网络">
+  <meta property="og:description" content="本项目已弃坑。
 先放成品 bgm-ip-viewer
 在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
 爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
-scrapy的流程是这样的, 首先继 …">
-    <meta name="keywords" content='nodejs, bgm'>
-
-    <meta property="og:url" content="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="生成bgm.tv关联条目网络">
-    <meta property="og:description" content="本项目已弃坑。
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型.
+比如我定义了条目 item
+import scrapy from scrapy import Field class SubjectItem(scrapy.Item): # define the fields for your item here like: id = Field() _id = Field() name = Field() image = Field() subject_type = Field() name_cn = Field() tags = Field() info = Field() score = Field() score_details = Field() wishes = Field() done = Field() doings = Field() on_hold = Field() dropped = Field() 每个Field()中保存的的数据类型可以是 str, int, bool等基础的数据类型, 也可以是list, dict这种组合类型.">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-10-11T10:50:36+08:00">
+    <meta property="article:modified_time" content="2025-03-03T05:55:21+08:00">
+    <meta property="article:tag" content="nodejs">
+    <meta property="article:tag" content="bgm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="生成bgm.tv关联条目网络">
+<meta name="twitter:description" content="本项目已弃坑。
 先放成品 bgm-ip-viewer
 在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
-爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
-scrapy的流程是这样的, 首先继 …">
-    <meta property="og:image" content="https://blog.trim21.me/">
-    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+爬取数据并生成关联条目网络
+爬取数据
+爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型.
+比如我定义了条目 item
+import scrapy
+from scrapy import Field
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="生成bgm.tv关联条目网络">
-    <meta name="twitter:description" content="本项目已弃坑。
-先放成品 bgm-ip-viewer
-在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
-爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
-scrapy的流程是这样的, 首先继 …">
-    <meta property="twitter:domain" content="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
-    <meta property="twitter:url" content="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
-    <meta name="twitter:image" content="https://blog.trim21.me/">
 
-    
-    <link rel="canonical" href="https://blog.trim21.me/posts/bgm.tv-ip-viewer/">
+class SubjectItem(scrapy.Item):
+    # define the fields for your item here like:
+    id = Field()
+    _id = Field()
+    name = Field()
+    image = Field()
+    subject_type = Field()
+    name_cn = Field()
+    tags = Field()
+    info = Field()
 
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+    score = Field()
 
-    
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+    score_details = Field()
 
-    
-    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+    wishes = Field()
+    done = Field()
+    doings = Field()
+    on_hold = Field()
+    dropped = Field()
+每个Field()中保存的的数据类型可以是 str, int, bool等基础的数据类型, 也可以是list, dict这种组合类型.">
 
-    
-    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
 
-    
-    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "posts",
+      "item": "https://blog.trim21.me/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "生成bgm.tv关联条目网络",
+      "item": "https://blog.trim21.me/posts/bgm.tv-ip-viewer/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "生成bgm.tv关联条目网络",
+  "name": "生成bgm.tv关联条目网络",
+  "description": "本项目已弃坑。\n先放成品 bgm-ip-viewer\n在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.\n爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.\nscrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型.\n比如我定义了条目 item\nimport scrapy from scrapy import Field class SubjectItem(scrapy.Item): # define the fields for your item here like: id = Field() _id = Field() name = Field() image = Field() subject_type = Field() name_cn = Field() tags = Field() info = Field() score = Field() score_details = Field() wishes = Field() done = Field() doings = Field() on_hold = Field() dropped = Field() 每个Field()中保存的的数据类型可以是 str, int, bool等基础的数据类型, 也可以是list, dict这种组合类型.\n",
+  "keywords": [
+    "nodejs", "bgm"
+  ],
+  "articleBody": "本项目已弃坑。\n先放成品 bgm-ip-viewer\n在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.\n爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.\nscrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型.\n比如我定义了条目 item\nimport scrapy from scrapy import Field class SubjectItem(scrapy.Item): # define the fields for your item here like: id = Field() _id = Field() name = Field() image = Field() subject_type = Field() name_cn = Field() tags = Field() info = Field() score = Field() score_details = Field() wishes = Field() done = Field() doings = Field() on_hold = Field() dropped = Field() 每个Field()中保存的的数据类型可以是 str, int, bool等基础的数据类型, 也可以是list, dict这种组合类型.\n然后写一个解析函数\n# -*- coding: utf-8 -*- from typing import List import pymongo from scrapy import Request from bgm.items import SubjectItem, RelationItem def url_from_id(_id): return 'https://mirror.bgm.rin.cat/subject/{}'.format(_id) class BgmTvSpider(scrapy.Spider): name = 'bgm_tv' allowed_domains = ['mirror.bgm.rin.cat'] start_urls = ['https://mirror.bgm.rin.cat/subject/{}'.format(i) for i in range(1, 270000)] def parse(self, response): if '出错了' not in response.text: subject_item = SubjectItem() subject_item['subject_type'] = get_subject_type(response) if subject_item['subject_type'] == 'Music': return subject_item['_id'] = int(response.url.split('/')[-1]) subject_item['id'] = subject_item['_id'] subject_item['info'] = get_info(response) subject_item['tags'] = get_teg_from_response(response) subject_item['image'] = get_image(response) subject_item['score'] = get_score(response) subject_item['score_details'] = get_score_details(response) title = response.xpath('//*[@id=\"headerSubject\"]/h1/a')[0] subject_item['name_cn'] = title.attrib['title'] subject_item['name'] = title.xpath('text()').extract_first() for edge in get_relation(response, source=subject_item['_id']): relation_item = RelationItem(**edge, ) yield relation_item yield Request(url_from_id(relation_item['target'])) yield subject_item 框架有一个默认的start_requests函数, 会请求starts_urls里面的链接. 在获取到内容之后会进行一系列处理(比如解析 http, xpath 之类的), 然后交给parse函数来处理.\nparse函数实际上是一个生成器函数, 通过不断yield内容来告诉scrapy你要做什么.\n如果我们需要爬一个新网页, 就yield一个scrapy.Request, scrapy在爬完对应的页面只有会交给对应的回调函数(默认为parse)\n如果你爬到了一个Item, 就直接把对应的实例给 yield 出去. 然后scrapy会交给pipeline来处理.\n在这个例子里, 我需要用到的有两种 item, 一种是SubjectItem, 包含条目的某些信息(比如标题, 封面, 对应的subject_id, 另一个是每个条目跟其他条目的关系RelationItem. 这个关系包括源条目, 目标条目, 和条目关系.)\n然后要把对应的 item 存到数据库里, 就需要我们定义一个pipeline了.\n最想吐槽的就是这里…\n原来我已经用aiohttp写了一些东西, 自认为还比较熟悉异步了, 结果没想到 python 的异步库真是各自为战. scrapy是基于twisted的, 所以基于asyncio的异步库是不能在这里用的. 我数据库用的是MongoDB, 原本mongodb官方有一个数据库motor, 支持tornado和asyncio的 ioloop, 但是不支持twisted…\n所以就算你了解 python 异步标准库的写法, 用另一个异步框架的时候还是可能一脸懵逼…\n额外去找了一个twisted支持的 mongo 库txmongo, 用来存数据.\n数据处理 爬回来的数据不处理别说别人了, 我自己都看不懂.\n回到我们一开始的目的, 把有关系的条目放在一起, 显示他们之间的关系.\n最后显示出来的是一个力导向图啊, 那直接用 d3.js 好了, 找一个 d3.js 的 demo 来看看他需要的数据结构是什么样的.\n参考了这篇文章\n【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图\n最后需要的是一个这样的数据结构\n{ \"nodes\": [ { \"name\": \"云天河\", \"image\": \"tianhe.png\" }, { \"name\": \"韩菱纱\", \"image\": \"lingsha.png\" }, { \"name\": \"柳梦璃\", \"image\": \"mengli.png\" }, { \"name\": \"慕容紫英\", \"image\": \"ziying.png\" } ], \"edges\": [ { \"source\": 0, \"target\": 1, \"relation\": \"挚友\" }, { \"source\": 0, \"target\": 2, \"relation\": \"挚友\" }, { \"source\": 0, \"target\": 3, \"relation\": \"挚友\" } ] } 这正好就是我爬下来的数据的结构啊.\n那就只剩下一个问题了, 怎么把同一张网节点和关系组合在一起.\n本来想要直接一个 for 循环遍历, 发现这样有一个问题, 一个大的网络可能会断成好几个小的网络. 正好受到了scrapy爬取网站的办法, 在写一个 work 函数, 不停地把下一个需要处理的节点给yield出来, 然后从yield出来的节点不断的开始处理.\ndef worker(start_job=None): yield_job = [] done_id = set() if start_job is None: start_job = [ x['_id'] for x in n_subject.find({}, {'_id': 1}) ] while True: print('\\r', len(yield_job) + len(start_job), end='') if yield_job: j = yield_job.pop() if j in done_id: continue for node in deal_with_node({'_id': j}): yield_job.append(node) done_id.add(j) elif start_job: j = start_job.pop() if j in done_id: continue for node in deal_with_node({'_id': j}): yield_job.append(node) done_id.add(j) else: print('done') break 其中, 用来处理节点的函数deal_with_noed(node)首先获取节点跟其他节点的关系, 如果某个关系(比如角色歌, op, ed 之类的)不符合需要添加的条件就跳过, 如果符合条件, 先看看有没有一个现成的网络, 有就把对应节点加入到网络里, 没有就新建一个网络, 把对应节点加进去. 然后把对应节点yield出去.\n可以看到, 我在外面for node in deal_with_node({'_id': j}):yield_job.append(node), 所以所有yield出来的节点都会成为下一个处理的节点. 这样一来会保证处理完一个网络只有的所有节点才会进行下一步, 处理下一个网络的节点.\n这样一来, 就可以保证一个整体网络不会裂成两个网络.\n更新 迫于用来跑这个程序的服务器只有 1C1G, 跑了一堆服务器的情况下再跑一个 Mongo 太勉强了, 再加上腾讯的学生优惠还有 36 每年的 mysql(1G 内存, 50G 硬盘), 就买了一年的 mysql 实例用来存数据, 减轻服务器的内存压力.\n然后就牵扯 twisted 异步操作数据库(其实同步也不是不行, 但是如果同步存储的话数据库就会成为爬虫的瓶颈, 所以还是异步比较合适.)\ntwisted 提供了一个adbapi, 一看就知道是异步数据库 api 的意思. 操作 mysql 的话, 需要mysqlclient或者pymysql+pymysql.install_as_MySQLdb()跟把数据保存到 mongo 一样, 添加一个mysqlpipeline的 pipeline.\n为了避免手写 sql, 用了peewee做为 orm. peewee 的每个 query 都有一个sql()方法, 可以不让 peewee 执行具体的操作, 而是获取对应的 sql 语句, 然后交给 twisted 的adbpi来执行, 避免阻塞.\nRelation和 Subject是通过 peewee 定义的数据库 model.\n# -*- coding: utf-8 -*- # Define your item pipelines here # # Don't forget to add your pipeline to the ITEM_PIPELINES setting # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html import pymongo from bgm.items import SubjectItem, RelationItem from typing import Union from bgm.models import Subject, Relation from twisted.enterprise import adbapi import bgm.settings # from playhouse.shortcuts import keyli class MysqlPipeline(object): def open_spider(self, spider): self.dbpool = adbapi.ConnectionPool( \"MySQLdb\", host=bgm.settings.MYSQL_HOST, db=bgm.settings.MYSQL_DBNAME, user=bgm.settings.MYSQL_USER, password=bgm.settings.MYSQL_PASSWORD, charset='utf8mb4', ) def process_item(self, item: Union[SubjectItem, RelationItem], spider): query = self.dbpool.runInteraction(self.do_insert, item) # 处理异常 query.addErrback(self.handle_error, item, spider) return item def handle_error(self, failure, item, spider): # 处理异步插入的异常 print(failure) def do_insert(self, cursor, item): # 会从dbpool取出cursor # 执行具体的插入 if isinstance(item, SubjectItem): if not item['name']: item['name'] = item['name_cn'] # if not item['name_cn']: # item['name_cn'] = item['name'] insert_sql = Subject.insert( **item ).on_conflict_replace().sql() elif isinstance(item, RelationItem): insert_sql = Relation.insert( id=f'{item[\"source\"]}-{item[\"target\"]}', **item ).on_conflict_replace().sql() else: return cursor.execute(*insert_sql) # 拿传进的cursor进行执行，并且自动完成commit操作 而在处理上, 也跟之前 mongodb 有点不一样…\n之前使用 mongo 的时候, 都是直接从 mongo 里面把数据读出来, 处理完了再写会数据库.但是在使用 mysql 的时候就不太行的通了. 因为在我的使用场景下，相比 mongo, mysql 太慢了.如果把对应的关系和条目从 mysql 里读出来再处理, 有 90%的时间都花在 io 上, 而且不是一两个小时能处理完的. 所以只能选择一开始把 mysql 里的所有数据读到内存, 放在 mysql 里面处理.\n而大概 20w 条条目, 20w 条条目间关系, 全都读到数据库里大概需要 1400MB 左右的内存, 我的服务器已经处理不了了, 只能先把数据库从服务器上下载下来, 然后再进行处理.\n之前发在 bgm 上之后有人提议说增量更新新的条目, 正好现在已经把主要的数据爬完了, 还剩下一些旧的条目, 只要写一个额外的爬虫定期处理bangumi wiki 计划页面显示的更改就好了.\n",
+  "wordCount" : "673",
+  "inLanguage": "en",
+  "datePublished": "2018-10-11T10:50:36+08:00",
+  "dateModified": "2025-03-03T05:55:21+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.trim21.me/posts/bgm.tv-ip-viewer/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trim21's",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.trim21.me/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-        <script>
-            
-            setThemeByUserPref();
-        </script><header class="header">
-    <nav class="header-nav">
 
-        
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-        <div class="nav-title">
-            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.trim21.me/" accesskey="h" title="Trim21&#39;s (Alt + H)">Trim21&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div class="nav-links">
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
-            </div>
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
-            </div>
-            
-
-            <span class="nav-icons-divider"></span>
-            <div class="nav-link dark-theme-toggle">
-                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                <a aria-hidden="true" role="switch">
-                    <span class="theme-toggle-icon" data-feather="moon"></span>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.trim21.me/posts/" title="Blog">
+                    <span>Blog</span>
                 </a>
-            </div>
-
-            <div class="nav-link" id="hamburger-menu-toggle">
-                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
-                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
-                    <span data-feather="menu"></span>
-                </a>
-            </div>
-
-            
-            <ul class="nav-hamburger-list visibility-hidden">
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/posts/" > Blog </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/about/" > About </a>
-                </li>
-                
-                <li class="nav-item dark-theme-toggle">
-                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                    <a role="switch">
-                        <span class="theme-toggle-icon" data-feather="moon"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
+            </li>
+        </ul>
     </nav>
 </header>
-<main id="content">
-    <div class="post container">
-    <div class="post-header-section">
-        <h1>生成bgm.tv关联条目网络</h1>
+<main class="main">
 
-        
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      生成bgm.tv关联条目网络
+    </h1>
+    <div class="post-meta"><span title='2018-10-11 10:50:36 +0800 +0800'>2018-10-11</span>
 
-        
-	
-	
-	
-	
-        
-
-	
-
-	
-
-	
-          <small role="doc-subtitle"></small>
-	
-
-	
-          <p class="post-date">
-              
-
-              October 11, 2018
-
-              
-          </p>
-	
-
-        <ul class="post-tags">
-          
-           
-             <li class="post-tag"><a href="https://blog.trim21.me/tags/nodejs">nodejs</a></li>
-           
-         
-           
-             <li class="post-tag"><a href="https://blog.trim21.me/tags/bgm">bgm</a></li>
-           
-         
-        </ul>
-    </div>
-
-    <div class="post-content">
-        <p>本项目已弃坑。</p>
+</div>
+  </header> 
+  <div class="post-content"><p>本项目已弃坑。</p>
 <p>先放成品 <a href="http://bgm-ip-viewer.trim21.cn">bgm-ip-viewer</a></p>
 <p>在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.</p>
-<h1 id="爬取数据并生成关联条目网络">爬取数据并生成关联条目网络</h1>
-<h2 id="爬取数据">爬取数据</h2>
+<h1 id="爬取数据并生成关联条目网络">爬取数据并生成关联条目网络<a hidden class="anchor" aria-hidden="true" href="#爬取数据并生成关联条目网络">#</a></h1>
+<h2 id="爬取数据">爬取数据<a hidden class="anchor" aria-hidden="true" href="#爬取数据">#</a></h2>
 <p>爬数据用的是<code>scrapy</code>, 因为本站有请求速度的限制, 所以数据源是镜像站.</p>
 <p><code>scrapy</code>的流程是这样的, 首先继承<code>scrapy.Item</code>来定义你自己爬到的数据的模型.</p>
 <p>比如我定义了条目 item</p>
@@ -261,7 +340,7 @@ scrapy的流程是这样的, 首先继 …">
 <p>原来我已经用<code>aiohttp</code>写了一些东西, 自认为还比较熟悉异步了, 结果没想到 python 的异步库真是各自为战. <code>scrapy</code>是基于<code>twisted</code>的, 所以基于<code>asyncio</code>的异步库是不能在这里用的. 我数据库用的是<code>MongoDB</code>, 原本<code>mongodb</code>官方有一个数据库<code>motor</code>, 支持<code>tornado</code>和<code>asyncio</code>的 ioloop, 但是不支持<code>twisted</code>&hellip;</p>
 <p>所以就算你了解 python 异步标准库的写法, 用另一个异步框架的时候还是可能一脸懵逼&hellip;</p>
 <p>额外去找了一个<code>twisted</code>支持的 mongo 库<code>txmongo</code>, 用来存数据.</p>
-<h2 id="数据处理">数据处理</h2>
+<h2 id="数据处理">数据处理<a hidden class="anchor" aria-hidden="true" href="#数据处理">#</a></h2>
 <p>爬回来的数据不处理别说别人了, 我自己都看不懂.</p>
 <p>回到我们一开始的目的, 把有关系的条目放在一起, 显示他们之间的关系.</p>
 <p>最后显示出来的是一个力导向图啊, 那直接用 d3.js 好了, 找一个 d3.js 的 demo 来看看他需要的数据结构是什么样的.</p>
@@ -313,7 +392,7 @@ scrapy的流程是这样的, 首先继 …">
 </span></span></code></pre></div><p>其中, 用来处理节点的函数<code>deal_with_noed(node)</code>首先获取节点跟其他节点的关系, 如果某个关系(比如角色歌, op, ed 之类的)不符合需要添加的条件就跳过, 如果符合条件, 先看看有没有一个现成的网络, 有就把对应节点加入到网络里, 没有就新建一个网络, 把对应节点加进去. 然后把对应节点<code>yield</code>出去.</p>
 <p>可以看到, 我在外面<code>for node in deal_with_node({'_id': j}):yield_job.append(node)</code>, 所以所有<code>yield</code>出来的节点都会成为下一个处理的节点. 这样一来会保证处理完一个网络只有的所有节点才会进行下一步, 处理下一个网络的节点.</p>
 <p>这样一来, 就可以保证一个整体网络不会裂成两个网络.</p>
-<h2 id="更新">更新</h2>
+<h2 id="更新">更新<a hidden class="anchor" aria-hidden="true" href="#更新">#</a></h2>
 <p>迫于用来跑这个程序的服务器只有 1C1G, 跑了一堆服务器的情况下再跑一个 Mongo 太勉强了, 再加上腾讯的学生优惠还有 36 每年的 mysql(1G 内存, 50G 硬盘), 就买了一年的 mysql 实例用来存数据, 减轻服务器的内存压力.</p>
 <p>然后就牵扯 twisted 异步操作数据库(其实同步也不是不行, 但是如果同步存储的话数据库就会成为爬虫的瓶颈, 所以还是异步比较合适.)</p>
 <p>twisted 提供了一个<code>adbapi</code>, 一看就知道是异步数据库 api 的意思. 操作 mysql 的话, 需要<code>mysqlclient</code>或者<code>pymysql</code>+<code>pymysql.install_as_MySQLdb()</code>跟把数据保存到 mongo 一样, 添加一个<code>mysqlpipeline</code>的 pipeline.</p>
@@ -384,45 +463,93 @@ scrapy的流程是这样的, 首先继 …">
 <p>而大概 20w 条条目, 20w 条条目间关系, 全都读到数据库里大概需要 1400MB 左右的内存, 我的服务器已经处理不了了, 只能先把数据库从服务器上下载下来, 然后再进行处理.</p>
 <p>之前发在 bgm 上之后有人提议说增量更新新的条目, 正好现在已经把主要的数据爬完了, 还剩下一些旧的条目, 只要写一个额外的爬虫定期处理<a href="https://bgm.tv/wiki">bangumi wiki 计划</a>页面显示的更改就好了.</p>
 
-        
-    </div>
 
-    <div class="prev-next">
-        
-    </div>
+  </div>
 
-    
-    
-    
-    <div id="comments">
-        <script src="https://utteranc.es/client.js"
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.trim21.me/tags/nodejs/">nodejs</a></li>
+      <li><a href="https://blog.trim21.me/tags/bgm/">bgm</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
     repo="trim21/blog"
     issue-term="title"
     theme="github-dark"
     crossorigin="anonymous"
     async></script>
 
-    </div>
+</article>
+    </main>
     
-</div>
-
-
-
-    
-
-        </main><footer class="footer">
-    
-    
-
-    
-
-    
-
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://blog.trim21.me/">Trim21&#39;s</a></span> · 
 
     <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

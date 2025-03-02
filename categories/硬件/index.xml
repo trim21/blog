@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>硬件 on Trim21&#39;s Blog</title>
+    <title>硬件 on Trim21&#39;s</title>
     <link>https://blog.trim21.me/categories/%E7%A1%AC%E4%BB%B6/</link>
-    <description>Recent content in 硬件 on Trim21&#39;s Blog</description>
-    <generator>Hugo</generator>
+    <description>Recent content in 硬件 on Trim21&#39;s</description>
+    <generator>Hugo -- 0.145.0</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 Aug 2016 21:53:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Mar 2025 05:55:21 +0800</lastBuildDate>
     <atom:link href="https://blog.trim21.me/categories/%E7%A1%AC%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>树莓派控制步进电机</title>

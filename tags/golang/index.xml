@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Golang on Trim21&#39;s Blog</title>
+    <title>golang on Trim21&#39;s</title>
     <link>https://blog.trim21.me/tags/golang/</link>
-    <description>Recent content in Golang on Trim21&#39;s Blog</description>
-    <generator>Hugo</generator>
+    <description>Recent content in golang on Trim21&#39;s</description>
+    <generator>Hugo -- 0.145.0</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Nov 2018 17:25:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Mar 2025 05:55:21 +0800</lastBuildDate>
     <atom:link href="https://blog.trim21.me/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang笔记</title>
       <link>https://blog.trim21.me/posts/learning-golang/</link>
       <pubDate>Thu, 01 Nov 2018 17:25:15 +0800</pubDate>
       <guid>https://blog.trim21.me/posts/learning-golang/</guid>
-      <description>&lt;h2 id=&#34;一些约定&#34;&gt;一些约定&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;使用驼峰命名法&lt;/li&gt;&#xA;&lt;li&gt;首字母小写的变量/函数只能在包内使用(多按一次 shift 我要累死了, 虽然编辑器有时在小写输入的情况下也会自动补全大写内容, 但有时不是那么聪明)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;数据类型&#34;&gt;数据类型&lt;/h2&gt;&#xA;&lt;h3 id=&#34;bool&#34;&gt;bool&lt;/h3&gt;&#xA;&lt;p&gt;布尔, &lt;code&gt;true&lt;/code&gt;或者&lt;code&gt;false&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;string&#34;&gt;string&lt;/h3&gt;&#xA;&lt;p&gt;字符串, 使用双引号 比如&lt;code&gt;&amp;quot;hello world&amp;quot;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;rune&#34;&gt;rune&lt;/h3&gt;&#xA;&lt;p&gt;类似于字符, 在使用&lt;code&gt;for _, char := range string&lt;/code&gt;迭代 string 的时候, char 的类型就是 rune&lt;/p&gt;&#xA;&lt;h3 id=&#34;int&#34;&gt;int&lt;/h3&gt;&#xA;&lt;p&gt;未分 int8, int16, int32 等等, 可能有些 api 返回的是 uint 类型, 使用&lt;code&gt;int()&lt;/code&gt;转化为 int&lt;/p&gt;&#xA;&lt;h3 id=&#34;byte&#34;&gt;byte&lt;/h3&gt;&#xA;&lt;p&gt;&lt;code&gt;[]byte&lt;/code&gt;可以跟 string 互相转化, &lt;code&gt;len(string)&lt;/code&gt;的长度实际上就是 string 转化为&lt;code&gt;[]byte&lt;/code&gt;之后的长度. 每个 unicode 的长度为 3. 比如说&lt;code&gt;len(&amp;quot;hello world&amp;quot;)==11&lt;/code&gt;, 但是&lt;code&gt;len(&amp;quot;你好 世界&amp;quot;)&lt;/code&gt;的长度为 3+3+1=7. 每个汉字因为是 unicode 所以为 3.&lt;/p&gt;&#xA;&lt;h3 id=&#34;指针&#34;&gt;指针&lt;/h3&gt;&#xA;&lt;p&gt;可以指向其他数据类型, 在传值的时候传递指针可以避免比较复杂的数据结构被复制一份.(比如比较大的数据, 结构体等等)&lt;/p&gt;&#xA;&lt;h3 id=&#34;数组&#34;&gt;数组&lt;/h3&gt;&#xA;&lt;p&gt;用于存放类型相同的一组数据.&lt;/p&gt;&#xA;&lt;h4 id=&#34;slice&#34;&gt;slice&lt;/h4&gt;&#xA;&lt;p&gt;可变长度&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;一些约定&#34;&gt;一些约定&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;使用驼峰命名法&lt;/li&gt;
+&lt;li&gt;首字母小写的变量/函数只能在包内使用(多按一次 shift 我要累死了, 虽然编辑器有时在小写输入的情况下也会自动补全大写内容, 但有时不是那么聪明)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;数据类型&#34;&gt;数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;bool&#34;&gt;bool&lt;/h3&gt;
+&lt;p&gt;布尔, &lt;code&gt;true&lt;/code&gt;或者&lt;code&gt;false&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;string&#34;&gt;string&lt;/h3&gt;
+&lt;p&gt;字符串, 使用双引号 比如&lt;code&gt;&amp;quot;hello world&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rune&#34;&gt;rune&lt;/h3&gt;
+&lt;p&gt;类似于字符, 在使用&lt;code&gt;for _, char := range string&lt;/code&gt;迭代 string 的时候, char 的类型就是 rune&lt;/p&gt;
+&lt;h3 id=&#34;int&#34;&gt;int&lt;/h3&gt;
+&lt;p&gt;未分 int8, int16, int32 等等, 可能有些 api 返回的是 uint 类型, 使用&lt;code&gt;int()&lt;/code&gt;转化为 int&lt;/p&gt;
+&lt;h3 id=&#34;byte&#34;&gt;byte&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;[]byte&lt;/code&gt;可以跟 string 互相转化, &lt;code&gt;len(string)&lt;/code&gt;的长度实际上就是 string 转化为&lt;code&gt;[]byte&lt;/code&gt;之后的长度. 每个 unicode 的长度为 3. 比如说&lt;code&gt;len(&amp;quot;hello world&amp;quot;)==11&lt;/code&gt;, 但是&lt;code&gt;len(&amp;quot;你好 世界&amp;quot;)&lt;/code&gt;的长度为 3+3+1=7. 每个汉字因为是 unicode 所以为 3.&lt;/p&gt;
+&lt;h3 id=&#34;指针&#34;&gt;指针&lt;/h3&gt;
+&lt;p&gt;可以指向其他数据类型, 在传值的时候传递指针可以避免比较复杂的数据结构被复制一份.(比如比较大的数据, 结构体等等)&lt;/p&gt;
+&lt;h3 id=&#34;数组&#34;&gt;数组&lt;/h3&gt;
+&lt;p&gt;用于存放类型相同的一组数据.&lt;/p&gt;
+&lt;h4 id=&#34;slice&#34;&gt;slice&lt;/h4&gt;
+&lt;p&gt;可变长度&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

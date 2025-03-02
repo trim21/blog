@@ -1,171 +1,250 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
 
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>bash和zsh的自动补全 | Trim21&#39;s</title>
+<meta name="keywords" content="shell">
+<meta name="description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
+BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
+分析一下需求
+BGmi 的命令都是同样的结构,bgmi action1 --opt1 arg1 --opt2 arg2,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接add_parser和add_argument相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的action和相应的opts存在了一个变量中
+actions_and_arguments = [
+    {
+        &#39;action&#39;: ACTION_ADD,
+        &#39;help&#39;: &#39;Subscribe bangumi.&#39;,
+        &#39;arguments&#39;: [
+            {&#39;dest&#39;: &#39;name&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, type=unicode_, nargs=&#39;&#43;&#39;,
+                            help=&#39;Bangumi name&#39;), },
+            {&#39;dest&#39;: &#39;--episode&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;episode&#39;,
+                            help=&#39;Add bangumi and mark it as specified episode.&#39;,
+                            type=int), },
+        ]
+    },
+    {
+        &#39;action&#39;: ACTION_DELETE,
+        &#39;help&#39;: &#39;Unsubscribe bangumi.&#39;,
+        &#39;arguments&#39;: [
+            {&#39;dest&#39;: &#39;--name&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, nargs=&#39;&#43;&#39;, type=unicode_,
+                            help=&#39;Bangumi name to unsubscribe.&#39;), },
+            {&#39;dest&#39;: &#39;--batch&#39;,
+             &#39;kwargs&#39;: dict(action=&#39;store_true&#39;, help=&#39;No confirmation.&#39;), },
+        ]
+    }]
+一个list中储存了多个dict,每个dict对应一个action,每个action的选项存在arguments字段中.这里的命名可能有些混乱,写的时候没太注意.">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.trim21.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.trim21.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.trim21.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.trim21.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.trim21.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
+<noscript>
     <style>
-        :root {
-            --accent-color: #FF4D4D;
-            --font-size: 17.5px;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    
-    
-    
-    
-    
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <title>bash和zsh的自动补全</title>
-    <meta name="description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
+  <meta property="og:site_name" content="Trim21&#39;s">
+  <meta property="og:title" content="bash和zsh的自动补全">
+  <meta property="og:description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
 BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
-分析一下需求 BGmi 的命令都是同样的结构,bgmi …">
-    <meta name="keywords" content='shell'>
-
-    <meta property="og:url" content="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="bash和zsh的自动补全">
-    <meta property="og:description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
+分析一下需求 BGmi 的命令都是同样的结构,bgmi action1 --opt1 arg1 --opt2 arg2,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接add_parser和add_argument相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的action和相应的opts存在了一个变量中
+actions_and_arguments = [ { &#39;action&#39;: ACTION_ADD, &#39;help&#39;: &#39;Subscribe bangumi.&#39;, &#39;arguments&#39;: [ {&#39;dest&#39;: &#39;name&#39;, &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, type=unicode_, nargs=&#39;&#43;&#39;, help=&#39;Bangumi name&#39;), }, {&#39;dest&#39;: &#39;--episode&#39;, &#39;kwargs&#39;: dict(metavar=&#39;episode&#39;, help=&#39;Add bangumi and mark it as specified episode.&#39;, type=int), }, ] }, { &#39;action&#39;: ACTION_DELETE, &#39;help&#39;: &#39;Unsubscribe bangumi.&#39;, &#39;arguments&#39;: [ {&#39;dest&#39;: &#39;--name&#39;, &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, nargs=&#39;&#43;&#39;, type=unicode_, help=&#39;Bangumi name to unsubscribe.&#39;), }, {&#39;dest&#39;: &#39;--batch&#39;, &#39;kwargs&#39;: dict(action=&#39;store_true&#39;, help=&#39;No confirmation.&#39;), }, ] }] 一个list中储存了多个dict,每个dict对应一个action,每个action的选项存在arguments字段中.这里的命名可能有些混乱,写的时候没太注意.">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-12-09T09:58:46+08:00">
+    <meta property="article:modified_time" content="2025-03-03T05:55:21+08:00">
+    <meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bash和zsh的自动补全">
+<meta name="twitter:description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
 BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
-分析一下需求 BGmi 的命令都是同样的结构,bgmi …">
-    <meta property="og:image" content="https://blog.trim21.me/">
-    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+分析一下需求
+BGmi 的命令都是同样的结构,bgmi action1 --opt1 arg1 --opt2 arg2,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接add_parser和add_argument相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的action和相应的opts存在了一个变量中
+actions_and_arguments = [
+    {
+        &#39;action&#39;: ACTION_ADD,
+        &#39;help&#39;: &#39;Subscribe bangumi.&#39;,
+        &#39;arguments&#39;: [
+            {&#39;dest&#39;: &#39;name&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, type=unicode_, nargs=&#39;&#43;&#39;,
+                            help=&#39;Bangumi name&#39;), },
+            {&#39;dest&#39;: &#39;--episode&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;episode&#39;,
+                            help=&#39;Add bangumi and mark it as specified episode.&#39;,
+                            type=int), },
+        ]
+    },
+    {
+        &#39;action&#39;: ACTION_DELETE,
+        &#39;help&#39;: &#39;Unsubscribe bangumi.&#39;,
+        &#39;arguments&#39;: [
+            {&#39;dest&#39;: &#39;--name&#39;,
+             &#39;kwargs&#39;: dict(metavar=&#39;name&#39;, nargs=&#39;&#43;&#39;, type=unicode_,
+                            help=&#39;Bangumi name to unsubscribe.&#39;), },
+            {&#39;dest&#39;: &#39;--batch&#39;,
+             &#39;kwargs&#39;: dict(action=&#39;store_true&#39;, help=&#39;No confirmation.&#39;), },
+        ]
+    }]
+一个list中储存了多个dict,每个dict对应一个action,每个action的选项存在arguments字段中.这里的命名可能有些混乱,写的时候没太注意.">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="bash和zsh的自动补全">
-    <meta name="twitter:description" content="最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能
-BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.
-分析一下需求 BGmi 的命令都是同样的结构,bgmi …">
-    <meta property="twitter:domain" content="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
-    <meta property="twitter:url" content="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
-    <meta name="twitter:image" content="https://blog.trim21.me/">
 
-    
-    <link rel="canonical" href="https://blog.trim21.me/posts/bash-zsh-autocompltion/">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
-
-    
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
-
-    
-    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
-
-    
-    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
-
-    
-    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "posts",
+      "item": "https://blog.trim21.me/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "bash和zsh的自动补全",
+      "item": "https://blog.trim21.me/posts/bash-zsh-autocompltion/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "bash和zsh的自动补全",
+  "name": "bash和zsh的自动补全",
+  "description": "最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能\nBGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.\n分析一下需求 BGmi 的命令都是同样的结构,bgmi action1 --opt1 arg1 --opt2 arg2,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接add_parser和add_argument相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的action和相应的opts存在了一个变量中\nactions_and_arguments = [ { \u0026#39;action\u0026#39;: ACTION_ADD, \u0026#39;help\u0026#39;: \u0026#39;Subscribe bangumi.\u0026#39;, \u0026#39;arguments\u0026#39;: [ {\u0026#39;dest\u0026#39;: \u0026#39;name\u0026#39;, \u0026#39;kwargs\u0026#39;: dict(metavar=\u0026#39;name\u0026#39;, type=unicode_, nargs=\u0026#39;+\u0026#39;, help=\u0026#39;Bangumi name\u0026#39;), }, {\u0026#39;dest\u0026#39;: \u0026#39;--episode\u0026#39;, \u0026#39;kwargs\u0026#39;: dict(metavar=\u0026#39;episode\u0026#39;, help=\u0026#39;Add bangumi and mark it as specified episode.\u0026#39;, type=int), }, ] }, { \u0026#39;action\u0026#39;: ACTION_DELETE, \u0026#39;help\u0026#39;: \u0026#39;Unsubscribe bangumi.\u0026#39;, \u0026#39;arguments\u0026#39;: [ {\u0026#39;dest\u0026#39;: \u0026#39;--name\u0026#39;, \u0026#39;kwargs\u0026#39;: dict(metavar=\u0026#39;name\u0026#39;, nargs=\u0026#39;+\u0026#39;, type=unicode_, help=\u0026#39;Bangumi name to unsubscribe.\u0026#39;), }, {\u0026#39;dest\u0026#39;: \u0026#39;--batch\u0026#39;, \u0026#39;kwargs\u0026#39;: dict(action=\u0026#39;store_true\u0026#39;, help=\u0026#39;No confirmation.\u0026#39;), }, ] }] 一个list中储存了多个dict,每个dict对应一个action,每个action的选项存在arguments字段中.这里的命名可能有些混乱,写的时候没太注意.\n",
+  "keywords": [
+    "shell"
+  ],
+  "articleBody": "最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能\nBGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.\n分析一下需求 BGmi 的命令都是同样的结构,bgmi action1 --opt1 arg1 --opt2 arg2,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接add_parser和add_argument相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的action和相应的opts存在了一个变量中\nactions_and_arguments = [ { 'action': ACTION_ADD, 'help': 'Subscribe bangumi.', 'arguments': [ {'dest': 'name', 'kwargs': dict(metavar='name', type=unicode_, nargs='+', help='Bangumi name'), }, {'dest': '--episode', 'kwargs': dict(metavar='episode', help='Add bangumi and mark it as specified episode.', type=int), }, ] }, { 'action': ACTION_DELETE, 'help': 'Unsubscribe bangumi.', 'arguments': [ {'dest': '--name', 'kwargs': dict(metavar='name', nargs='+', type=unicode_, help='Bangumi name to unsubscribe.'), }, {'dest': '--batch', 'kwargs': dict(action='store_true', help='No confirmation.'), }, ] }] 一个list中储存了多个dict,每个dict对应一个action,每个action的选项存在arguments字段中.这里的命名可能有些混乱,写的时候没太注意.\n无论是在 bash 还是 zsh 中,要让 bgmi 有自动补全的功能,都需要一个相应的函数来给 bgmi 命令提供自动补全功能,也就是说,我们是要把上面的一个dict转换成一个字符串. 这种事情,当然就该模板出马了.因为 BGmi 的 api 是由 tornado 提供的,所以就直接用tornado.template了.\n先从 Bash 的自动补全开始 参考的跟我一起写 shell 补全脚本（Bash 篇）\n最终的模板_bgmi_completion_bash.sh\n先说下 bash 的语法 基本上会用到的数据类型就是字符串和数字了,字符串两边需要加单引号的双引号,或者是反引号.而单引号和双引号还有一些不同.双引号允许转义,而单引号不允许\nshell 的语法跟编程语言的语法有一些不同,感觉 shell 的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说\nexport var=1 echo \"$var\" # 1 echo \"$var 233\" # 1 233 echo '$var' # $var echo \"`ls`\" # 输出ls命令的输出 在双引号字符串中,以$开头的会被替换成对应的变量,用反引号包起来的内容会视为命令,运行之后把输出替换为字符串的一部分\n然后是具体的代码 bash 用来提供自动补全的命令是complete\ncomplete --help complete: complete [-abcdefgjksuv] [-pr] [-DE] [-o option] [-A action] [-G globpat] [-W wordlist] [-F function] [-C command] [-X filterpat] [-P prefix] [-S suffix] [name ...] Specify how arguments are to be completed by Readline. For each NAME, specify how arguments are to be completed. If no options are supplied, existing completion specifications are printed in a way that allows them to be reused as input. Options: -p print existing completion specifications in a reusable format -r remove a completion specification for each NAME, or, if no NAMEs are supplied, all completion specifications -D apply the completions and actions as the default for commands without any specific completion defined -E apply the completions and actions to \"empty\" commands -- completion attempted on a blank line When completion is attempted, the actions are applied in the order the uppercase-letter options are listed above. The -D option takes precedence over -E. Exit Status: Returns success unless an invalid option is supplied or an error occurs. 本来complete是支持用另一个命令来进行自动补全的,但是试了试实在是太慢了,所以还是生成了一个 bash 函数.\n因为我是编写了一个_bgmi函数来进行bgmi命令的自动补全,所以此处就应该complete -F _bgmi bgmi\n然后就是_bgmi函数本体了. config 太多,只贴了一部分.\n_bgmi() { local pre cur action local actions bangumi config actions=\"add delete update cal config filter fetch download list mark search source complete\" config=\"BANGUMI_MOE_URL SAVE_PATH DOWNLOAD_DELEGATE MAX_PAGE TMP_PATH DANMAKU_API_URL\" COMPREPLY=() pre=${COMP_WORDS[COMP_CWORD-1]} cur=${COMP_WORDS[COMP_CWORD]} if [ $COMP_CWORD -eq 1 ]; then COMPREPLY=( $( compgen -W \"$actions\" -- $cur ) ) else action=${COMP_WORDS[1]} case \"$action\" in update ) local opts opts=\"--download -d --not-ignore\" COMPREPLY=( $( compgen -W \"$opts\" -- $cur ) ) return 0 ;; filter ) local opts opts=\"--subtitle --include --exclude --regex\" COMPREPLY=( $( compgen -W \"$opts\" -- $cur ) ) return 0 ;; config ) COMPREPLY=( $( compgen -W \"$config\" -- $cur ) ) return 0 ;; cal ) local opts opts=\"--today -f --force-update --download-cover --no-save\" COMPREPLY=( $( compgen -W \"$opts\" -- $cur ) ) return 0 ;; source ) local source source=\"bangumi_moe mikan_project dmhy\" COMPREPLY=( $( compgen -W \"$source\" -- $cur ) ) return 0 ;; search ) local opts opts=\"--count --regex-filter --download --dupe\" COMPREPLY=( $( compgen -W \"$opts\" -- $cur ) ) return 0 ;; download ) local opts opts=\"--list --mark --status\" COMPREPLY=( $( compgen -W \"$opts\" -- $cur ) ) return 0 ;; esac fi } complete -F _bgmi bgmi # run `eval \"$(bgmi complete)\"` in your bash COMP_WORDS是保存了当前命令行所有输入内容的一个数组,COMP_CWORD是当前正在输入的词的索引. 所以,pre=${COMP_WORDS[COMP_CWORD-1]}是当前正在输入的前一个词,cur=${COMP_WORDS[COMP_CWORD]}是正在输入的词.\n(这里用${}包起来跟直接使用$var没有什么区别,只是其他语言的变量前不用加$,用{}包起来个人看起来习惯一点.)\n因为bgmi的命令都是bgmi action args这样的形式,所以先判断COMP_WORDS的大小,如果等于 1,说明还没输出对应的 action,需要补全 action. 如果大于 1, 说明已经输入过了 action,只需要补全对应的选项.\n在 bash 中,生成对应补全选项的命令是compgen\n$ compgen --help compgen: compgen [-abcdefgjksuv] [-o option] [-A action] [-G globpat] [-W wordlist] [-F function] [-C command] [-X filterpat] [-P prefix] [-S suffix] [word] Display possible completions depending on the options. Intended to be used from within a shell function generating possible completions. If the optional WORD argument is supplied, matches against WORD are generated. Exit Status: Returns success unless an invalid option is supplied or an error occurs. 我在这里只用到了compgen -W 根据一个wordlist来生成对应的补全.\n接下来只需要把对应的内容根据模板的要求进行修改就可以了.\nZsh 的自动补全 参照的这篇文章https://github.com/spacewander/blogWithMarkdown/issues/32\n先放个结果…\n_bgmi(){ if [[ ${#words} -le 2 ]] then _alternative \\ 'action:action options:((add\\:\"Subscribe bangumi.\" delete\\:\"Unsubscribe bangumi.\" list\\:\"List subscribed bangumi.\" filter\\:\"Set bangumi fetch filter.\" update\\:\"Update bangumi calendar and subscribed bangumi episode.\" cal\\:\"Print bangumi calendar.\" config\\:\"Config BGmi.\" mark\\:\"Mark bangumi episode.\" download\\:\"Download manager.\" fetch\\:\"Fetch bangumi.\" search\\:\"Search torrents from data source by keyword\" source\\:\"Select date source bangumi_moe or mikan_project\" install\\:\"Install BGmi front / admin / download delegate\" upgrade\\:\"Check update.\" history\\:\"List your history of following bangumi\" ))' fi if [[ ${words[(i)cal]} -le ${#words} ]] then _alternative \\ 'cal:cal options:((--today\\:\"Show bangumi calendar for today.\" -f\\:\"Get the newest bangumi calendar from bangumi.moe.\" --force-update\\:\"Get the newest bangumi calendar from bangumi.moe.\" --download-cover\\:\"Download the cover to local\" --no-save\\:\"Do not save the bangumi data when force update.\" ))' fi } compdef _bgmi bgmi #usage: eval \"$(bgmi complete)\" #if you are using windows, cygwin or babun, try `eval \"$(bgmi complete|dos2unix)\"` zsh 跟 bash 有几点不同\nbash 中的 complete 在 zsh 中是 compdef\nzsh 中用来保存目前所有输入的词组是words\nzsh 中要生成对应的提醒的话用的是_alternative等命令,而不是把结果赋值给某个变量.\n其中有这样一个用法\n${words[(i)cal]} 这类似于 js 中的words.indexOf('cal') 而#a就相当于a.length\n因为_alternative的功能是最全的,所以我就只用了_alternative这一个命令 cal:cal options:(( -f\\:\"Get the newest bangumi calendar from bangumi.moe.\" --force-update\\:\"Get the newest bangumi calendar from bangumi.moe.\" ))\n如果有两个选项是同样的意思,直接重复输出就可以了,zsh 会自动把他们合并成一行,就像这样 其中 --force-update和-f的帮助信息在我们输入的时候就是相同的.\nubuntu@VM-189-243-ubuntu ~ $ bgmi cal - --download-cover -- Download the cover to local --force-update -f -- Get the newest bangumi calendar from bangumi.moe. --no-save -- Do not save the bangumi data when force update. --today -- Show bangumi calendar for today. ",
+  "wordCount" : "831",
+  "inLanguage": "en",
+  "datePublished": "2017-12-09T09:58:46+08:00",
+  "dateModified": "2025-03-03T05:55:21+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.trim21.me/posts/bash-zsh-autocompltion/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trim21's",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.trim21.me/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-        <script>
-            
-            setThemeByUserPref();
-        </script><header class="header">
-    <nav class="header-nav">
 
-        
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-        <div class="nav-title">
-            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.trim21.me/" accesskey="h" title="Trim21&#39;s (Alt + H)">Trim21&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div class="nav-links">
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
-            </div>
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
-            </div>
-            
-
-            <span class="nav-icons-divider"></span>
-            <div class="nav-link dark-theme-toggle">
-                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                <a aria-hidden="true" role="switch">
-                    <span class="theme-toggle-icon" data-feather="moon"></span>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.trim21.me/posts/" title="Blog">
+                    <span>Blog</span>
                 </a>
-            </div>
-
-            <div class="nav-link" id="hamburger-menu-toggle">
-                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
-                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
-                    <span data-feather="menu"></span>
-                </a>
-            </div>
-
-            
-            <ul class="nav-hamburger-list visibility-hidden">
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/posts/" > Blog </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/about/" > About </a>
-                </li>
-                
-                <li class="nav-item dark-theme-toggle">
-                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                    <a role="switch">
-                        <span class="theme-toggle-icon" data-feather="moon"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
+            </li>
+        </ul>
     </nav>
 </header>
-<main id="content">
-    <div class="post container">
-    <div class="post-header-section">
-        <h1>bash和zsh的自动补全</h1>
+<main class="main">
 
-        
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      bash和zsh的自动补全
+    </h1>
+    <div class="post-meta"><span title='2017-12-09 09:58:46 +0800 +0800'>2017-12-09</span>
 
-        
-	
-	
-	
-	
-        
-
-	
-
-	
-
-	
-          <small role="doc-subtitle"></small>
-	
-
-	
-          <p class="post-date">
-              
-
-              December 9, 2017
-
-              
-          </p>
-	
-
-        <ul class="post-tags">
-          
-           
-             <li class="post-tag"><a href="https://blog.trim21.me/tags/shell">shell</a></li>
-           
-         
-        </ul>
-    </div>
-
-    <div class="post-content">
-        <p>最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能</p>
+</div>
+  </header> 
+  <div class="post-content"><p>最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能</p>
 <p><a href="https://github.com/BGmi/BGmi">BGmi</a>起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.</p>
-<h2 id="分析一下需求">分析一下需求</h2>
+<h2 id="分析一下需求">分析一下需求<a hidden class="anchor" aria-hidden="true" href="#分析一下需求">#</a></h2>
 <p>BGmi 的命令都是同样的结构,<code>bgmi action1 --opt1 arg1 --opt2 arg2</code>,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接<code>add_parser</code>和<code>add_argument</code>相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的<code>action</code>和相应的<code>opts</code>存在了一个变量中</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actions_and_arguments <span style="color:#f92672">=</span> [
 </span></span><span style="display:flex;"><span>    {
@@ -194,10 +273,10 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span><span style="display:flex;"><span>    }]
 </span></span></code></pre></div><p>一个<code>list</code>中储存了多个<code>dict</code>,每个<code>dict</code>对应一个<code>action</code>,每个<code>action</code>的选项存在<code>arguments</code>字段中.这里的命名可能有些混乱,写的时候没太注意.</p>
 <p>无论是在 bash 还是 zsh 中,要让 bgmi 有自动补全的功能,都需要一个相应的函数来给 bgmi 命令提供自动补全功能,也就是说,我们是要把上面的一个<code>dict</code>转换成一个字符串. 这种事情,当然就该模板出马了.因为 BGmi 的 api 是由 tornado 提供的,所以就直接用<code>tornado.template</code>了.</p>
-<h2 id="先从-bash-的自动补全开始">先从 Bash 的自动补全开始</h2>
+<h2 id="先从-bash-的自动补全开始">先从 Bash 的自动补全开始<a hidden class="anchor" aria-hidden="true" href="#先从-bash-的自动补全开始">#</a></h2>
 <p>参考的<a href="https://segmentfault.com/a/1190000002968878">跟我一起写 shell 补全脚本（Bash 篇）</a></p>
 <p>最终的模板<a href="https://github.com/BGmi/BGmi/blob/0b21db0148f1794219c96520151933904f2918cf/bgmi/others/_bgmi_completion_bash.sh">_bgmi_completion_bash.sh</a></p>
-<h3 id="先说下-bash-的语法">先说下 bash 的语法</h3>
+<h3 id="先说下-bash-的语法">先说下 bash 的语法<a hidden class="anchor" aria-hidden="true" href="#先说下-bash-的语法">#</a></h3>
 <p>基本上会用到的数据类型就是字符串和数字了,字符串两边需要加单引号的双引号,或者是反引号.而单引号和双引号还有一些不同.双引号允许转义,而单引号不允许</p>
 <p>shell 的语法跟编程语言的语法有一些不同,感觉 shell 的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export var<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
@@ -206,7 +285,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;$var&#39;</span> <span style="color:#75715e"># $var</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;`ls`&#34;</span> <span style="color:#75715e"># 输出ls命令的输出</span>
 </span></span></code></pre></div><p>在双引号字符串中,以<code>$</code>开头的会被替换成对应的变量,用反引号包起来的内容会视为命令,运行之后把输出替换为字符串的一部分</p>
-<h3 id="然后是具体的代码">然后是具体的代码</h3>
+<h3 id="然后是具体的代码">然后是具体的代码<a hidden class="anchor" aria-hidden="true" href="#然后是具体的代码">#</a></h3>
 <p>bash 用来提供自动补全的命令是<code>complete</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>complete --help
 </span></span><span style="display:flex;"><span>complete: complete <span style="color:#f92672">[</span>-abcdefgjksuv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-pr<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-DE<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-A action<span style="color:#f92672">]</span>
@@ -327,7 +406,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span><span style="display:flex;"><span>    Returns success unless an invalid option is supplied or an error occurs.
 </span></span></code></pre></div><p>我在这里只用到了<code>compgen -W</code> 根据一个<code>wordlist</code>来生成对应的补全.</p>
 <p>接下来只需要把对应的内容根据模板的要求进行修改就可以了.</p>
-<h2 id="zsh-的自动补全">Zsh 的自动补全</h2>
+<h2 id="zsh-的自动补全">Zsh 的自动补全<a hidden class="anchor" aria-hidden="true" href="#zsh-的自动补全">#</a></h2>
 <p>参照的这篇文章<a href="https://github.com/spacewander/blogWithMarkdown/issues/32">https://github.com/spacewander/blogWithMarkdown/issues/32</a></p>
 <p>先放个结果&hellip;</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">(){</span>
@@ -365,45 +444,92 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span><span style="display:flex;"><span>--no-save             -- Do not save the bangumi data when force update.
 </span></span><span style="display:flex;"><span>--today               -- Show bangumi calendar <span style="color:#66d9ef">for</span> today.
 </span></span></code></pre></div>
-        
-    </div>
 
-    <div class="prev-next">
-        
-    </div>
+  </div>
 
-    
-    
-    
-    <div id="comments">
-        <script src="https://utteranc.es/client.js"
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.trim21.me/tags/shell/">shell</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
     repo="trim21/blog"
     issue-term="title"
     theme="github-dark"
     crossorigin="anonymous"
     async></script>
 
-    </div>
+</article>
+    </main>
     
-</div>
-
-
-
-    
-
-        </main><footer class="footer">
-    
-    
-
-    
-
-    
-
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://blog.trim21.me/">Trim21&#39;s</a></span> · 
 
     <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

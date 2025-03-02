@@ -1,173 +1,296 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
 
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>给win10应用商店设置代理 | Trim21&#39;s</title>
+<meta name="keywords" content="python, windows">
+<meta name="description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用.
+参照少数派的这篇文章设置了代理,总算是解决了问题.
+其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.
+win10 商店对应的应用在注册表中的DisplayName是Microsoft.WindowsStore,
+所以遍历HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings的所有子 key,找到对应DisplayName中包含Microsoft.WindowsStore的一项就可以了.
+因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.
+import winreg
+
+
+def iterkeys(key):
+    # 获取该键的所有子键，因为没有方法可以获取子键的个数，所以只能用这种方法进行遍历
+    try:
+        i = 0
+        while True:
+            # EnumValue方法用来枚举键值，EnumKey用来枚举子键
+            yield winreg.EnumKey(key, i)
+            i &#43;= 1
+    except WindowsError:
+        return
+
+
+def itervalues(key):
+    # 获取该键的所有键值，因为没有方法可以获取键值的个数，所以只能用这种方法进行遍历
+    d = {}
+    try:
+        i = 0
+        while True:
+            # EnumValue方法用来枚举键值，EnumKey用来枚举子键
+            name, value, _ = winreg.EnumValue(key, i)
+            d[name] = value
+            i &#43;= 1
+    except WindowsError:
+        return d
+
+
+def main():
+    base_key = (
+        r&#34;Software\Classes\Local Settings\Software&#34;
+        r&#34;\Microsoft\Windows\CurrentVersion\AppContainer\Mappings\\&#34;
+    )
+    mappings = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key)
+    for key in iterkeys(mappings):
+        k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key &#43; key)
+        info = itervalues(k)
+        if &#39;WindowsStore&#39; in info[&#39;DisplayName&#39;]:
+            print(info[&#39;DisplayName&#39;])
+            print(key)
+            break
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+直接保存成 py 文件,然后运行,控制台的第二行会输出类似S-1-15-2-****的一个 SID,就是在CheckNetIsolation.exe loopbackexempt -a -p=${SID}中要用到的 SID.">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.trim21.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.trim21.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.trim21.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.trim21.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.trim21.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
+<noscript>
     <style>
-        :root {
-            --accent-color: #FF4D4D;
-            --font-size: 17.5px;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    
-    
-    
-    
-    
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <title>给win10应用商店设置代理</title>
-    <meta name="description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
+  <meta property="og:site_name" content="Trim21&#39;s">
+  <meta property="og:title" content="给win10应用商店设置代理">
+  <meta property="og:description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.
 其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.
-win10 商店对应的应用在注册表中的DisplayName …">
-    <meta name="keywords" content='python, windows'>
-
-    <meta property="og:url" content="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="给win10应用商店设置代理">
-    <meta property="og:description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.
+win10 商店对应的应用在注册表中的DisplayName是Microsoft.WindowsStore, 所以遍历HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings的所有子 key,找到对应DisplayName中包含Microsoft.WindowsStore的一项就可以了.
+因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.
+import winreg def iterkeys(key): # 获取该键的所有子键，因为没有方法可以获取子键的个数，所以只能用这种方法进行遍历 try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 yield winreg.EnumKey(key, i) i &#43;= 1 except WindowsError: return def itervalues(key): # 获取该键的所有键值，因为没有方法可以获取键值的个数，所以只能用这种方法进行遍历 d = {} try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 name, value, _ = winreg.EnumValue(key, i) d[name] = value i &#43;= 1 except WindowsError: return d def main(): base_key = ( r&#34;Software\Classes\Local Settings\Software&#34; r&#34;\Microsoft\Windows\CurrentVersion\AppContainer\Mappings\\&#34; ) mappings = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key) for key in iterkeys(mappings): k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key &#43; key) info = itervalues(k) if &#39;WindowsStore&#39; in info[&#39;DisplayName&#39;]: print(info[&#39;DisplayName&#39;]) print(key) break if __name__ == &#39;__main__&#39;: main() 直接保存成 py 文件,然后运行,控制台的第二行会输出类似S-1-15-2-****的一个 SID,就是在CheckNetIsolation.exe loopbackexempt -a -p=${SID}中要用到的 SID.">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-06-26T21:32:31+08:00">
+    <meta property="article:modified_time" content="2025-03-03T05:55:21+08:00">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给win10应用商店设置代理">
+<meta name="twitter:description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用.
+参照少数派的这篇文章设置了代理,总算是解决了问题.
 其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.
-win10 商店对应的应用在注册表中的DisplayName …">
-    <meta property="og:image" content="https://blog.trim21.me/">
-    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+win10 商店对应的应用在注册表中的DisplayName是Microsoft.WindowsStore,
+所以遍历HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings的所有子 key,找到对应DisplayName中包含Microsoft.WindowsStore的一项就可以了.
+因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.
+import winreg
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="给win10应用商店设置代理">
-    <meta name="twitter:description" content="最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.
-其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.
-win10 商店对应的应用在注册表中的DisplayName …">
-    <meta property="twitter:domain" content="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
-    <meta property="twitter:url" content="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
-    <meta name="twitter:image" content="https://blog.trim21.me/">
 
-    
-    <link rel="canonical" href="https://blog.trim21.me/posts/set-proxy-for-win10-store/">
+def iterkeys(key):
+    # 获取该键的所有子键，因为没有方法可以获取子键的个数，所以只能用这种方法进行遍历
+    try:
+        i = 0
+        while True:
+            # EnumValue方法用来枚举键值，EnumKey用来枚举子键
+            yield winreg.EnumKey(key, i)
+            i &#43;= 1
+    except WindowsError:
+        return
 
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
 
-    
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+def itervalues(key):
+    # 获取该键的所有键值，因为没有方法可以获取键值的个数，所以只能用这种方法进行遍历
+    d = {}
+    try:
+        i = 0
+        while True:
+            # EnumValue方法用来枚举键值，EnumKey用来枚举子键
+            name, value, _ = winreg.EnumValue(key, i)
+            d[name] = value
+            i &#43;= 1
+    except WindowsError:
+        return d
 
-    
-    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
-    
-    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+def main():
+    base_key = (
+        r&#34;Software\Classes\Local Settings\Software&#34;
+        r&#34;\Microsoft\Windows\CurrentVersion\AppContainer\Mappings\\&#34;
+    )
+    mappings = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key)
+    for key in iterkeys(mappings):
+        k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key &#43; key)
+        info = itervalues(k)
+        if &#39;WindowsStore&#39; in info[&#39;DisplayName&#39;]:
+            print(info[&#39;DisplayName&#39;])
+            print(key)
+            break
 
-    
-    
+
+if __name__ == &#39;__main__&#39;:
+    main()
+直接保存成 py 文件,然后运行,控制台的第二行会输出类似S-1-15-2-****的一个 SID,就是在CheckNetIsolation.exe loopbackexempt -a -p=${SID}中要用到的 SID.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "posts",
+      "item": "https://blog.trim21.me/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "给win10应用商店设置代理",
+      "item": "https://blog.trim21.me/posts/set-proxy-for-win10-store/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "给win10应用商店设置代理",
+  "name": "给win10应用商店设置代理",
+  "description": "最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.\n其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.\nwin10 商店对应的应用在注册表中的DisplayName是Microsoft.WindowsStore, 所以遍历HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Mappings的所有子 key,找到对应DisplayName中包含Microsoft.WindowsStore的一项就可以了.\n因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.\nimport winreg def iterkeys(key): # 获取该键的所有子键，因为没有方法可以获取子键的个数，所以只能用这种方法进行遍历 try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 yield winreg.EnumKey(key, i) i += 1 except WindowsError: return def itervalues(key): # 获取该键的所有键值，因为没有方法可以获取键值的个数，所以只能用这种方法进行遍历 d = {} try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 name, value, _ = winreg.EnumValue(key, i) d[name] = value i += 1 except WindowsError: return d def main(): base_key = ( r\u0026#34;Software\\Classes\\Local Settings\\Software\u0026#34; r\u0026#34;\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Mappings\\\\\u0026#34; ) mappings = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key) for key in iterkeys(mappings): k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key + key) info = itervalues(k) if \u0026#39;WindowsStore\u0026#39; in info[\u0026#39;DisplayName\u0026#39;]: print(info[\u0026#39;DisplayName\u0026#39;]) print(key) break if __name__ == \u0026#39;__main__\u0026#39;: main() 直接保存成 py 文件,然后运行,控制台的第二行会输出类似S-1-15-2-****的一个 SID,就是在CheckNetIsolation.exe loopbackexempt -a -p=${SID}中要用到的 SID.\n",
+  "keywords": [
+    "python", "windows"
+  ],
+  "articleBody": "最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用. 参照少数派的这篇文章设置了代理,总算是解决了问题.\n其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.\nwin10 商店对应的应用在注册表中的DisplayName是Microsoft.WindowsStore, 所以遍历HKEY_CURRENT_USER\\Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Mappings的所有子 key,找到对应DisplayName中包含Microsoft.WindowsStore的一项就可以了.\n因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.\nimport winreg def iterkeys(key): # 获取该键的所有子键，因为没有方法可以获取子键的个数，所以只能用这种方法进行遍历 try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 yield winreg.EnumKey(key, i) i += 1 except WindowsError: return def itervalues(key): # 获取该键的所有键值，因为没有方法可以获取键值的个数，所以只能用这种方法进行遍历 d = {} try: i = 0 while True: # EnumValue方法用来枚举键值，EnumKey用来枚举子键 name, value, _ = winreg.EnumValue(key, i) d[name] = value i += 1 except WindowsError: return d def main(): base_key = ( r\"Software\\Classes\\Local Settings\\Software\" r\"\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Mappings\\\\\" ) mappings = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key) for key in iterkeys(mappings): k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, base_key + key) info = itervalues(k) if 'WindowsStore' in info['DisplayName']: print(info['DisplayName']) print(key) break if __name__ == '__main__': main() 直接保存成 py 文件,然后运行,控制台的第二行会输出类似S-1-15-2-****的一个 SID,就是在CheckNetIsolation.exe loopbackexempt -a -p=${SID}中要用到的 SID.\n这之后,设置系统代理,重启 win10 商店,就能通过代理下载应用了.\n",
+  "wordCount" : "119",
+  "inLanguage": "en",
+  "datePublished": "2019-06-26T21:32:31+08:00",
+  "dateModified": "2025-03-03T05:55:21+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.trim21.me/posts/set-proxy-for-win10-store/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trim21's",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.trim21.me/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-        <script>
-            
-            setThemeByUserPref();
-        </script><header class="header">
-    <nav class="header-nav">
 
-        
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-        <div class="nav-title">
-            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.trim21.me/" accesskey="h" title="Trim21&#39;s (Alt + H)">Trim21&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div class="nav-links">
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
-            </div>
-            
-            <div class="nav-link">
-                <a href="https://blog.trim21.me/about/" aria-label="" > About </a>
-            </div>
-            
-
-            <span class="nav-icons-divider"></span>
-            <div class="nav-link dark-theme-toggle">
-                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                <a aria-hidden="true" role="switch">
-                    <span class="theme-toggle-icon" data-feather="moon"></span>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.trim21.me/posts/" title="Blog">
+                    <span>Blog</span>
                 </a>
-            </div>
-
-            <div class="nav-link" id="hamburger-menu-toggle">
-                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
-                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
-                    <span data-feather="menu"></span>
-                </a>
-            </div>
-
-            
-            <ul class="nav-hamburger-list visibility-hidden">
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/posts/" > Blog </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="https://blog.trim21.me/about/" > About </a>
-                </li>
-                
-                <li class="nav-item dark-theme-toggle">
-                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
-                    <a role="switch">
-                        <span class="theme-toggle-icon" data-feather="moon"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
+            </li>
+        </ul>
     </nav>
 </header>
-<main id="content">
-    <div class="post container">
-    <div class="post-header-section">
-        <h1>给win10应用商店设置代理</h1>
+<main class="main">
 
-        
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      给win10应用商店设置代理
+    </h1>
+    <div class="post-meta"><span title='2019-06-26 21:32:31 +0800 +0800'>2019-06-26</span>
 
-        
-	
-	
-	
-	
-        
-
-	
-
-	
-
-	
-          <small role="doc-subtitle"></small>
-	
-
-	
-          <p class="post-date">
-              
-
-              June 26, 2019
-
-              
-          </p>
-	
-
-        <ul class="post-tags">
-          
-           
-             <li class="post-tag"><a href="https://blog.trim21.me/tags/python">python</a></li>
-           
-         
-           
-             <li class="post-tag"><a href="https://blog.trim21.me/tags/windows">windows</a></li>
-           
-         
-        </ul>
-    </div>
-
-    <div class="post-content">
-        <p>最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用.
+</div>
+  </header> 
+  <div class="post-content"><p>最近网络状况实在是不好,用 win10 应用商店下载应用怎么也不成功.修改系统代理也不管用.
 参照<a href="https://sspai.com/post/41137">少数派的这篇文章</a>设置了代理,总算是解决了问题.</p>
 <p>其中,最麻烦的是找到对应 uwp 应用的 sid,因为是要在表里一项一项的去找.</p>
 <p>win10 商店对应的应用在注册表中的<code>DisplayName</code>是<code>Microsoft.WindowsStore</code>,
@@ -222,45 +345,93 @@ win10 商店对应的应用在注册表中的DisplayName …">
 </span></span></code></pre></div><p>直接保存成 py 文件,然后运行,控制台的第二行会输出类似<code>S-1-15-2-****</code>的一个 SID,就是在<code>CheckNetIsolation.exe loopbackexempt -a -p=${SID}</code>中要用到的 SID.</p>
 <p>这之后,设置系统代理,重启 win10 商店,就能通过代理下载应用了.</p>
 
-        
-    </div>
 
-    <div class="prev-next">
-        
-    </div>
+  </div>
 
-    
-    
-    
-    <div id="comments">
-        <script src="https://utteranc.es/client.js"
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.trim21.me/tags/python/">python</a></li>
+      <li><a href="https://blog.trim21.me/tags/windows/">windows</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
     repo="trim21/blog"
     issue-term="title"
     theme="github-dark"
     crossorigin="anonymous"
     async></script>
 
-    </div>
+</article>
+    </main>
     
-</div>
-
-
-
-    
-
-        </main><footer class="footer">
-    
-    
-
-    
-
-    
-
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://blog.trim21.me/">Trim21&#39;s</a></span> · 
 
     <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

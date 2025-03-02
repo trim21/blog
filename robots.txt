@@ -1,4 +1,3 @@
 User-agent: *
-Allow:　/
-
-Sitemap: https://blog.trim21.cn/sitemap.xml
+Disallow:
+Sitemap: https://blog.trim21.me/sitemap.xml
