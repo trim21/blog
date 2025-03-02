@@ -18,6 +18,8 @@ jobs:
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
 
       - run: hugo build
 
