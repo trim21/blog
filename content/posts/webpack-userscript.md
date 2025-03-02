@@ -1,10 +1,11 @@
 ---
-title: 使用webpack打包userscript
-date: 2018-10-03 11:15:35
 categories:
   - 编程
+date: "2018-10-03T11:15:35+08:00"
 tags:
   - javascript
+title: 使用webpack打包userscript
+type: post
 ---
 
 原本用的是 grunt 来打包 webpack, 但是 grunt 只是依赖于简单的字符串替换和拼接, 效率过低.

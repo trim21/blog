@@ -1,9 +1,10 @@
 ---
-title: ubuntu安装matplotlib
-updated: 2016-07-25 19:26:07
-date: 2016-07-25 19:26:07
+date: "2016-07-25T19:26:07+08:00"
 tags:
   - python
+title: ubuntu安装matplotlib
+type: post
+updated: 2016-07-25 19:26:07
 ---
 
 (可恶,git 用的不熟练,把 commit 丢了...重写文章)

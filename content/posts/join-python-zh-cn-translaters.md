@@ -1,10 +1,11 @@
 ---
-title: 参与python文档的中文翻译
-date: 2019-03-31 01:28:36
 categories:
   - 编程
+date: "2019-03-31T01:28:36+08:00"
 tags:
   - python
+title: 参与python文档的中文翻译
+type: post
 ---
 
 今天看到这个帖子[别开心太早， Python 官方文档的翻译差远了 - V2EX](https://www.v2ex.com/t/550164) 发现参与 python 文档翻译的门槛还挺低的，就尝试了一下翻译了两段文档.

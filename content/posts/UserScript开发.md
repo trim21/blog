@@ -1,11 +1,12 @@
 ---
-title: 提高userscript开发效率的一些工具
-date: 2018-06-28 04:29:21
-updated: 2018-10-07
 categories:
   - 编程
+date: "2018-06-28T04:29:21+08:00"
 tags:
   - javascript
+title: 提高userscript开发效率的一些工具
+type: post
+updated: 2018-10-07
 ---
 
 这已经是旧文了, 见{% post_link webpack-userscript 使用webpack打包userscript %}

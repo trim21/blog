@@ -1,9 +1,10 @@
 ---
-title: golang笔记
-date: 2018-11-01 17:25:15
-update: 2018-11-01 17:25:15
+date: "2018-11-01T17:25:15+08:00"
 tags:
   - golang
+title: golang笔记
+type: post
+update: 2018-11-01 17:25:15
 ---
 
 ## 一些约定

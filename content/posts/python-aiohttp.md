@@ -1,10 +1,11 @@
 ---
-title: 基于asyncio的web框架aiohttp
-date: 2018-10-05 17:42:21
 categories:
   - 编程
+date: "2018-10-05T17:42:21+08:00"
 tags:
   - python
+title: 基于asyncio的web框架aiohttp
+type: post
 ---
 
 本来想扯一通标准库里添加了`asyncio`的意义, 什么统一了异步框架, 什么方便代码前移之类的了.

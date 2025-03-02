@@ -1,9 +1,10 @@
 ---
-title: 用pyenv安装python
-date: 2019-12-23
+date: "2019-12-23T00:00:00+08:00"
 tags:
   - python
   - linux
+title: 用pyenv安装python
+type: post
 ---
 
 [pyenv](https://github.com/pyenv/pyenv)是用来安装多个版本的 python

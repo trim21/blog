@@ -1,9 +1,10 @@
 ---
-title: 输入法切换到Rime
-date: 2019-10-23
-updated: 2021-08-13
 categories:
   - 工具
+date: "2019-10-23T00:00:00+08:00"
+title: 输入法切换到Rime
+type: post
+updated: 2021-08-13
 ---
 
 QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。

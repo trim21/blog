@@ -1,10 +1,11 @@
 ---
-title: 在UserScript中使用Vue
-date: 2018-10-11 15:26:00
+date: "2018-10-11T15:26:00+08:00"
 tags:
   - vue
   - userscript
   - javascript
+title: 在UserScript中使用Vue
+type: post
 ---
 
 之前写了一个用户脚本, [在站外一键点 bgm 格子](https://github.com/Trim21/bgm-tv-auto-tracker) 为了添加一个 UI, 但又不想用 jQuery 手动绑一堆事件, 就直接上了 Vue. 所以需要用 Webpack 打包对应的 vue 文件到 userscript 里.
