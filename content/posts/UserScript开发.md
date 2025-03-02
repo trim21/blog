@@ -6,7 +6,7 @@ tags:
   - javascript
 title: 提高userscript开发效率的一些工具
 type: post
-updated: 2018-10-07
+lastmod: 2018-10-07
 ---
 
 这已经是旧文了, 见{% post_link webpack-userscript 使用webpack打包userscript %}

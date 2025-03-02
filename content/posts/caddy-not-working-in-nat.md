@@ -6,7 +6,7 @@ tags:
   - https
 title: caddy在内网中无法更新证书
 type: post
-updated: 2019-12-23
+lastmod: 2019-12-23
 ---
 
 NAS 上面运行了一个 caddy 服务器，还设置了 https。最近突然遇到了证书过期的问题.
