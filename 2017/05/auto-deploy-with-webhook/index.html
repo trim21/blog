@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>自动重新构建部署博客</title>
+    <meta name="description" content="想折腾这个很久了,终于把这个折腾好了.
+现在写博客的流程是,我在本机维护一个 git repo,里面是我所有的文章.然后我写完一篇文章或者修改了文章之后 push 到 github 上去,相应的 github pages 就会根据用来保存文章的 repo 自动最新的状态.
+原本是在自己的 vps …">
+    <meta name="keywords" content='Linux, python, nodejs, hexo'>
+
+    <meta property="og:url" content="https://blog.trim21.me/2017/05/auto-deploy-with-webhook/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="自动重新构建部署博客">
+    <meta property="og:description" content="想折腾这个很久了,终于把这个折腾好了.
+现在写博客的流程是,我在本机维护一个 git repo,里面是我所有的文章.然后我写完一篇文章或者修改了文章之后 push 到 github 上去,相应的 github pages 就会根据用来保存文章的 repo 自动最新的状态.
+原本是在自己的 vps …">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="自动重新构建部署博客">
+    <meta name="twitter:description" content="想折腾这个很久了,终于把这个折腾好了.
+现在写博客的流程是,我在本机维护一个 git repo,里面是我所有的文章.然后我写完一篇文章或者修改了文章之后 push 到 github 上去,相应的 github pages 就会根据用来保存文章的 repo 自动最新的状态.
+原本是在自己的 vps …">
+    <meta property="twitter:domain" content="https://blog.trim21.me/2017/05/auto-deploy-with-webhook/">
+    <meta property="twitter:url" content="https://blog.trim21.me/2017/05/auto-deploy-with-webhook/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/2017/05/auto-deploy-with-webhook/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>自动重新构建部署博客</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              2017-05-14
+
+              
+                  | Updated 2025-03-03
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/linux">Linux</a></li>
+           
+         
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/python">python</a></li>
+           
+         
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/nodejs">nodejs</a></li>
+           
+         
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/hexo">hexo</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>想折腾这个很久了,终于把这个折腾好了.</p>
+<p>现在写博客的流程是,我在本机维护一个 git repo,里面是我所有的文章.然后我写完一篇文章或者修改了文章之后 push 到 github 上去,相应的 github pages 就会根据用来保存文章的 repo 自动最新的状态.</p>
+<p>原本是在自己的 vps 上开了一个服务器处理 webhook, 现在换成了<a href="https://travis-ci.org/">travis-ci</a>来自动部署.</p>
+<p>不得不说<a href="https://travis-ci.org/">travis-ci</a>是个好东西. 如果你是开源项目, 是可以免费使用的, 只有 private 的仓库才需要付费.</p>
+<p>写个博客, 自然所有的东西都是公开的, 用他来构建也没什么问题.</p>
+<p>唯一的问题是, 构建之后的部署需要密钥, travis 自然也考虑到了这种问题, 可以在<code>more options</code>- <code>settings</code> - <code>Environment Variables</code>中添加保密的环境变量, 这样一来我们只要去 github 生成一个可以 push 的 token, 用这个 token 又可以避免泄露凭证个第三方, 又可以利用公有服务操作我们的个人仓库.</p>
+<p>首先生成一个 token, 这个比较简单</p>
+<p>因为 github pages 要求 push 到<code>${username}.github.io</code>的仓库中, 比如我的用户名是<code>trim21</code>, 我就需要把文件 push 到<code>trim21.github.io</code>去, 所以我们需要告诉<code>hexo</code>他要操作的部署的仓库地址.</p>
+<p>而<code>_config.yml</code>里面又不能使用环境变量, 只能每次部署的时候把对应的仓库链接给 echo 进去, 避免泄漏.</p>
+<p>我的<code>_config.yml</code>文件结尾是这样的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span></code></pre></div><p>然后 echo 到<code>_config.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;  repository: https://</span><span style="color:#e6db74">${</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">@github.com/Trim21/trim21.github.io&#34;</span> &gt;&gt; ./_config.yml
+</span></span></code></pre></div><p>就变成了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">https://real_token@github.com/Trim21/trim21.github.io</span>
+</span></span></code></pre></div><p>当然, 这里的 token 因为已经在环境变量中设置好了, 所以在配置文件中已经是正确的路径地址了.</p>
+<p>而远程地址是这样的情况下, 就可以正常使用<code>hexo-deploy-git</code>了, 而不需要额外的设置.</p>
+<p>还有一个坑, 因为 travis 不允许从对应的仓库 clone 两次, 所以不能把文章直接 clone 到<code>source/_posts</code>去, 要把之前 clone 的文章移动过去&hellip;</p>
+<p>最后贴一下我的 travis 配置.</p>
+<p>其中<code>git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</code>的一步是多余的, 如果你没有提前 clone 的话, hexo 的部署插件会替你 clone.</p>
+<p>而<code>myecho</code>文件里除了把正确的仓库地址 echo 的文件里, 还有对应的<code>hexo g -d</code>, 和调用腾讯云的 api 来刷新 cdn 缓存.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">only</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">master</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">language</span>: <span style="color:#ae81ff">node_js</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">sudo</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">node_js</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;8.11&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">install</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">sudo apt install libtool automake autoconf nasm -y</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cd ..</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone --depth 1 https://github.com/Trim21/blog.git</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git config --global user.name $username</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git config --global user.email $email</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cd blog</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">mv ../blog-posts ./source/_posts</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">npm install</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git clone https://github.com/Trim21/landscape-plus themes/landscape-plus</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">ls -ahl</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># - chmod +x myecho</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">bash myecho</span>
+</span></span></code></pre></div>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="pathname"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

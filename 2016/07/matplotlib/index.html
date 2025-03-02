@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>ubuntu安装matplotlib</title>
+    <meta name="description" content="(可恶,git 用的不熟练,把 commit 丢了&hellip;重写文章)
+总结一下,在安装了NumPy之后还需要安装
+freetype libpng libffi cairocffi freetype 下载地址 http://download.savannah.gnu.org/releases/freetype/ …">
+    <meta name="keywords" content='python'>
+
+    <meta property="og:url" content="https://blog.trim21.me/2016/07/matplotlib/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ubuntu安装matplotlib">
+    <meta property="og:description" content="(可恶,git 用的不熟练,把 commit 丢了&hellip;重写文章)
+总结一下,在安装了NumPy之后还需要安装
+freetype libpng libffi cairocffi freetype 下载地址 http://download.savannah.gnu.org/releases/freetype/ …">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ubuntu安装matplotlib">
+    <meta name="twitter:description" content="(可恶,git 用的不熟练,把 commit 丢了&hellip;重写文章)
+总结一下,在安装了NumPy之后还需要安装
+freetype libpng libffi cairocffi freetype 下载地址 http://download.savannah.gnu.org/releases/freetype/ …">
+    <meta property="twitter:domain" content="https://blog.trim21.me/2016/07/matplotlib/">
+    <meta property="twitter:url" content="https://blog.trim21.me/2016/07/matplotlib/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/2016/07/matplotlib/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>ubuntu安装matplotlib</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              2016-07-25
+
+              
+                  | Updated 2025-03-03
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/python">python</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>(可恶,git 用的不熟练,把 commit 丢了&hellip;重写文章)</p>
+<p>总结一下,在安装了<code>NumPy</code>之后还需要安装</p>
+<ol>
+<li>freetype</li>
+<li>libpng</li>
+<li>libffi</li>
+<li>cairocffi</li>
+</ol>
+<p>freetype 下载地址 <a href="http://download.savannah.gnu.org/releases/freetype/">http://download.savannah.gnu.org/releases/freetype/</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.gz
+</span></span><span style="display:flex;"><span>tar xvf freetype-2.6.5
+</span></span><span style="display:flex;"><span>sudo make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><p>libpng 和 libffi 都在 apt 上有</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗ search libffi
+</span></span><span style="display:flex;"><span>libffi-dev - Foreign Function Interface library <span style="color:#f92672">(</span>development files<span style="color:#f92672">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  artic git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗ search libpng
+</span></span><span style="display:flex;"><span>libpng12-0 - PNG library - runtime
+</span></span><span style="display:flex;"><span>libpng12-dev - PNG library - development
+</span></span></code></pre></div><p>直接 apt-get 安装即可</p>
+<p>调用<code>matplotlib</code>的时候图像式全黑的,提示我安装<code>cairocffi</code>,是 pip 上的包,安装了第三个之后直接<code>pip</code>安装这个就可以了.</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="pathname"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

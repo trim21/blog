@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>生成bgm.tv关联条目网络</title>
+    <meta name="description" content="本项目已弃坑。
+在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
+爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型. …">
+    <meta name="keywords" content='nodejs, bgm'>
+
+    <meta property="og:url" content="https://blog.trim21.me/2018/10/bgm.tv-ip-viewer/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="生成bgm.tv关联条目网络">
+    <meta property="og:description" content="本项目已弃坑。
+在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
+爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型. …">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="生成bgm.tv关联条目网络">
+    <meta name="twitter:description" content="本项目已弃坑。
+在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.
+爬取数据并生成关联条目网络 爬取数据 爬数据用的是scrapy, 因为本站有请求速度的限制, 所以数据源是镜像站.
+scrapy的流程是这样的, 首先继承scrapy.Item来定义你自己爬到的数据的模型. …">
+    <meta property="twitter:domain" content="https://blog.trim21.me/2018/10/bgm.tv-ip-viewer/">
+    <meta property="twitter:url" content="https://blog.trim21.me/2018/10/bgm.tv-ip-viewer/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/2018/10/bgm.tv-ip-viewer/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>生成bgm.tv关联条目网络</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              2018-10-11
+
+              
+                  | Updated 2025-03-03
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/nodejs">nodejs</a></li>
+           
+         
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/bgm">bgm</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>本项目已弃坑。</p>
+<p>在 bgm 上看到有人说现在的关联图只有一层, 看起来不太方便, 就爬了全站数据做了这么个东西.</p>
+<h1 id="爬取数据并生成关联条目网络">爬取数据并生成关联条目网络</h1>
+<h2 id="爬取数据">爬取数据</h2>
+<p>爬数据用的是<code>scrapy</code>, 因为本站有请求速度的限制, 所以数据源是镜像站.</p>
+<p><code>scrapy</code>的流程是这样的, 首先继承<code>scrapy.Item</code>来定义你自己爬到的数据的模型.</p>
+<p>比如我定义了条目 item</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> scrapy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scrapy <span style="color:#f92672">import</span> Field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubjectItem</span>(scrapy<span style="color:#f92672">.</span>Item):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># define the fields for your item here like:</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    _id <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    subject_type <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    name_cn <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    tags <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    info <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    score <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    score_details <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    wishes <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    done <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    doings <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    on_hold <span style="color:#f92672">=</span> Field()
+</span></span><span style="display:flex;"><span>    dropped <span style="color:#f92672">=</span> Field()
+</span></span></code></pre></div><p>每个<code>Field()</code>中保存的的数据类型可以是 <code>str</code>, <code>int</code>, <code>bool</code>等基础的数据类型, 也可以是<code>list</code>, <code>dict</code>这种组合类型.</p>
+<p>然后写一个解析函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pymongo
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scrapy <span style="color:#f92672">import</span> Request
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bgm.items <span style="color:#f92672">import</span> SubjectItem, RelationItem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">url_from_id</span>(_id):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;https://mirror.bgm.rin.cat/subject/</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(_id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BgmTvSpider</span>(scrapy<span style="color:#f92672">.</span>Spider):
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;bgm_tv&#39;</span>
+</span></span><span style="display:flex;"><span>    allowed_domains <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;mirror.bgm.rin.cat&#39;</span>]
+</span></span><span style="display:flex;"><span>    start_urls <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;https://mirror.bgm.rin.cat/subject/</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(i)
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">270000</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse</span>(self, response):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;出错了&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> response<span style="color:#f92672">.</span>text:
+</span></span><span style="display:flex;"><span>            subject_item <span style="color:#f92672">=</span> SubjectItem()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;subject_type&#39;</span>] <span style="color:#f92672">=</span> get_subject_type(response)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> subject_item[<span style="color:#e6db74">&#39;subject_type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Music&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;_id&#39;</span>] <span style="color:#f92672">=</span> int(response<span style="color:#f92672">.</span>url<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;/&#39;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;id&#39;</span>] <span style="color:#f92672">=</span> subject_item[<span style="color:#e6db74">&#39;_id&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;info&#39;</span>] <span style="color:#f92672">=</span> get_info(response)
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;tags&#39;</span>] <span style="color:#f92672">=</span> get_teg_from_response(response)
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;image&#39;</span>] <span style="color:#f92672">=</span> get_image(response)
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;score&#39;</span>] <span style="color:#f92672">=</span> get_score(response)
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;score_details&#39;</span>] <span style="color:#f92672">=</span> get_score_details(response)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            title <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>xpath(<span style="color:#e6db74">&#39;//*[@id=&#34;headerSubject&#34;]/h1/a&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;name_cn&#39;</span>] <span style="color:#f92672">=</span> title<span style="color:#f92672">.</span>attrib[<span style="color:#e6db74">&#39;title&#39;</span>]
+</span></span><span style="display:flex;"><span>            subject_item[<span style="color:#e6db74">&#39;name&#39;</span>] <span style="color:#f92672">=</span> title<span style="color:#f92672">.</span>xpath(<span style="color:#e6db74">&#39;text()&#39;</span>)<span style="color:#f92672">.</span>extract_first()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> edge <span style="color:#f92672">in</span> get_relation(response, source<span style="color:#f92672">=</span>subject_item[<span style="color:#e6db74">&#39;_id&#39;</span>]):
+</span></span><span style="display:flex;"><span>                relation_item <span style="color:#f92672">=</span> RelationItem(<span style="color:#f92672">**</span>edge, )
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield</span> relation_item
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield</span> Request(url_from_id(relation_item[<span style="color:#e6db74">&#39;target&#39;</span>]))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> subject_item
+</span></span></code></pre></div><p>框架有一个默认的<code>start_requests</code>函数, 会请求<code>starts_urls</code>里面的链接. 在获取到内容之后会进行一系列处理(比如解析 http, xpath 之类的), 然后交给<code>parse</code>函数来处理.</p>
+<p><code>parse</code>函数实际上是一个生成器函数, 通过不断<code>yield</code>内容来告诉<code>scrapy</code>你要做什么.</p>
+<p>如果我们需要爬一个新网页, 就<code>yield</code>一个<code>scrapy.Request</code>, <code>scrapy</code>在爬完对应的页面只有会交给对应的回调函数(默认为<code>parse</code>)</p>
+<p>如果你爬到了一个<code>Item</code>, 就直接把对应的实例给 yield 出去. 然后<code>scrapy</code>会交给<code>pipeline</code>来处理.</p>
+<p>在这个例子里, 我需要用到的有两种 item, 一种是<code>SubjectItem</code>, 包含条目的某些信息(比如标题, 封面, 对应的<code>subject_id</code>, 另一个是每个条目跟其他条目的关系<code>RelationItem</code>. 这个关系包括源条目, 目标条目, 和条目关系.)</p>
+<p>然后要把对应的 item 存到数据库里, 就需要我们定义一个<code>pipeline</code>了.</p>
+<p>最想吐槽的就是这里&hellip;</p>
+<p>原来我已经用<code>aiohttp</code>写了一些东西, 自认为还比较熟悉异步了, 结果没想到 python 的异步库真是各自为战. <code>scrapy</code>是基于<code>twisted</code>的, 所以基于<code>asyncio</code>的异步库是不能在这里用的. 我数据库用的是<code>MongoDB</code>, 原本<code>mongodb</code>官方有一个数据库<code>motor</code>, 支持<code>tornado</code>和<code>asyncio</code>的 ioloop, 但是不支持<code>twisted</code>&hellip;</p>
+<p>所以就算你了解 python 异步标准库的写法, 用另一个异步框架的时候还是可能一脸懵逼&hellip;</p>
+<p>额外去找了一个<code>twisted</code>支持的 mongo 库<code>txmongo</code>, 用来存数据.</p>
+<h2 id="数据处理">数据处理</h2>
+<p>爬回来的数据不处理别说别人了, 我自己都看不懂.</p>
+<p>回到我们一开始的目的, 把有关系的条目放在一起, 显示他们之间的关系.</p>
+<p>最后显示出来的是一个力导向图啊, 那直接用 d3.js 好了, 找一个 d3.js 的 demo 来看看他需要的数据结构是什么样的.</p>
+<p>参考了这篇文章</p>
+<p><a href="https://blog.csdn.net/lzhlzz/article/details/40450379">【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图</a></p>
+<p>最后需要的是一个这样的数据结构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;nodes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;云天河&#34;</span>, <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;tianhe.png&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;韩菱纱&#34;</span>, <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;lingsha.png&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;柳梦璃&#34;</span>, <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;mengli.png&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;慕容紫英&#34;</span>, <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;ziying.png&#34;</span> }
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;edges&#34;</span>: [
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&#34;relation&#34;</span>: <span style="color:#e6db74">&#34;挚友&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#f92672">&#34;relation&#34;</span>: <span style="color:#e6db74">&#34;挚友&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#f92672">&#34;relation&#34;</span>: <span style="color:#e6db74">&#34;挚友&#34;</span> }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这正好就是我爬下来的数据的结构啊.</p>
+<p>那就只剩下一个问题了, 怎么把同一张网节点和关系组合在一起.</p>
+<p>本来想要直接一个 for 循环遍历, 发现这样有一个问题, 一个大的网络可能会断成好几个小的网络. 正好受到了<code>scrapy</code>爬取网站的办法, 在写一个 work 函数, 不停地把下一个需要处理的节点给<code>yield</code>出来, 然后从<code>yield</code>出来的节点不断的开始处理.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker</span>(start_job<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    yield_job <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    done_id <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> start_job <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        start_job <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>            x[<span style="color:#e6db74">&#39;_id&#39;</span>] <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> n_subject<span style="color:#f92672">.</span>find({}, {<span style="color:#e6db74">&#39;_id&#39;</span>: <span style="color:#ae81ff">1</span>})
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#39;</span>, len(yield_job) <span style="color:#f92672">+</span> len(start_job), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> yield_job:
+</span></span><span style="display:flex;"><span>            j <span style="color:#f92672">=</span> yield_job<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">in</span> done_id:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> deal_with_node({<span style="color:#e6db74">&#39;_id&#39;</span>: j}):
+</span></span><span style="display:flex;"><span>                yield_job<span style="color:#f92672">.</span>append(node)
+</span></span><span style="display:flex;"><span>            done_id<span style="color:#f92672">.</span>add(j)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> start_job:
+</span></span><span style="display:flex;"><span>            j <span style="color:#f92672">=</span> start_job<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">in</span> done_id:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> deal_with_node({<span style="color:#e6db74">&#39;_id&#39;</span>: j}):
+</span></span><span style="display:flex;"><span>                yield_job<span style="color:#f92672">.</span>append(node)
+</span></span><span style="display:flex;"><span>            done_id<span style="color:#f92672">.</span>add(j)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;done&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span></code></pre></div><p>其中, 用来处理节点的函数<code>deal_with_noed(node)</code>首先获取节点跟其他节点的关系, 如果某个关系(比如角色歌, op, ed 之类的)不符合需要添加的条件就跳过, 如果符合条件, 先看看有没有一个现成的网络, 有就把对应节点加入到网络里, 没有就新建一个网络, 把对应节点加进去. 然后把对应节点<code>yield</code>出去.</p>
+<p>可以看到, 我在外面<code>for node in deal_with_node({'_id': j}):yield_job.append(node)</code>, 所以所有<code>yield</code>出来的节点都会成为下一个处理的节点. 这样一来会保证处理完一个网络只有的所有节点才会进行下一步, 处理下一个网络的节点.</p>
+<p>这样一来, 就可以保证一个整体网络不会裂成两个网络.</p>
+<h2 id="更新">更新</h2>
+<p>迫于用来跑这个程序的服务器只有 1C1G, 跑了一堆服务器的情况下再跑一个 Mongo 太勉强了, 再加上腾讯的学生优惠还有 36 每年的 mysql(1G 内存, 50G 硬盘), 就买了一年的 mysql 实例用来存数据, 减轻服务器的内存压力.</p>
+<p>然后就牵扯 twisted 异步操作数据库(其实同步也不是不行, 但是如果同步存储的话数据库就会成为爬虫的瓶颈, 所以还是异步比较合适.)</p>
+<p>twisted 提供了一个<code>adbapi</code>, 一看就知道是异步数据库 api 的意思. 操作 mysql 的话, 需要<code>mysqlclient</code>或者<code>pymysql</code>+<code>pymysql.install_as_MySQLdb()</code>跟把数据保存到 mongo 一样, 添加一个<code>mysqlpipeline</code>的 pipeline.</p>
+<p>为了避免手写 sql, 用了<code>peewee</code>做为 orm. peewee 的每个 query 都有一个<code>sql()</code>方法, 可以不让 peewee 执行具体的操作, 而是获取对应的 sql 语句, 然后交给 twisted 的<code>adbpi</code>来执行, 避免阻塞.</p>
+<p><code>Relation</code>和 <code>Subject</code>是通过 peewee 定义的数据库 model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define your item pipelines here</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Don&#39;t forget to add your pipeline to the ITEM_PIPELINES setting</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pymongo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bgm.items <span style="color:#f92672">import</span> SubjectItem, RelationItem
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Union
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bgm.models <span style="color:#f92672">import</span> Subject, Relation
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> twisted.enterprise <span style="color:#f92672">import</span> adbapi
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> bgm.settings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># from playhouse.shortcuts import keyli</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlPipeline</span>(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open_spider</span>(self, spider):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>dbpool <span style="color:#f92672">=</span> adbapi<span style="color:#f92672">.</span>ConnectionPool(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;MySQLdb&#34;</span>,
+</span></span><span style="display:flex;"><span>            host<span style="color:#f92672">=</span>bgm<span style="color:#f92672">.</span>settings<span style="color:#f92672">.</span>MYSQL_HOST,
+</span></span><span style="display:flex;"><span>            db<span style="color:#f92672">=</span>bgm<span style="color:#f92672">.</span>settings<span style="color:#f92672">.</span>MYSQL_DBNAME,
+</span></span><span style="display:flex;"><span>            user<span style="color:#f92672">=</span>bgm<span style="color:#f92672">.</span>settings<span style="color:#f92672">.</span>MYSQL_USER,
+</span></span><span style="display:flex;"><span>            password<span style="color:#f92672">=</span>bgm<span style="color:#f92672">.</span>settings<span style="color:#f92672">.</span>MYSQL_PASSWORD,
+</span></span><span style="display:flex;"><span>            charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf8mb4&#39;</span>,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_item</span>(self,
+</span></span><span style="display:flex;"><span>                     item: Union[SubjectItem, RelationItem],
+</span></span><span style="display:flex;"><span>                     spider):
+</span></span><span style="display:flex;"><span>        query <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>dbpool<span style="color:#f92672">.</span>runInteraction(self<span style="color:#f92672">.</span>do_insert, item)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 处理异常</span>
+</span></span><span style="display:flex;"><span>        query<span style="color:#f92672">.</span>addErrback(self<span style="color:#f92672">.</span>handle_error, item, spider)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> item
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_error</span>(self, failure, item, spider):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 处理异步插入的异常</span>
+</span></span><span style="display:flex;"><span>        print(failure)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">do_insert</span>(self, cursor, item):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 会从dbpool取出cursor</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 执行具体的插入</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> isinstance(item, SubjectItem):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> item[<span style="color:#e6db74">&#39;name&#39;</span>]:
+</span></span><span style="display:flex;"><span>                item[<span style="color:#e6db74">&#39;name&#39;</span>] <span style="color:#f92672">=</span> item[<span style="color:#e6db74">&#39;name_cn&#39;</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># if not item[&#39;name_cn&#39;]:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#     item[&#39;name_cn&#39;] = item[&#39;name&#39;]</span>
+</span></span><span style="display:flex;"><span>            insert_sql <span style="color:#f92672">=</span> Subject<span style="color:#f92672">.</span>insert(
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">**</span>item
+</span></span><span style="display:flex;"><span>            )<span style="color:#f92672">.</span>on_conflict_replace()<span style="color:#f92672">.</span>sql()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> isinstance(item, RelationItem):
+</span></span><span style="display:flex;"><span>            insert_sql <span style="color:#f92672">=</span> Relation<span style="color:#f92672">.</span>insert(
+</span></span><span style="display:flex;"><span>                id<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>item[<span style="color:#e6db74">&#34;source&#34;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>item[<span style="color:#e6db74">&#34;target&#34;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">**</span>item
+</span></span><span style="display:flex;"><span>            )<span style="color:#f92672">.</span>on_conflict_replace()<span style="color:#f92672">.</span>sql()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        cursor<span style="color:#f92672">.</span>execute(<span style="color:#f92672">*</span>insert_sql)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 拿传进的cursor进行执行，并且自动完成commit操作</span>
+</span></span></code></pre></div><p>而在处理上, 也跟之前 mongodb 有点不一样&hellip;</p>
+<p>之前使用 mongo 的时候, 都是直接从 mongo 里面把数据读出来, 处理完了再写会数据库.但是在使用 mysql 的时候就不太行的通了. 因为在我的使用场景下，相比 mongo, mysql 太慢了.如果把对应的关系和条目从 mysql 里读出来再处理, 有 90%的时间都花在 io 上, 而且不是一两个小时能处理完的. 所以只能选择一开始把 mysql 里的所有数据读到内存, 放在 mysql 里面处理.</p>
+<p>而大概 20w 条条目, 20w 条条目间关系, 全都读到数据库里大概需要 1400MB 左右的内存, 我的服务器已经处理不了了, 只能先把数据库从服务器上下载下来, 然后再进行处理.</p>
+<p>之前发在 bgm 上之后有人提议说增量更新新的条目, 正好现在已经把主要的数据爬完了, 还剩下一些旧的条目, 只要写一个额外的爬虫定期处理<a href="https://bgm.tv/wiki">bangumi wiki 计划</a>页面显示的更改就好了.</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="pathname"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

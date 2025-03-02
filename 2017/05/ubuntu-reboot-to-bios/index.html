@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>ubuntu使用命令重启进入BIOS</title>
+    <meta name="description" content="今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&hellip;)百度搜索无果,google 发现了结果
+sudo systemctl reboot --firmware-setup 会直接重启进入 BIOS
+">
+    <meta name="keywords" content='ubuntu'>
+
+    <meta property="og:url" content="https://blog.trim21.me/2017/05/ubuntu-reboot-to-bios/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ubuntu使用命令重启进入BIOS">
+    <meta property="og:description" content="今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&hellip;)百度搜索无果,google 发现了结果
+sudo systemctl reboot --firmware-setup 会直接重启进入 BIOS
+">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ubuntu使用命令重启进入BIOS">
+    <meta name="twitter:description" content="今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&hellip;)百度搜索无果,google 发现了结果
+sudo systemctl reboot --firmware-setup 会直接重启进入 BIOS
+">
+    <meta property="twitter:domain" content="https://blog.trim21.me/2017/05/ubuntu-reboot-to-bios/">
+    <meta property="twitter:url" content="https://blog.trim21.me/2017/05/ubuntu-reboot-to-bios/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/2017/05/ubuntu-reboot-to-bios/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>ubuntu使用命令重启进入BIOS</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              2017-05-19
+
+              
+                  | Updated 2025-03-03
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="https://blog.trim21.me/tags/ubuntu">ubuntu</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&hellip;)百度搜索无果,google 发现了结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl reboot --firmware-setup
+</span></span></code></pre></div><p>会直接重启进入 BIOS</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="pathname"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

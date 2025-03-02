@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+            --font-size: 17.5px;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>输入法切换到Rime</title>
+    <meta name="description" content="QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
+又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。
+安装 一路下一步，唯一的坑在于自定义用户文件夹这个功能。不要设置自定义用户文件夹。
+如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。
+rime 有 …">
+    <meta name="keywords" content=''>
+
+    <meta property="og:url" content="https://blog.trim21.me/2019/10/migrate-to-rime/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="输入法切换到Rime">
+    <meta property="og:description" content="QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
+又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。
+安装 一路下一步，唯一的坑在于自定义用户文件夹这个功能。不要设置自定义用户文件夹。
+如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。
+rime 有 …">
+    <meta property="og:image" content="https://blog.trim21.me/">
+    <meta property="og:image:secure_url" content="https://blog.trim21.me/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="输入法切换到Rime">
+    <meta name="twitter:description" content="QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。
+又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。
+安装 一路下一步，唯一的坑在于自定义用户文件夹这个功能。不要设置自定义用户文件夹。
+如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。
+rime 有 …">
+    <meta property="twitter:domain" content="https://blog.trim21.me/2019/10/migrate-to-rime/">
+    <meta property="twitter:url" content="https://blog.trim21.me/2019/10/migrate-to-rime/">
+    <meta name="twitter:image" content="https://blog.trim21.me/">
+
+    
+    <link rel="canonical" href="https://blog.trim21.me/2019/10/migrate-to-rime/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.275fedb6f364c8865658bae576d82b514ace973f6a13ed63503a85b20c697453.js" integrity="sha256-J1/ttvNkyIZWWLrldtgrUUrOlz9qE&#43;1jUDqFsgxpdFM="></script>
+
+    
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://blog.trim21.me/">Trim21&#39;s Blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://blog.trim21.me/posts/" aria-label="" > Blog </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://blog.trim21.me/posts/" > Blog </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>输入法切换到Rime</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              2019-10-23
+
+              
+                  | Updated 2025-03-03
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>QQ 拼音终于也开始弹广告了，所以一怒之下准备删了。</p>
+<p>又不能没输入法用，就用上了小狼毫。记录一下这中间遇到的若干坑。</p>
+<p><img src="/static/rime-preview.jpg" alt="最终设置的效果"></p>
+<h2 id="安装">安装</h2>
+<p>一路下一步，唯一的坑在于<code>自定义用户文件夹</code>这个功能。<strong>不要设置自定义用户文件夹</strong>。</p>
+<p>如果是为了 rime 的多平台同步，rime 有另一个同步功能可以进行同步，而不需要同步整个用户文件夹。</p>
+<p>rime 有一个包管理器，但是这个包管理器在 windows 上并不能正确的识别用户文件夹：无论用户怎么设置，包管理器都会认为用户文件夹在默认的 <code>%APPDATA%/rime</code>。包管理器也只会把下载到文件安装到这个路径里面，但小狼毫只从用户设置的文件夹中加载配置。这样一来，包管理器完全无法工作。</p>
+<h2 id="同步">同步</h2>
+<p>同步 rime 有一个自带的同步功能，也就是安装完后看到的<code>【小狼毫】用戶資料同步</code>开始菜单选项。</p>
+<p>首先打开用户文件夹中的<code>installtion.yaml</code>（我就不介绍 yaml 语法了）
+，添加一个<code>sync_dir</code>选项指向你想要同步的位置，比如我设置的是<code>$OneDrive/rime</code>，那么在点击同步之后，rime 会在<code>$sync_dir</code>文件夹下新建一个文件夹，名为这个文件里面的<code>id</code>一项（这一项你也是可以改的，比如我改成了<code>windows</code>），然后把你这台机器里面的所有配置和和词库同步过去。</p>
+<p>如果 rime 在这个文件夹下面还找到了其他机器的同步结果，他还会合并其他机器的词库，所以只要定时的让小狼毫自动同步，就能解决多台机器的同步问题。</p>
+<h2 id="设置">设置</h2>
+<p>Rime 所有的设置（除了词库文件）都是 yaml，为了能合并不同的 YAML 中的，rime 用到了一些关键词比如<code>patch</code>。</p>
+<p>小狼毫的配置文件在<code>$RIME_CONFIG_DIR/weasel.custom.yaml</code>中。</p>
+<h3 id="设置外观">设置外观</h3>
+<h4 id="设置候选词数量">设置候选词数量</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">patch</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;menu/page_size&#34;: </span><span style="color:#ae81ff">9</span>
+</span></span></code></pre></div><h4 id="设置主题">设置主题</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">patch</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/color_scheme&#34;: </span><span style="color:#ae81ff">steam</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/font_face&#34;: </span><span style="color:#e6db74">&#34;Microsoft YaHei&#34;</span> <span style="color:#75715e"># 显示字体</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/font_point&#34;: </span><span style="color:#ae81ff">14</span> <span style="color:#75715e"># 字体大小</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/horizontal&#34;: </span><span style="color:#66d9ef">true</span> <span style="color:#75715e"># 水平显示</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/layout/margin_x&#34;: </span><span style="color:#ae81ff">7</span> <span style="color:#75715e"># 窗口边界距离</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/layout/margin_y&#34;: </span><span style="color:#ae81ff">7</span> <span style="color:#75715e"># 窗口边界距离</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/layout/spacing&#34;: </span><span style="color:#ae81ff">2</span> <span style="color:#75715e">#候选竖排时候与候选词的间距</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/layout/candidate_spacing&#34;: </span><span style="color:#ae81ff">1</span> <span style="color:#75715e"># 候选间距</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;style/layout/round_corner&#34;: </span><span style="color:#ae81ff">8</span> <span style="color:#75715e"># 圆的拐角</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 还有一些额外的设置，这不是完整的列表，只是我用到的</span>
+</span></span></code></pre></div><p><code>style/color_scheme</code> 设置了内置的配色方案，完整的列表可以在这里找到 <a href="https://github.com/rime-aca/color_schemes">https://github.com/rime-aca/color_schemes</a></p>
+<p>如果觉得内置的都不好看，可以用<a href="https://bennyyip.github.io/Rime-See-Me/">配色方案生成器</a>自己设计一个。</p>
+<h3 id="设置输入方案">设置输入方案</h3>
+<p>输入方案的设置在 <code>$RIME_CONFIG_DIR/default.custom.yaml</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">patch</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">schema_list</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">schema</span>: <span style="color:#ae81ff">double_pinyin_flypy</span>
+</span></span></code></pre></div><p><code>double_pinyin_flypy</code> 从<a href="https://github.com/rime/rime-double-pinyin">这里</a>安装，我是直接复制了原文件到我的配置文件夹中。</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+    <div id="comments">
+        <script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="pathname"
+    crossorigin="anonymous"
+    async></script>
+
+    </div>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
