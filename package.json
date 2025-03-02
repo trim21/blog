@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "husky": "^9.1.7",
+    "jsonata": "^2.0.6",
     "prettier": "^3.5.2"
   },
   "prettier": {

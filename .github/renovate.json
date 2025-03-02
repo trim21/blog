@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "github>Trim21/renovate-config",
+    "github>Trim21/renovate-config:js",
+    "github>Trim21/renovate-config:app",
+    "github>Trim21/renovate-config:monthly"
+  ],
+  "customManagers": [
+    {
+      "customType": "jsonata",
+      "fileMatch": [
+        "^.github/workflows/.*\\.ya?ml?$"
+      ],
+      "fileFormat": "yaml",
+      "matchStrings": [
+        "[env.{'currentValue': hugo}]"
+      ],
+      "depNameTemplate": "hugo",
+      "packageNameTemplate": "gohugoio/hugo",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "semanticCommitType": "build",
+      "matchPackageNames": [
+        "rust-lang/rust"
+      ]
+    }
+  ],
+}
