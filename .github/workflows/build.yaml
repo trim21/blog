@@ -26,7 +26,7 @@ jobs:
         with:
           hugo-version: "${{ env.hugo }}"
 
-      - run: hugo build
+      - run: hugo build --panicOnWarning
 
       - name: Deploy
         if: ${{ github.event_name == 'push' }}
