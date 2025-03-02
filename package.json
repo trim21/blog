@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "prepare": "husky"
   },
   "dependencies": {
+    "husky": "^9.1.7",
     "prettier": "^3.5.2"
+  },
+  "prettier": {
+    "printWidth": 120
   },
   "packageManager": "yarn@1.22.22"
 }
