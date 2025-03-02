@@ -13,5 +13,8 @@
   "prettier": {
     "printWidth": 120
   },
+  "lint-staged": {
+    "*.md": "your-cmd"
+  },
   "packageManager": "yarn@1.22.22"
 }
