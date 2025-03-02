@@ -1,13 +1,13 @@
 ---
-title: 自动重新构建部署博客
-date: 2017-05-14 04:57:28
-categories:
-  - 编程
+date: "2017-05-14T04:57:28+08:00"
+showTableOfContents: false
 tags:
   - Linux
   - python
   - nodejs
   - hexo
+title: 自动重新构建部署博客
+type: post
 ---
 
 想折腾这个很久了,终于把这个折腾好了.

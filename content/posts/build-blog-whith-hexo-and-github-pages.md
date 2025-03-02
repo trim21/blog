@@ -1,12 +1,13 @@
 ---
-title: 利用hexo和GitHub pages服务搭建博客
-date: 2016-04-16 01:03:39
 categories:
   - 编程
+date: "2016-04-16T01:03:39+08:00"
 tags:
   - git
   - nodejs
   - github
+title: 利用hexo和GitHub pages服务搭建博客
+type: post
 ---
 
 使用 GitHub actions 自动部属博客到 GitHub pages。

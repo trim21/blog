@@ -1,11 +1,12 @@
 ---
-title: caddy在内网中无法更新证书
-date: 2019-12-23 15:31:10
-updated: 2019-12-23
 categories:
   - 编程
+date: "2019-12-23T15:31:10+08:00"
 tags:
   - https
+title: caddy在内网中无法更新证书
+type: post
+updated: 2019-12-23
 ---
 
 NAS 上面运行了一个 caddy 服务器，还设置了 https。最近突然遇到了证书过期的问题.

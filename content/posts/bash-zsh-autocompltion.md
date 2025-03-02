@@ -1,10 +1,11 @@
 ---
-title: bash和zsh的自动补全
-date: 2017-12-09 09:58:46
 categories:
   - 编程
+date: "2017-12-09T09:58:46+08:00"
 tags:
   - shell
+title: bash和zsh的自动补全
+type: post
 ---
 
 最近在给一个开源项目贡献代码,想要给他加上相应的自动补全功能

@@ -1,9 +1,10 @@
 ---
-title: 生成bgm.tv关联条目网络
-date: 2018-10-11 10:50:36
+date: "2018-10-11T10:50:36+08:00"
 tags:
   - nodejs
   - bgm
+title: 生成bgm.tv关联条目网络
+type: post
 ---
 
 本项目已弃坑。

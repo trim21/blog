@@ -1,31 +1,12 @@
 {
-  "name": "hexo-site",
+  "name": "blog",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "s": "hexo s",
-    "new": "node new.js",
-    "build": "hexo g -d",
-    "gen": "hexo clean && hexo g"
-  },
-  "hexo": {
-    "version": "6.3.0"
+    "format": "prettier -w ."
   },
   "dependencies": {
-    "hexo": "7.3.0",
-    "hexo-cli": "4.3.2",
-    "hexo-filter-nofollow": "2.0.2",
-    "hexo-fs": "5.0.0",
-    "hexo-generator-archive": "2.0.0",
-    "hexo-generator-category": "2.0.0",
-    "hexo-generator-feed": "3.0.0",
-    "hexo-generator-index": "4.0.0",
-    "hexo-generator-sitemap": "3.0.1",
-    "hexo-generator-tag": "2.0.0",
-    "hexo-renderer-ejs": "2.0.0",
-    "hexo-renderer-markdown-it": "7.1.1",
-    "hexo-renderer-stylus": "3.0.1",
-    "hexo-server": "3.0.0",
-    "markdown-it-for-inline": "2.0.1"
-  }
+    "prettier": "^3.5.2"
+  },
+  "packageManager": "yarn@1.22.22"
 }

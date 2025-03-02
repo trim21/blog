@@ -1,10 +1,11 @@
 ---
-title: 基于asyncio的web框架aiohttp
-date: 2018-10-05 17:42:21
 categories:
   - 编程
+date: "2018-10-05T17:42:21+08:00"
 tags:
   - python
+title: 基于asyncio的web框架aiohttp
+type: post
 ---
 
 本来想扯一通标准库里添加了`asyncio`的意义, 什么统一了异步框架, 什么方便代码前移之类的了.
@@ -116,7 +117,7 @@ mongodb 和 redis 的支持还算可以, mongodb 的官方自己写了[`motor`](
 
 但是如果想找一个异步的关系型数据库的 ORM 就非常难了. [SQLAlchemy 的作者曾经写过一篇文章](http://techspot.zzzeek.org/2015/02/15/asynchronous-python-and-databases/), 说因为 python 本身就很慢, 所以异步也没有意义, 反而比同步还要慢.
 
-<del>但我还是相信 python, 会有那么一天变快的(</del>
+~~但我还是相信 python, 会有那么一天变快的(~~
 
 异步的 SQL ORM 主要有这么几个
 

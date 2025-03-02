@@ -11,3 +11,7 @@ _vnote.json
 
 .yarn/*
 !.yarn/releases
+
+.hugo_build.lock
+
+resources/

@@ -1,10 +1,11 @@
 ---
-title: 用PyInstaller打包python应用
-date: 2019-06-02 23:47:34
 categories:
   - 编程
+date: "2019-06-02T23:47:34+08:00"
 tags:
   - python
+title: 用PyInstaller打包python应用
+type: post
 ---
 
 那天突然好奇，`docker-compose`是用什么语言写的。然后一看，发现居然是用 python2 写的。

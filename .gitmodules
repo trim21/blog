@@ -1,3 +1,4 @@
-[submodule "themes/hacker"]
-	path = themes/hacker
-	url = https://github.com/trim21/hacker.git
+[submodule "themes/gokarna"]
+	path = themes/gokarna
+	url = https://github.com/gokarna-theme/gokarna-hugo.git
+	branch = main
