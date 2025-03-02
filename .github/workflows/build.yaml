@@ -13,11 +13,8 @@ env:
   hugo: "0.144.2"
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18]
     steps:
       - uses: actions/checkout@v4
         with:
