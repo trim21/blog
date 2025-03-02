@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "hugo build --panicOnWarning --noBuildLock",
     "format": "prettier -w .",
     "pre-commit": "lint-staged",
     "update": "git commit -m update -a && git push",
