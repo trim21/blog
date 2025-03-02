@@ -1,8 +1,10 @@
 baseURL = 'https://blog.trim21.me/'
 languageCode = 'zh-cn'
-title = "Trim21's Blog"
-# theme = "hugo-coder"
-theme = "gokarna"
+title = "Trim21's"
+theme = "PaperMod"
+enableRobotsTXT = true
+enableGitInfo = true
+titleCaseStyle = 'none'
 
 [pagination]
 pagerSize = 20
@@ -13,49 +15,26 @@ pagerSize = 20
 # [markup.highlight]
 # style = "github-dark"
 [params]
-customCommentHTML = """
-<script src="https://utteranc.es/client.js"
-    repo="trim21/blog"
-    issue-term="title"
-    theme="github-dark"
-    crossorigin="anonymous"
-    async></script>
-"""
+comments = true
+DateFormat = "2006-01-02"
+hidemeta = false
 
-# author = "Trim21"
-# # info = "Full Stack DevOps and Magician"
-# # description = "John Doe's personal website"
-# # keywords = "blog,developer,personal"
-# # avatarurl = "images/avatar.jpg"
-# #gravatar = "john.doe@example.com"
-# # faviconSVG = "/img/favicon.svg"
-# # favicon_32 = "/img/favicon-32x32.png"
-# # favicon_16 = "/img/favicon-16x16.png"
-# since = 2015
-# enableTwemoji = true
-# colorScheme = "auto"
-# hidecolorschemetoggle = false
-# # customCSS = ["css/custom.css"]
-# # customSCSS = ["scss/custom.scss"]
-# # customJS = ["js/custom.js"]
-# [taxonomies]
-# category = "categories"
-# series = "series"
-# tag = "tags"
-# author = "authors"
-# # Social links
-# [[params.social]]
-# name = "Github"
-# icon = "fa-brands fa-github fa-2x"
-# weight = 1
-# url = "https://github.com/trim21/"
-# Menu links
+[params.homeInfoParams]
+Title = "Hi there"
+
+[[params.socialIcons]]
+name = 'github'
+url = "https://github.com/trim21"
+
+[analytics.google]
+SiteVerificationTag = "UA-91727260-1"
+
 [[menu.main]]
 name = "Blog"
 weight = 1
 url = "posts/"
 
-[[menu.main]]
-name = "About"
-weight = 2
-url = "about/"
+# [[menu.main]]
+# name = "About"
+# weight = 2
+# url = "about/"
