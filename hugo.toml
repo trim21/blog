@@ -1,7 +1,8 @@
 baseURL = 'https://blog.trim21.me/'
 languageCode = 'zh-cn'
 title = "Trim21's"
-theme = "PaperMod"
+# theme = "PaperMod"
+theme = 'gokarna'
 enableRobotsTXT = true
 enableGitInfo = true
 titleCaseStyle = 'none'
@@ -9,15 +10,15 @@ titleCaseStyle = 'none'
 [pagination]
 pagerSize = 20
 
-# [services]
-# [services.disqus]
-# shortname = "trim21"
-# [markup.highlight]
-# style = "github-dark"
 [params]
-comments = true
-DateFormat = "2006-01-02"
-hidemeta = false
+dateFormat = "2006-01-02"
+customCommentHTML = """
+<script src="https://utteranc.es/client.js"
+    repo="trim21/blog"
+    issue-term="title"
+    crossorigin="anonymous"
+    async></script>
+"""
 
 [params.homeInfoParams]
 Title = "Hi there"
@@ -33,8 +34,3 @@ SiteVerificationTag = "UA-91727260-1"
 name = "Blog"
 weight = 1
 url = "posts/"
-
-# [[menu.main]]
-# name = "About"
-# weight = 2
-# url = "about/"
