@@ -1,7 +1,6 @@
 baseURL = 'https://blog.trim21.me/'
 languageCode = 'zh-cn'
-title = "Trim21's"
-# theme = "PaperMod"
+title = "Trim21's Blog"
 theme = 'gokarna'
 enableRobotsTXT = true
 enableGitInfo = true
