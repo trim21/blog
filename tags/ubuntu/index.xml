@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ubuntu on Trim21&#39;s</title>
     <link>https://blog.trim21.me/tags/ubuntu/</link>
     <description>Recent content in ubuntu on Trim21&#39;s</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 03 Mar 2025 05:55:21 +0800</lastBuildDate>
     <atom:link href="https://blog.trim21.me/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
@@ -13,9 +13,7 @@
       <link>https://blog.trim21.me/posts/ubuntu-reboot-to-bios/</link>
       <pubDate>Fri, 19 May 2017 02:20:20 +0800</pubDate>
       <guid>https://blog.trim21.me/posts/ubuntu-reboot-to-bios/</guid>
-      <description>&lt;p&gt;今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&amp;hellip;)百度搜索无果,google 发现了结果&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reboot --firmware-setup
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;会直接重启进入 BIOS&lt;/p&gt;</description>
+      <description>&lt;p&gt;今天一不小心开了 BIOS 里的快速启动,导致进不去 BIOS 设置也无法选择启动项(我还把 ubuntu 设置成了第一启动项&amp;hellip;)百度搜索无果,google 发现了结果&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reboot --firmware-setup&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;会直接重启进入 BIOS&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

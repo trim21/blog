@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nas on Trim21&#39;s</title>
     <link>https://blog.trim21.me/tags/nas/</link>
     <description>Recent content in nas on Trim21&#39;s</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 03 Mar 2025 05:55:21 +0800</lastBuildDate>
     <atom:link href="https://blog.trim21.me/tags/nas/index.xml" rel="self" type="application/rss+xml" />
@@ -13,26 +13,7 @@
       <link>https://blog.trim21.me/posts/build-a-nas/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0800</pubDate>
       <guid>https://blog.trim21.me/posts/build-a-nas/</guid>
-      <description>&lt;p&gt;现成已有的 nas：一台蜗牛星际 B 口单百兆，现在放了四块 500G 的硬盘租了一个 raid6。除去硬盘成本 268（机器）+200（电源）, 硬盘是旧硬盘. 用了三四个月之后已经有三四块硬盘报警了.&lt;/p&gt;
-&lt;p&gt;总是觉得有些不爽，主要是又不想把现有 nas 里面的数据都拷出来换硬盘，又觉得现在的百兆和 1T 容量不太能让人满意，所以想搞一个千兆的高性能 nas。&lt;/p&gt;
-&lt;p&gt;看了看市面上 nas 的价格，感觉硬件配置又不太对的起价格，于是决定自己搞一个。正好自己现在还闲置着一台核显的 itx 小机器&lt;/p&gt;
-&lt;h2 id=&#34;手头硬件&#34;&gt;手头硬件&lt;/h2&gt;
-&lt;h3 id=&#34;cpu-和主板&#34;&gt;CPU 和主板&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;四代 i3 主板 4 个 sata3, 一个 m2 接口, 一个 pci-e 16x 接口, 两个 ddr4 内存接口&lt;/li&gt;
-&lt;li&gt;J1900, 主板两个 sata2 接口, 两个 ddr3 内存接口.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;内存&#34;&gt;内存&lt;/h3&gt;
-&lt;p&gt;两条 4g 台式机 ddr4 内存&lt;/p&gt;
-&lt;p&gt;一条 ddr3 内存接口&lt;/p&gt;
-&lt;h3 id=&#34;硬盘&#34;&gt;硬盘&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;闪迪 Sata3 256G SSD&lt;/li&gt;
-&lt;li&gt;两条杂牌 M2 128G SSD&lt;/li&gt;
-&lt;li&gt;两块 2.5 寸机械硬盘 500G 1T&lt;/li&gt;
-&lt;li&gt;五块 3.5 寸机械硬盘 均 500G, 目前看来是不够的, 还会再买.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;购入 256g nvme ssd 一条, 牌子就不说了&lt;/p&gt;</description>
+      <description>&lt;p&gt;现成已有的 nas：一台蜗牛星际 B 口单百兆，现在放了四块 500G 的硬盘租了一个 raid6。除去硬盘成本 268（机器）+200（电源）, 硬盘是旧硬盘. 用了三四个月之后已经有三四块硬盘报警了.&lt;/p&gt;&#xA;&lt;p&gt;总是觉得有些不爽，主要是又不想把现有 nas 里面的数据都拷出来换硬盘，又觉得现在的百兆和 1T 容量不太能让人满意，所以想搞一个千兆的高性能 nas。&lt;/p&gt;&#xA;&lt;p&gt;看了看市面上 nas 的价格，感觉硬件配置又不太对的起价格，于是决定自己搞一个。正好自己现在还闲置着一台核显的 itx 小机器&lt;/p&gt;&#xA;&lt;h2 id=&#34;手头硬件&#34;&gt;手头硬件&lt;/h2&gt;&#xA;&lt;h3 id=&#34;cpu-和主板&#34;&gt;CPU 和主板&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;四代 i3 主板 4 个 sata3, 一个 m2 接口, 一个 pci-e 16x 接口, 两个 ddr4 内存接口&lt;/li&gt;&#xA;&lt;li&gt;J1900, 主板两个 sata2 接口, 两个 ddr3 内存接口.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;内存&#34;&gt;内存&lt;/h3&gt;&#xA;&lt;p&gt;两条 4g 台式机 ddr4 内存&lt;/p&gt;&#xA;&lt;p&gt;一条 ddr3 内存接口&lt;/p&gt;&#xA;&lt;h3 id=&#34;硬盘&#34;&gt;硬盘&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;闪迪 Sata3 256G SSD&lt;/li&gt;&#xA;&lt;li&gt;两条杂牌 M2 128G SSD&lt;/li&gt;&#xA;&lt;li&gt;两块 2.5 寸机械硬盘 500G 1T&lt;/li&gt;&#xA;&lt;li&gt;五块 3.5 寸机械硬盘 均 500G, 目前看来是不够的, 还会再买.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;购入 256g nvme ssd 一条, 牌子就不说了&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

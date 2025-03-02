@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>https on Trim21&#39;s</title>
     <link>https://blog.trim21.me/tags/https/</link>
     <description>Recent content in https on Trim21&#39;s</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 03 Mar 2025 05:55:21 +0800</lastBuildDate>
     <atom:link href="https://blog.trim21.me/tags/https/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,7 @@
       <link>https://blog.trim21.me/posts/caddy-not-working-in-nat/</link>
       <pubDate>Mon, 23 Dec 2019 15:31:10 +0800</pubDate>
       <guid>https://blog.trim21.me/posts/caddy-not-working-in-nat/</guid>
-      <description>&lt;p&gt;NAS 上面运行了一个 caddy 服务器，还设置了 https。最近突然遇到了证书过期的问题.&lt;/p&gt;
-&lt;p&gt;检查 log 发现是证书申请失败 &lt;code&gt;SERVFAIL for _acme-challenge.my_domain.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;大概搜索了一下, 是因为路由器的 dnsmasq 过滤掉了完成验证需要的 dns 查询&lt;/p&gt;
-&lt;p&gt;只要在 dnsmasq 设置中把 filterwin2k 参数禁用即可, 不同版本的 dnsmasq 禁用方法有些不同&lt;/p&gt;</description>
+      <description>&lt;p&gt;NAS 上面运行了一个 caddy 服务器，还设置了 https。最近突然遇到了证书过期的问题.&lt;/p&gt;&#xA;&lt;p&gt;检查 log 发现是证书申请失败 &lt;code&gt;SERVFAIL for _acme-challenge.my_domain.&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;大概搜索了一下, 是因为路由器的 dnsmasq 过滤掉了完成验证需要的 dns 查询&lt;/p&gt;&#xA;&lt;p&gt;只要在 dnsmasq 设置中把 filterwin2k 参数禁用即可, 不同版本的 dnsmasq 禁用方法有些不同&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
