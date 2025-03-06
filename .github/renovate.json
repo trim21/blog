@@ -15,11 +15,5 @@
       "packageNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
     }
-  ],
-  "packageRules": [
-    {
-      "semanticCommitType": "build",
-      "matchPackageNames": ["rust-lang/rust"]
-    }
   ]
 }
