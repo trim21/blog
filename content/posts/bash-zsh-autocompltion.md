@@ -1,6 +1,4 @@
 ---
-categories:
-  - 编程
 date: "2017-12-09T09:58:46+08:00"
 tags:
   - shell

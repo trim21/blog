@@ -1,6 +1,4 @@
 ---
-categories:
-  - 编程
 date: "2018-10-03T11:15:35+08:00"
 tags:
   - javascript

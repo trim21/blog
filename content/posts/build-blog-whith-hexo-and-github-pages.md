@@ -1,6 +1,4 @@
 ---
-categories:
-  - 编程
 date: "2016-04-16T01:03:39+08:00"
 tags:
   - git

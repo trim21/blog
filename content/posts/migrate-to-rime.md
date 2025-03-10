@@ -1,6 +1,4 @@
 ---
-categories:
-  - 工具
 date: "2019-10-23T00:00:00+08:00"
 title: 输入法切换到Rime
 type: post

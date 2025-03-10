@@ -1,6 +1,4 @@
 ---
-categories:
-  - 编程
 date: "2018-10-05T17:42:21+08:00"
 tags:
   - python

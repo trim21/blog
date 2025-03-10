@@ -1,6 +1,4 @@
 ---
-categories:
-  - 硬件
 date: "2016-08-13T21:53:02+08:00"
 tags:
   - python

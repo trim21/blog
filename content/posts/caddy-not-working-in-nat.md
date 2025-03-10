@@ -1,6 +1,4 @@
 ---
-categories:
-  - 编程
 date: "2019-12-23T15:31:10+08:00"
 tags:
   - https
