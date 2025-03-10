@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hugo build --panicOnWarning --noBuildLock",
+    "build": "hugo build --panicOnWarning --noBuildLock --cleanDestinationDir",
     "format": "prettier -w .",
     "commit": "git commit -m update -a && git push",
     "prepare": "husky"
