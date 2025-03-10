@@ -8,7 +8,7 @@
   "customManagers": [
     {
       "customType": "jsonata",
-      "fileMatch": ["^.github/workflows/.*\\.ya?ml?$"],
+      "fileMatch": ["^.github/workflows/build\\.yaml?$"],
       "fileFormat": "yaml",
       "matchStrings": ["[env.{'currentValue': hugo}]"],
       "depNameTemplate": "hugo",
