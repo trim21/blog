@@ -37,3 +37,8 @@ url = "https://github.com/trim21"
 name = "Blog"
 weight = 1
 url = "posts/"
+
+[[menu.main]]
+name = "Tags"
+weight = 2
+url = "tags/"
