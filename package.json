@@ -1,6 +1,4 @@
 {
-  "name": "blog",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "hugo build --panicOnWarning --noBuildLock --cleanDestinationDir",
