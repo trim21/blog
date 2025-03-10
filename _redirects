@@ -1,2 +1,4 @@
 /:year/:month/:title/index.html /:year/:month/:title/ 302
+/:year/:month/:title.html /:year/:month/:title/ 301
 /tags/:tag/index.html /tags/:tag/ 302
+
