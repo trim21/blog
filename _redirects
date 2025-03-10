@@ -1,4 +1,5 @@
+# old hexo link redirect to new hugo link
 /:year/:month/:title/index.html /:year/:month/:title/ 302
+# disallow /index.html
 /:year/:month/:title.html /:year/:month/:title/ 301
 /tags/:tag/index.html /tags/:tag/ 302
-
