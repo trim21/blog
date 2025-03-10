@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@taplo/core@^0.1.0":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@taplo/core/-/core-0.1.1.tgz#28a301d6ea141249ff712f8a2b9fce6d4e813d41"
+  integrity sha512-BG/zLGf5wiNXGEVPvUAAX/4ilB3PwDUY2o0MV0y47mZbDZ9ad9UK/cIQsILat3bqbPJsALVbU6k3cskNZ3vAQg==
+
+"@taplo/lib@^0.4.0-alpha.2":
+  version "0.4.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@taplo/lib/-/lib-0.4.0-alpha.2.tgz#6a2fcdeb947c34ada51a15797c69c673f8a62a2c"
+  integrity sha512-DV/Re3DPVY+BhBtLZ3dmP4mP6YMLSsgq9qGLXwOV38lvNF/fBlgvQswzlXmzCEefL/3q2eMoefZpOI/+GLuCNA==
+  dependencies:
+    "@taplo/core" "^0.1.0"
+
 ansi-escapes@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-7.0.0.tgz#00fc19f491bbb18e1d481b97868204f92109bfe7"
@@ -268,6 +280,13 @@ pidtree@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/pidtree/-/pidtree-0.6.0.tgz#90ad7b6d42d5841e69e0a2419ef38f8883aa057c"
   integrity sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==
+
+prettier-plugin-toml@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-toml/-/prettier-plugin-toml-2.0.2.tgz#2e6cb2717a5e508fd38668aa06c561f3f1ef74cb"
+  integrity sha512-tUIIhyfdVX5DMsLGKX/2qaEwi3W48OkUSR7XC91PRI5jFzhexmaYWkrSP1Xh/eWUcEc0TVMQenM3lB09xLQstQ==
+  dependencies:
+    "@taplo/lib" "^0.4.0-alpha.2"
 
 prettier@3.5.3:
   version "3.5.3"
