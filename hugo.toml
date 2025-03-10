@@ -7,6 +7,8 @@ enableGitInfo = true
 titleCaseStyle = 'none'
 buildExpired = true
 noChmod = true
+capitalizeListTitles = false
+pluralizeListTitles = false
 
 [permalinks]
 posts = '/:year/:month/:slugorfilename/'
