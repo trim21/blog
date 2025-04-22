@@ -18,13 +18,13 @@ pagerSize = 20
 
 [params]
 dateFormat = "2006-01-02"
-customCommentHTML = """
-<script src="https://utteranc.es/client.js"
-    repo="trim21/blog"
-    issue-term="pathname"
-    crossorigin="anonymous"
-    async></script>
-"""
+# customCommentHTML = """
+# <script src="https://utteranc.es/client.js"
+#     repo="trim21/blog"
+#     issue-term="pathname"
+#     crossorigin="anonymous"
+#     async></script>
+# """
 
 [params.homeInfoParams]
 Title = "Hi there"
