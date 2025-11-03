@@ -240,7 +240,8 @@ string 字符串, 使用双引号 比如&quot;hello world&quot; …">
 <p>因为 goroutine 函数的返回值是会被丢弃的, 使用回调函数的话又会陷入回调地域中, 所以需要一种额外的方式来接受异步函数的返回结果.</p>
 <p>这里就要贴出那句 go 并发文章常常能看到的话了</p>
 <blockquote>
-<p>不要通过共享内存来通信，而应该通过通信来共享内存</p></blockquote>
+<p>不要通过共享内存来通信，而应该通过通信来共享内存</p>
+</blockquote>
 <p>而<code>channel</code>, 就是 go 提供的通信的工具. 可以在一个线程中发送数据, 在另一个线程中接收数据. 如果我们要写一个异步爬虫, 就可以开四个线程来爬取数据, 在爬到数据后通过 channel 发送到主线程, 然后在主线程中使用 channel 接受, 交给 pipeline 来处理.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 </span></span><span style="display:flex;"><span>
