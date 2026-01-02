@@ -55,7 +55,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.70293498aa96b2dbb767ec11a622eb2266d8fc37a0fff88233a82952e3c72b15.js" integrity="sha256-cCk0mKqWstu3Z&#43;wRpiLrImbY/Deg//iCM6gpUuPHKxU="></script>
+    <script src="/js/bundle.min.7136b4abac7b277aba8bc933917f4602d39a5c44f5590be687244bc86ef4f162.js" integrity="sha256-cTa0q6x7J3q6i8kzkX9GAtOaXET1WQvmhyRLyG708WI="></script>
 
     
     
@@ -180,26 +180,26 @@
 <p>参考<a href="https://vue-loader.vuejs.org/guide/">vue-loader</a></p>
 <p>首先在 webpack 的设置中添加一个<code>loader</code>, 再添加一个插件</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// webpack.config.js
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">VueLoaderPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;vue-loader/lib/plugin&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">VueLoaderPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;vue-loader/lib/plugin&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ... other rules
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      {
+</span></span></span><span style="display:flex;"><span>      {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.vue$/</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;vue-loader&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">loaders</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">scss</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;vue-style-loader!css-loader!postcss-loader!sass-loader&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// &lt;style lang=&#34;scss&#34;&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          },
+</span></span></span><span style="display:flex;"><span>          },
 </span></span><span style="display:flex;"><span>        },
 </span></span><span style="display:flex;"><span>      },
 </span></span><span style="display:flex;"><span>    ],
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// make sure to include the plugin!
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">VueLoaderPlugin</span>(),
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">VueLoaderPlugin</span>(),
 </span></span><span style="display:flex;"><span>  ],
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>然后在代码里, 参照 Vue 官方的模板, 只要初始化一个实例就能正常显示内容了.</p>
@@ -211,7 +211,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#container&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">`&lt;div id=&#39;bgm_tv_app&#39;&gt;&lt;/div&gt;`</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">$http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">axios</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// eslint-disable-next-line no-new
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;#bgm_tv_app&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">h</span>) =&gt; <span style="color:#a6e22e">h</span>(<span style="color:#a6e22e">App</span>),
 </span></span><span style="display:flex;"><span>});
