@@ -178,7 +178,7 @@ GitHub Pages 介绍 github pages 是 github 提供的服务，github 会为特�
 <h2 id="github-actions">GitHub Actions</h2>
 <p>2019 年 GitHub 上线了自己的 CI，<a href="https://docs.github.com/cn/actions">GitHub Actions</a>，在此之前大家一般会使用 travis CI 或者 circle CI 等。但是直接用 github actions 可以避免额外注册账号，设置 github access token 等等权限问题。</p>
 <p>有了 github actions 之后就不再需要博客提供的各种部属插件了，只需要在 github actions 中构建博客，并且把生成的<code>public/</code>文件夹推到<code>gh-pages</code> 分支就可以了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">build</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">build</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:

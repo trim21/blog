@@ -169,7 +169,7 @@
 <p>在 3.4 就是上面说的, 引入了<code>asyncio</code>的标准库.</p>
 <p>3.5 有了一系列的 bug fix ,可以见<a href="https://aiohttp.readthedocs.io/en/stable/faq.html#why-is-python-3-5-3-the-lowest-supported-version">why-is-python-3-5-3-the-lowest-supported-version</a>, 还支持了<code>async/await</code>语法.</p>
 <p>不过 3.5 的时候<code>async/await</code>还不是关键字, 还可以给<code>async</code>赋值, 所以到了 python3.7 的时候挂了一堆库, 因为他们用了<code>async</code>当变量&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>version_info) <span style="color:#75715e"># 3.5.4</span>
@@ -191,11 +191,11 @@
 </span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_until_complete(hello())
 </span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>close()
 </span></span></code></pre></div><p>会输出</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>Hello world!
 </span></span><span style="display:flex;"><span>Hello again!
 </span></span></code></pre></div><p>但是如果到了 python3.7, 会报错<code>SyntaxError</code>, 也因为这个原因挂了一堆库.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;app.py&#34;</span>, line <span style="color:#ae81ff">14</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;app.py&#34;</span>, line <span style="color:#ae81ff">14</span>
 </span></span><span style="display:flex;"><span>    async <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>          ^
 </span></span><span style="display:flex;"><span>SyntaxError: invalid syntax
@@ -203,7 +203,7 @@
 <p>说了半天没用的&hellip;</p>
 <p>最近在折腾的 python 框架 aiohttp 其实没有这个问题. 因为 aiohttp3.x.x 的最低版本要求就是 3.5.4, 从一开始就用到了<code>async/await</code>, 自然也不会有某个开发者把 async 再当作函数参数或者变量来赋值.</p>
 <p>出于好奇, 还是了解了一下 aiohttp 这个框架, 写了几个小玩具.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> aiohttp <span style="color:#f92672">import</span> web
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> aiohttp <span style="color:#f92672">import</span> web
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>route <span style="color:#f92672">=</span> web<span style="color:#f92672">.</span>RouteTableDef()
@@ -250,7 +250,7 @@
 <p><code>gino</code>直接 pass, 因为目前只支持 postgreSQL.</p>
 <p><code>peewee-async</code>的问题是, 他其实是基于 peewee 的, 你要通过 peewee 来定义你的模块, 然后用<code>peewee-async</code>给的一个<code>Manager</code>来异步调用.</p>
 <p>举个例子, 他的异步代码是长这样的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> peewee
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> peewee
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> peewee_async <span style="color:#f92672">import</span> Manager, PostgresqlDatabase
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -282,7 +282,7 @@
 <p>辅助的开发服务器, 支持 livereload 和 hotreload<a href="https://github.com/aio-libs/aiohttp-devtools"><code>aiohttp-devtools</code></a></p>
 <p>devtools 有一些坑, 主要是项目的 readme 不是很全, 主要还是要靠 cli 的 help 信息和源码&hellip;</p>
 <p>比如, 我的项目结构是这样的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>project
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>project
 </span></span><span style="display:flex;"><span>├─ Dockerfile
 </span></span><span style="display:flex;"><span>├─ README.md
 </span></span><span style="display:flex;"><span>├─ requirements.txt
@@ -296,7 +296,7 @@
 </span></span></code></pre></div><p>这里有一个潜在的坑, 如果你要在<code>project</code>目录下直接启动服务器的话, 是不能提供<code>app-path</code>的, 而是用通过<code>--root</code>来启动, 比如说<code>adev runserver --root app</code></p>
 <p>但是如果你的<code>pwd</code>是<code>app</code>, 此时不需要提供<code>root-path</code>, 只需要提供<code>app-apth</code>, 启动命令变为<code>adev runserver main.py</code></p>
 <p>贴一下<code>runserver</code>的 help 信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plain" data-lang="plain"><span style="display:flex;"><span>Usage: adev runserver [OPTIONS] [APP_PATH]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plain" data-lang="plain"><span style="display:flex;"><span>Usage: adev runserver [OPTIONS] [APP_PATH]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  Run a development server for an aiohttp apps.
 </span></span><span style="display:flex;"><span>

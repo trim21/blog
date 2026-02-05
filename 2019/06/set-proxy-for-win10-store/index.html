@@ -175,7 +175,7 @@ win10 商店对应的应用在注册表中的DisplayName是 …">
 <p>win10 商店对应的应用在注册表中的<code>DisplayName</code>是<code>Microsoft.WindowsStore</code>,
 所以遍历<code>HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings</code>的所有子 key,找到对应<code>DisplayName</code>中包含<code>Microsoft.WindowsStore</code>的一项就可以了.</p>
 <p>因为手动一项一项的去找效率实在是太低,就直接写了个 python 脚本来遍历.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> winreg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> winreg
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">iterkeys</span>(key):

@@ -187,15 +187,15 @@
 <p>因为 github pages 要求 push 到<code>${username}.github.io</code>的仓库中, 比如我的用户名是<code>trim21</code>, 我就需要把文件 push 到<code>trim21.github.io</code>去, 所以我们需要告诉<code>hexo</code>他要操作的部署的仓库地址.</p>
 <p>而<code>_config.yml</code>里面又不能使用环境变量, 只能每次部署的时候把对应的仓库链接给 echo 进去, 避免泄漏.</p>
 <p>我的<code>_config.yml</code>文件结尾是这样的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
 </span></span></code></pre></div><p>然后 echo 到<code>_config.yml</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;  repository: https://</span><span style="color:#e6db74">${</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">@github.com/Trim21/trim21.github.io&#34;</span> &gt;&gt; ./_config.yml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;  repository: https://</span><span style="color:#e6db74">${</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">@github.com/Trim21/trim21.github.io&#34;</span> &gt;&gt; ./_config.yml
 </span></span></code></pre></div><p>就变成了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
@@ -208,7 +208,7 @@
 <p>最后贴一下我的 travis 配置.</p>
 <p>其中<code>git clone https://${token}@github.com/Trim21/trim21.github.io .deploy_git</code>的一步是多余的, 如果你没有提前 clone 的话, hexo 的部署插件会替你 clone.</p>
 <p>而<code>myecho</code>文件里除了把正确的仓库地址 echo 的文件里, 还有对应的<code>hexo g -d</code>, 和调用腾讯云的 api 来刷新 cdn 缓存.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">branches</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">branches</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">only</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">master</span>
 </span></span><span style="display:flex;"><span>

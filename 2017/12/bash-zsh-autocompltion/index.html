@@ -169,7 +169,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <p><a href="https://github.com/BGmi/BGmi">BGmi</a>起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来给前端加了一些订阅功能,但是 cli 的使用频率还是很高,cli 没有自动补全功能总是说不过去,所以就花了一些时间加上了这个功能.</p>
 <h2 id="分析一下需求">分析一下需求</h2>
 <p>BGmi 的命令都是同样的结构,<code>bgmi action1 --opt1 arg1 --opt2 arg2</code>,那么我们需要补全的就是所有的 action 和每个 action 相应的选项了.在此之前,是直接<code>add_parser</code>和<code>add_argument</code>相应的 action 和选项.这样是没法进行下一步的,所以首先花了一些时间,所以首先把所有的<code>action</code>和相应的<code>opts</code>存在了一个变量中</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actions_and_arguments <span style="color:#f92672">=</span> [
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actions_and_arguments <span style="color:#f92672">=</span> [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;action&#39;</span>: ACTION_ADD,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;help&#39;</span>: <span style="color:#e6db74">&#39;Subscribe bangumi.&#39;</span>,
@@ -202,7 +202,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <h3 id="先说下-bash-的语法">先说下 bash 的语法</h3>
 <p>基本上会用到的数据类型就是字符串和数字了,字符串两边需要加单引号的双引号,或者是反引号.而单引号和双引号还有一些不同.双引号允许转义,而单引号不允许</p>
 <p>shell 的语法跟编程语言的语法有一些不同,感觉 shell 的语法在故意混淆字符串和命令.语句中的一个单词又可以做为命令又可以做为字符串.所以为了避免歧义,需要加上单引号或者双引号.而单引号和双引号又有一些不同.单引号是没有转义的,双引号是有转义的.比如说</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export var<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export var<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$var<span style="color:#e6db74">&#34;</span> <span style="color:#75715e"># 1</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$var<span style="color:#e6db74"> 233&#34;</span> <span style="color:#75715e"># 1 233</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;$var&#39;</span> <span style="color:#75715e"># $var</span>
@@ -210,7 +210,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span></code></pre></div><p>在双引号字符串中,以<code>$</code>开头的会被替换成对应的变量,用反引号包起来的内容会视为命令,运行之后把输出替换为字符串的一部分</p>
 <h3 id="然后是具体的代码">然后是具体的代码</h3>
 <p>bash 用来提供自动补全的命令是<code>complete</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>complete --help
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>complete --help
 </span></span><span style="display:flex;"><span>complete: complete <span style="color:#f92672">[</span>-abcdefgjksuv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-pr<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-DE<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-A action<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-G globpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-W wordlist<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-F <span style="color:#66d9ef">function</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C command<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-X filterpat<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-P prefix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S suffix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>name ...<span style="color:#f92672">]</span>
@@ -238,7 +238,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 </span></span></code></pre></div><p>本来<code>complete</code>是支持用另一个命令来进行自动补全的,但是试了试实在是太慢了,所以还是生成了一个 bash 函数.</p>
 <p>因为我是编写了一个<code>_bgmi</code>函数来进行<code>bgmi</code>命令的自动补全,所以此处就应该<code>complete -F _bgmi bgmi</code></p>
 <p>然后就是<code>_bgmi</code>函数本体了. config 太多,只贴了一部分.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    local pre cur action
 </span></span><span style="display:flex;"><span>    local actions bangumi config
 </span></span><span style="display:flex;"><span>    actions<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;add delete update cal config filter fetch download list mark search source complete&#34;</span>
@@ -314,7 +314,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <p>(这里用<code>${}</code>包起来跟直接使用<code>$var</code>没有什么区别,只是其他语言的变量前不用加<code>$</code>,用<code>{}</code>包起来个人看起来习惯一点.)</p>
 <p>因为<code>bgmi</code>的命令都是<code>bgmi action args</code>这样的形式,所以先判断<code>COMP_WORDS</code>的大小,如果等于 1,说明还没输出对应的 action,需要补全 action. 如果大于 1, 说明已经输入过了 action,只需要补全对应的选项.</p>
 <p>在 bash 中,生成对应补全选项的命令是<code>compgen</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ compgen --help
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ compgen --help
 </span></span><span style="display:flex;"><span>compgen: compgen <span style="color:#f92672">[</span>-abcdefgjksuv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-A action<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>-G globpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-W wordlist<span style="color:#f92672">]</span>  <span style="color:#f92672">[</span>-F <span style="color:#66d9ef">function</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C command<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>-X filterpat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-P prefix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S suffix<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>word<span style="color:#f92672">]</span>
@@ -332,7 +332,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <h2 id="zsh-的自动补全">Zsh 的自动补全</h2>
 <p>参照的这篇文章<a href="https://github.com/spacewander/blogWithMarkdown/issues/32">https://github.com/spacewander/blogWithMarkdown/issues/32</a></p>
 <p>先放个结果&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">(){</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>_bgmi<span style="color:#f92672">(){</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">${#</span>words<span style="color:#e6db74">}</span> -le <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">then</span>
@@ -361,7 +361,7 @@ BGmi起初只是个 cli 程序,前端单纯的展示已经下载的剧集,后来
 <p>因为<code>_alternative</code>的功能是最全的,所以我就只用了<code>_alternative</code>这一个命令
 <code>cal:cal options:(( -f\:&quot;Get the newest bangumi calendar from bangumi.moe.&quot; --force-update\:&quot;Get the newest bangumi calendar from bangumi.moe.&quot; ))</code></p>
 <p>如果有两个选项是同样的意思,直接重复输出就可以了,zsh 会自动把他们合并成一行,就像这样 其中 <code>--force-update</code>和<code>-f</code>的帮助信息在我们输入的时候就是相同的.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>ubuntu@VM-189-243-ubuntu ~ $ bgmi cal -
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>ubuntu@VM-189-243-ubuntu ~ $ bgmi cal -
 </span></span><span style="display:flex;"><span>--download-cover      -- Download the cover to local
 </span></span><span style="display:flex;"><span>--force-update    -f  -- Get the newest bangumi calendar from bangumi.moe.
 </span></span><span style="display:flex;"><span>--no-save             -- Do not save the bangumi data when force update.
