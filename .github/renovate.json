@@ -15,5 +15,10 @@
       "packageNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
     }
-  ]
+  ],
+  "labels": [
+    "ci:auto-merge",
+    "dependencies"
+  ],
+  "prConcurrentLimit": 3
 }
