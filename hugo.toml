@@ -11,7 +11,7 @@ capitalizeListTitles = false
 pluralizeListTitles = false
 
 [permalinks]
-posts = '/:year/:month/:slugorfilename/'
+posts = '/:year/:month/:slugorcontentbasename/'
 
 [pagination]
 pagerSize = 20
