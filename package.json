@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "build": "hugo build --panicOnWarning --noBuildLock --cleanDestinationDir",
+    "start": "hugo serve",
     "format": "prettier -w .",
     "commit": "git commit -m update -a && git push",
     "prepare": "husky"
