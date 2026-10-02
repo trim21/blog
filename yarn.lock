@@ -2,17 +2,15 @@
 # yarn lockfile v1
 
 
-"@taplo/core@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@taplo/core/-/core-0.2.0.tgz#a256aef743307c853de08e2199e295fa3266122f"
-  integrity sha512-r8bl54Zj1In3QLkiW/ex694bVzpPJ9EhwqT9xkcUVODnVUGirdB1JTsmiIv0o1uwqZiwhi8xNnTOQBRQCpizrQ==
+"@dual-bundle/import-meta-resolve@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@dual-bundle/import-meta-resolve/-/import-meta-resolve-4.2.1.tgz#cd0b25b3808cd9e684cd6cd549bbf8e1dcf05ee7"
+  integrity sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==
 
-"@taplo/lib@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@taplo/lib/-/lib-0.5.0.tgz#0d98cf5c1fa676148fcb29846a84aaba76535e8a"
-  integrity sha512-+xIqpQXJco3T+VGaTTwmhxLa51qpkQxCjRwezjFZgr+l21ExlywJFcDfTrNmL6lG6tqb0h8GyJKO3UPGPtSCWg==
-  dependencies:
-    "@taplo/core" "^0.2.0"
+"@tombi-toml/wasm-lib@^1.5.5":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.7.1.tgz#723596f85bc8f34047e8bd75f3c97b8eadaa7315"
+  integrity sha512-z+8BRpJ8kaU2uWVtWCuo3+vdgTi3iglMKLrYbxkSJUAC1LUP4iVd6HKvPIggrvg1miOGqXPJQPogfqN3EIHpYg==
 
 husky@9.1.7:
   version "9.1.7"
@@ -35,17 +33,24 @@ picomatch@^4.0.7:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.7.tgz#6313360034ccb36b3dc61ecbdff78121f90fe21f"
   integrity sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==
 
-prettier-plugin-toml@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-toml/-/prettier-plugin-toml-2.0.6.tgz#d581512a585143975efebf89303272a359c3124a"
-  integrity sha512-12N/wBuHa9jd/KVy9pRP20NMKxQfQLMseQCt66lIbLaPLItvGUcSIryE1eZZMJ7loSws6Ig3M2Elc2EreNh76w==
+prettier-plugin-toml@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-toml/-/prettier-plugin-toml-3.0.2.tgz#bf5b404e0515b4e434849427519127c7965b2023"
+  integrity sha512-1t1FOSGaXNy7xN6ffE7ND71VqsnbUtanGEKAD1hTwFDrGIH1cwZ0KH6lMThDVItjdV/UUJWqD3f1+16AHG3eUQ==
   dependencies:
-    "@taplo/lib" "^0.5.0"
+    "@dual-bundle/import-meta-resolve" "^4.2.1"
+    "@tombi-toml/wasm-lib" "^1.5.5"
+    smol-toml "^1.8.0"
 
 prettier@3.9.6:
   version "3.9.6"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.9.6.tgz#b3ea5146515d40fc53f18aa63f74dfab1e10dbf6"
   integrity sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==
+
+smol-toml@^1.8.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/smol-toml/-/smol-toml-1.9.0.tgz#f36b8dc7eb621c541c48f9fba6925dab95172817"
+  integrity sha512-hpd+HLON7HdZXqYchMM/+LaTTbdK0AU3NngIJ4KVyWbY9bfQqdL9cD+4yf6dUoU2Ap4VsU0JkQi6FxAI1B2mXQ==
 
 string-argv@^0.3.2:
   version "0.3.2"
