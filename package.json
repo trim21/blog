@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "husky": "9.1.7",
-    "lint-staged": "17.4.1",
-    "prettier": "3.9.6",
+    "lint-staged": "17.6.0",
+    "prettier": "3.9.9",
     "prettier-plugin-toml": "3.0.2"
   },
   "prettier": {
