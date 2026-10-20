@@ -8,9 +8,9 @@
   integrity sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==
 
 "@tombi-toml/wasm-lib@^1.5.5":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.7.2.tgz#dc7e6cb1cff131df47c4a0ff5c77710d5c98dbaa"
-  integrity sha512-C+XChvcJf797btQPbtDLldu10qp06jZcMqk9KYG8P8HSWDx0Y3gRumSpq2gO7l8G1TeAsVHBLnxtR+0DBgt2Mw==
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.8.9.tgz#6f84d9c6933c3fa1baa94c547521bb281f5280c0"
+  integrity sha512-S2qwNfCpkFotminKixicCB/F2IUtg1qA0y8jcRGux4rbApy6ptKBXXawWZIXIiy+ubunNvkaVohYG3rv8sRF6A==
 
 husky@9.1.7:
   version "9.1.7"
@@ -48,9 +48,9 @@ prettier@3.9.9:
   integrity sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==
 
 smol-toml@^1.8.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/smol-toml/-/smol-toml-1.9.0.tgz#f36b8dc7eb621c541c48f9fba6925dab95172817"
-  integrity sha512-hpd+HLON7HdZXqYchMM/+LaTTbdK0AU3NngIJ4KVyWbY9bfQqdL9cD+4yf6dUoU2Ap4VsU0JkQi6FxAI1B2mXQ==
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/smol-toml/-/smol-toml-1.9.1.tgz#1262834a084c3ce2985900450956a580f95cf243"
+  integrity sha512-j7WyPdf0CJoutMzMoPLF/bVXHtKZIT9Rb4eGeEbWw8X2t5oirjPgpL+OpaENZrILYaXqYwnVH+qgUwVbl+pUJQ==
 
 string-argv@^0.3.2:
   version "0.3.2"
