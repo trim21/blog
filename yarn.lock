@@ -8,9 +8,9 @@
   integrity sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==
 
 "@tombi-toml/wasm-lib@^1.5.5":
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.8.9.tgz#6f84d9c6933c3fa1baa94c547521bb281f5280c0"
-  integrity sha512-S2qwNfCpkFotminKixicCB/F2IUtg1qA0y8jcRGux4rbApy6ptKBXXawWZIXIiy+ubunNvkaVohYG3rv8sRF6A==
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.9.6.tgz#0f1974535e270a390c505864a4344e24060b6036"
+  integrity sha512-j2mDatmY872EIYE2joEwOWtXWisBKfRpJSNW3EzqF+IZifPRxKuY3dqOfYzh6SdvszOPjzPWrWW2kRXi557kYA==
 
 husky@9.1.7:
   version "9.1.7"
