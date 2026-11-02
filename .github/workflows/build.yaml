@@ -10,7 +10,7 @@ on:
       - master
 
 env:
-  hugo: "0.167.0"
+  hugo: "0.169.0"
 
 jobs:
   build:
