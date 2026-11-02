@@ -2,15 +2,120 @@
 # yarn lockfile v1
 
 
-"@dual-bundle/import-meta-resolve@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@dual-bundle/import-meta-resolve/-/import-meta-resolve-4.2.1.tgz#cd0b25b3808cd9e684cd6cd549bbf8e1dcf05ee7"
-  integrity sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==
+"@tombit/binding-android-arm-eabi@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-android-arm-eabi/-/binding-android-arm-eabi-0.1.7.tgz#0b3aaa0235f4fb0cb1a3c8b6b85837ab9cdc34fa"
+  integrity sha512-iyPsflbdpyrQuFGjsq/2F0EY3mwgtYMSjHOo8E28lRw7Bk0q60YHSsrgDY31MCfEOEgzDqfjX8Olr6iYTFwMjw==
 
-"@tombi-toml/wasm-lib@^1.5.5":
-  version "1.9.6"
-  resolved "https://registry.yarnpkg.com/@tombi-toml/wasm-lib/-/wasm-lib-1.9.6.tgz#0f1974535e270a390c505864a4344e24060b6036"
-  integrity sha512-j2mDatmY872EIYE2joEwOWtXWisBKfRpJSNW3EzqF+IZifPRxKuY3dqOfYzh6SdvszOPjzPWrWW2kRXi557kYA==
+"@tombit/binding-android-arm64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-android-arm64/-/binding-android-arm64-0.1.7.tgz#823f35e0d0a247a5ffe55a31afe0a67b574d9fb6"
+  integrity sha512-PDe05sj7SnGBhrOFda7Zbc4HPoV9pc9YfiioH2prhKWCsdkOPdRrsINNzKaQ9zB/UidMu35EsgDfpzR7GAPTvA==
+
+"@tombit/binding-darwin-arm64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-darwin-arm64/-/binding-darwin-arm64-0.1.7.tgz#ccb1829dd1da6866fa69154dd2588cef4b001b66"
+  integrity sha512-miTaFHWcB3ZrP+LR/V7P6itH4rt5GqubfOhg99U84KVmRhNAUSqq9OcSaUU4nJAS+KKea9Ee2qSCXxfNWfNLCw==
+
+"@tombit/binding-darwin-x64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-darwin-x64/-/binding-darwin-x64-0.1.7.tgz#e83c13b12f3318d7098235c20f962a5dc9f3e6c9"
+  integrity sha512-8AdCarDY+voPiQO+Nes3AMnG/b5cnt4PJpgFG78fss9YlQwvttxiDXydDeEtb3VQ6hK8tJk1bt0j1mrbu323HA==
+
+"@tombit/binding-freebsd-x64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-freebsd-x64/-/binding-freebsd-x64-0.1.7.tgz#d501620cfcc756868ad32401f697043b8742462d"
+  integrity sha512-3+FbhwB5/SZPe2hYH9LhS3X977kMIn9ulnCu3T8ToSDe3g9YwZzUobYxIXazQvNwerQEhri7kcRqqVizr3UJ1A==
+
+"@tombit/binding-linux-arm-gnueabihf@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-0.1.7.tgz#1d54a51a7d4d611a193a3c82694a758176deecbf"
+  integrity sha512-pBweM11IOeWxEEeFQ2ldNC8RLFOnr4T+Zs43zHIPGAB0eBi6QBn2LpD6O7aSB5jBOgR3rYAJ5VNZ3XdDYzDzkw==
+
+"@tombit/binding-linux-arm-musleabihf@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-arm-musleabihf/-/binding-linux-arm-musleabihf-0.1.7.tgz#77b9418c88ac298db0b30278d93a28ffd59e0cd6"
+  integrity sha512-vJSsAeTHGuTzZCT+ibOXtBfkSHFbBs+0Ckz+zpQLzJzrYooWXb4vxbq5YcU7ANnJ8BHFHq3bfpQd9ld9wvo2Xw==
+
+"@tombit/binding-linux-arm64-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-0.1.7.tgz#926b983806dae3b33318a84c24bbcdba05526719"
+  integrity sha512-v/xQuHzUi2Y4fgAWjKekMOEYtDNnE7bNYuZhX/TUmL1rL7MES5+e19cSiPPqwZTx7XlA3PIeOtwV/gBpbr+/iw==
+
+"@tombit/binding-linux-arm64-musl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-arm64-musl/-/binding-linux-arm64-musl-0.1.7.tgz#c4c91bbdd76825a890cf0af2f5920acdc219dc87"
+  integrity sha512-HgRIXOh99HKd/IkRqPvNMy5LSZ0mXVRj7yM6l62lHbxS1rDMW0fyJtxikrJX6FMMAZrbCcYKpOjNFqWdln8Zzg==
+
+"@tombit/binding-linux-loong64-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-loong64-gnu/-/binding-linux-loong64-gnu-0.1.7.tgz#22ea237f9059f46e1309b6e81657368b1169ba69"
+  integrity sha512-vGmWQG+A2VgiX1YmcPkzDrCmdphjk1pc8Y724SeSz1nggJRsD6qy42kpxFR4Mwmpv3fneKfsP9AA5DvgNMBMCA==
+
+"@tombit/binding-linux-loong64-musl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-loong64-musl/-/binding-linux-loong64-musl-0.1.7.tgz#51cc6b2fc52e36ef9a376f2070146c6288b51bcc"
+  integrity sha512-BjepP36zGh0PX2ok3v/Q1HHZLHSJkCTdnLwQxpWp0Ts3Jm2lUL7oBpwTFqBMVW7qEmoezH3RcYa+hIlCEht/mw==
+
+"@tombit/binding-linux-ppc64-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-0.1.7.tgz#5e60863b9e981fd58d9030056f87cf52a859f47f"
+  integrity sha512-aTYG3ND7CcLUZ4QCWyWnW6b8g2L481n3dRx564BB2tsdMYR+UTTMT9Ht8GCk8NRni5jR4qOj8/6opZU5iUWepw==
+
+"@tombit/binding-linux-ppc64-musl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-ppc64-musl/-/binding-linux-ppc64-musl-0.1.7.tgz#593c10eb85658f86693e5a4ef2c494b8c2286cdf"
+  integrity sha512-cLJegaEISxKO1+l6o+tePYL9e4zZ+7e/HC6akVKIUA5KlINLgBRoi1f1wdSAWVeN3p73zGC1HZnCwflmu5ueOA==
+
+"@tombit/binding-linux-riscv64-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-riscv64-gnu/-/binding-linux-riscv64-gnu-0.1.7.tgz#1af8318ce2e54b6a70c2c2210a3b09cfacc5eee3"
+  integrity sha512-pmrjVWhX7f2ze8rGPvceRSYP2R57R2Y1hUkks0qDnAweFvNlJM6tn575ArDUF/Wq3jcbjmfuFQOnfeB3qIEoRg==
+
+"@tombit/binding-linux-riscv64-musl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-riscv64-musl/-/binding-linux-riscv64-musl-0.1.7.tgz#a5a48af8854922af164a8d94947ee33a1e7021df"
+  integrity sha512-cSOZ3ybyJa3SY9mM0ZM9p2xwrw/emdcSPSg+sRkqpT9Pk/LvAL1Tckj3+fm2WtphctAnjDNhuvL7hOdUTDqlMA==
+
+"@tombit/binding-linux-s390x-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-0.1.7.tgz#96cde6293d8eded299c214cb939edecef211ca73"
+  integrity sha512-KZir6MHNSXi06kUQ4D6VJdTmVekH2qgVP5lCCI3+19u0fNaXwG4ncB0AG+JYm76o8/bneS5QHjUtzAoh+paaPA==
+
+"@tombit/binding-linux-x64-gnu@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-x64-gnu/-/binding-linux-x64-gnu-0.1.7.tgz#527be66a6ac830f46078606aeec262338360bdf7"
+  integrity sha512-lvEGWsuTK7tBf/ck5tb07qxC2eEv4MP5ZRS5VnOsJg+cUwdthEkrYkb8oeCyu2j4nwHW3U9QoHXChv7Gs8/51w==
+
+"@tombit/binding-linux-x64-musl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-linux-x64-musl/-/binding-linux-x64-musl-0.1.7.tgz#1a40f6117b719548d4d1ff3c87157f373b89366f"
+  integrity sha512-BT84fASpACpaID1xj2Td0nPpuzGt3jDr1uU+fxi0uczVrNcrWLDSBjllD2ttf3lPiJ/Q/ceQGESTOy9a5+nZgQ==
+
+"@tombit/binding-openharmony-arm64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-openharmony-arm64/-/binding-openharmony-arm64-0.1.7.tgz#42ab185a55cb692681f75f871086b087768f93fa"
+  integrity sha512-bouy+zR5Z+oKAuVpPFoxiv0EZynvVaJLJkmz35InQ2Cle/0RHnnk5C/SF8DAksfXf7Cz1M+mjtoB3DQ0+Qvphw==
+
+"@tombit/binding-openharmony-x64@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-openharmony-x64/-/binding-openharmony-x64-0.1.7.tgz#50dc2ccd48e29bb50bf41e9f242e3233a72404c3"
+  integrity sha512-I/CIJsBu1DKS5Lvq+pp4o7BMuVANeTFO61BV1BY4W9Unkc9H020WVkpDKAkMhdDOI3qhI2GcafunkdIUIa/8Vw==
+
+"@tombit/binding-win32-arm64-msvc@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-0.1.7.tgz#c8888c7ba400febc31bbb583acbfe5f1ef404331"
+  integrity sha512-W7wJ+grPsqk0QAzqlgQgwVFY7mapKU5XKVLMU/ZVSZn72bAb0dyhc9mceuPIzZHFS/emmWpsPD6+bIiraJObYA==
+
+"@tombit/binding-win32-ia32-msvc@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-win32-ia32-msvc/-/binding-win32-ia32-msvc-0.1.7.tgz#175dc38f1fe1a98af7ccbb99690568355c7a175e"
+  integrity sha512-hpM4AxTVmwf9K4Wo2/sLpqJEHPDAecaF7a5K5sg66A2/XCwX+s86vBXLeXuDdMm8+U1svM6nOsqqFjWz3VnhFw==
+
+"@tombit/binding-win32-x64-msvc@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tombit/binding-win32-x64-msvc/-/binding-win32-x64-msvc-0.1.7.tgz#9cd8c55760a6effe48f9029db05554264946451f"
+  integrity sha512-qWtuJEDiZCn01ha9WBaVp0hx6xjveWs4eQzITXQbXtSNrm0c4UtdQApMmgOS9TzwRhoxyZyKgLKBLnJTBHBy4w==
 
 husky@9.1.7:
   version "9.1.7"
@@ -28,29 +133,27 @@ lint-staged@17.6.0:
   optionalDependencies:
     yaml "^2.9.1"
 
+napi-postinstall@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/napi-postinstall/-/napi-postinstall-0.3.7.tgz#fbd0708368aef8a4548f8d4d5c7b76f45671cb0c"
+  integrity sha512-jyU4cU4kVAmy/3qjP+DcoQTNXfINHc+dFw54gGqWC8nu0mpV0kOnk7kff+J+Q18SbX0k3Np8Rm7yFjd3phatNQ==
+
 picomatch@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.7.tgz#6313360034ccb36b3dc61ecbdff78121f90fe21f"
   integrity sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==
 
-prettier-plugin-toml@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-toml/-/prettier-plugin-toml-3.0.2.tgz#bf5b404e0515b4e434849427519127c7965b2023"
-  integrity sha512-1t1FOSGaXNy7xN6ffE7ND71VqsnbUtanGEKAD1hTwFDrGIH1cwZ0KH6lMThDVItjdV/UUJWqD3f1+16AHG3eUQ==
+prettier-plugin-toml@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-toml/-/prettier-plugin-toml-4.1.0.tgz#d8f9a62528fce26af99fb346904a3db505bf1696"
+  integrity sha512-6+qgmRqD79kSsincO3odPzMpteTCpeP+WxxYmI7vDrhfpiQMFeciozuqUcnWc4XfJ97OZiuWeUfVcDktvACIDg==
   dependencies:
-    "@dual-bundle/import-meta-resolve" "^4.2.1"
-    "@tombi-toml/wasm-lib" "^1.5.5"
-    smol-toml "^1.8.0"
+    tombit "^0.1.3"
 
 prettier@3.9.10:
   version "3.9.10"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.9.10.tgz#ac378e432f1a7381518f2e080816bbaefa38d585"
   integrity sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==
-
-smol-toml@^1.8.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/smol-toml/-/smol-toml-1.9.1.tgz#1262834a084c3ce2985900450956a580f95cf243"
-  integrity sha512-j7WyPdf0CJoutMzMoPLF/bVXHtKZIT9Rb4eGeEbWw8X2t5oirjPgpL+OpaENZrILYaXqYwnVH+qgUwVbl+pUJQ==
 
 string-argv@^0.3.2:
   version "0.3.2"
@@ -61,6 +164,37 @@ tinyexec@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/tinyexec/-/tinyexec-1.3.1.tgz#16a2e3c6e23fafce72640e678e651db36145b9c6"
   integrity sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA==
+
+tombit@^0.1.3:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/tombit/-/tombit-0.1.7.tgz#55f67642bc0f1cdcad7964a6bdabb89a630f623e"
+  integrity sha512-0jMD7Zji2JV6yIia7krTZVxle/jmKGWvqaIrcjSuRIhR3qIGEkSYfjcdz9dAf9EJC37pyW/A4nz+sjErLgfZHg==
+  dependencies:
+    napi-postinstall "^0.3.7"
+  optionalDependencies:
+    "@tombit/binding-android-arm-eabi" "0.1.7"
+    "@tombit/binding-android-arm64" "0.1.7"
+    "@tombit/binding-darwin-arm64" "0.1.7"
+    "@tombit/binding-darwin-x64" "0.1.7"
+    "@tombit/binding-freebsd-x64" "0.1.7"
+    "@tombit/binding-linux-arm-gnueabihf" "0.1.7"
+    "@tombit/binding-linux-arm-musleabihf" "0.1.7"
+    "@tombit/binding-linux-arm64-gnu" "0.1.7"
+    "@tombit/binding-linux-arm64-musl" "0.1.7"
+    "@tombit/binding-linux-loong64-gnu" "0.1.7"
+    "@tombit/binding-linux-loong64-musl" "0.1.7"
+    "@tombit/binding-linux-ppc64-gnu" "0.1.7"
+    "@tombit/binding-linux-ppc64-musl" "0.1.7"
+    "@tombit/binding-linux-riscv64-gnu" "0.1.7"
+    "@tombit/binding-linux-riscv64-musl" "0.1.7"
+    "@tombit/binding-linux-s390x-gnu" "0.1.7"
+    "@tombit/binding-linux-x64-gnu" "0.1.7"
+    "@tombit/binding-linux-x64-musl" "0.1.7"
+    "@tombit/binding-openharmony-arm64" "0.1.7"
+    "@tombit/binding-openharmony-x64" "0.1.7"
+    "@tombit/binding-win32-arm64-msvc" "0.1.7"
+    "@tombit/binding-win32-ia32-msvc" "0.1.7"
+    "@tombit/binding-win32-x64-msvc" "0.1.7"
 
 yaml@^2.9.1:
   version "2.9.1"
